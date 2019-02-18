@@ -1,20 +1,26 @@
 
 
 # https://github.com/thisbejim/Pyrebase
+# python3 -m pip install pyrebase
+# python3 script.py
 
 import pyrebase
 
 config = {
-  "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
-  "authDomain": "kex-scanner-project.firebaseapp.com",
-  "databaseURL": "https://kex-scanner-project.firebaseio.com",
-  "storageBucket": "kex-scanner-project.appspot.com",
-  "serviceAccount": "kex-scanner-project-firebase-adminsdk-28leq-7bc77b9929"
+    "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
+    "authDomain": "kex-scanner-project.firebaseapp.com",
+    "databaseURL": "https://kex-scanner-project.firebaseio.com",
+    "storageBucket": "kex-scanner-project.appspot.com",
+    "serviceAccount": "key-firebase.json"
 }
 
 firebase = pyrebase.initialize_app(config)
 
+db = firebase.database()
+db.child("users").child("Morty")
 
+data = {"name": "Mortimer 'Morty' Smith"}
+db.child("users").child("Morty").set(data)
 
 
 inventory = []
@@ -58,4 +64,4 @@ def barcode_scanner_input():
         barcode_scanner_input()
 
 
-barcode_scanner_input()
+# barcode_scanner_input()
