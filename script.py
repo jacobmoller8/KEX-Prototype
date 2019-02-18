@@ -5,6 +5,7 @@
 # python3 script.py
 
 import pyrebase
+import json
 
 config = {
     "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
@@ -15,15 +16,24 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
-
 db = firebase.database()
-db.child("users").child("Morty")
-
-data = {"name": "Mortimer 'Morty' Smith"}
-db.child("users").child("Morty").set(data)
 
 
 inventory = []
+
+
+def firebase():
+
+    json_inv = json.dumps(inventory)
+
+    data = {
+        "name": "Jacob",
+        "username": "jacobmoller",
+        "password": "test123",
+        "inventory": json_inv,
+    }
+    db.child("users").child("user1").set(data)
+    return
 
 
 def barcode_scanner_output():
@@ -41,6 +51,7 @@ def barcode_scanner_output():
             inventory.remove(x)
             print("item removed")
             print(inventory)
+            firebase()
             barcode_scanner_output()
         except:
             print("not in inventory")
@@ -61,7 +72,8 @@ def barcode_scanner_input():
         inventory.append(x)
         print("item added")
         print(inventory)
+        firebase()
         barcode_scanner_input()
 
 
-# barcode_scanner_input()
+barcode_scanner_input()
