@@ -15,35 +15,41 @@ config = {
     "serviceAccount": "key-firebase.json"
 }
 
+username = "user1"
+
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-
 
 inventory = []
 
 
-def firebase():
+def get_from_firebase():
+
+    firebase = pyrebase.initialize_app(config)
+    db = firebase.database()
+    db_inv = db.child("users").child(username).child("inventory").get()
+    inventory = json.loads(db_inv.val())
+
+    barcode_scanner_input()
+
+
+def send_to_firebase():
 
     json_inv = json.dumps(inventory)
-
-    data = {
-        "name": "Jacob",
-        "username": "jacobmoller",
-        "password": "test123",
-        "inventory": json_inv,
-    }
-    db.child("users").child("user1").set(data)
+    data = {"inventory": json_inv}
+    db.child("users").child(username).update(data)
     return
 
 
 def barcode_scanner_output():
 
     x = int(input("barcode OUT: "))
+
     if x == 0:
         exit()
     if x == 1:
         barcode_scanner_input()
-    if x == 2:
+    if x == 2 or x == "":
         print("already in output")
         barcode_scanner_output()
     else:
@@ -51,7 +57,7 @@ def barcode_scanner_output():
             inventory.remove(x)
             print("item removed")
             print(inventory)
-            firebase()
+            send_to_firebase()
             barcode_scanner_output()
         except:
             print("not in inventory")
@@ -63,7 +69,7 @@ def barcode_scanner_input():
     x = int(input("barcode IN: "))
     if x == 0:
         exit()
-    if x == 1:
+    if x == 1 or x == "":
         print("already in input")
         barcode_scanner_input()
     if x == 2:
@@ -72,8 +78,8 @@ def barcode_scanner_input():
         inventory.append(x)
         print("item added")
         print(inventory)
-        firebase()
+        send_to_firebase()
         barcode_scanner_input()
 
 
-barcode_scanner_input()
+get_from_firebase()
