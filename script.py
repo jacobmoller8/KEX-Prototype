@@ -1,11 +1,30 @@
 
 
+# https://github.com/thisbejim/Pyrebase
+
+import pyrebase
+
+config = {
+  "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
+  "authDomain": "kex-scanner-project.firebaseapp.com",
+  "databaseURL": "https://kex-scanner-project.firebaseio.com",
+  "storageBucket": "kex-scanner-project.appspot.com",
+  "serviceAccount": "kex-scanner-project-firebase-adminsdk-28leq-7bc77b9929"
+}
+
+firebase = pyrebase.initialize_app(config)
+
+
+
+
 inventory = []
 
 
 def barcode_scanner_output():
 
     x = int(input("barcode OUT: "))
+    if x == 0:
+        exit()
     if x == 1:
         barcode_scanner_input()
     if x == 2:
@@ -25,6 +44,8 @@ def barcode_scanner_output():
 def barcode_scanner_input():
 
     x = int(input("barcode IN: "))
+    if x == 0:
+        exit()
     if x == 1:
         print("already in input")
         barcode_scanner_input()
