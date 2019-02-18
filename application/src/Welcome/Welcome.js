@@ -7,11 +7,11 @@ class Welcome extends Component {
         return (
             <div className="Welcome">
                 <div className="container-fluid" id="header">
-                    <h1>Welcome to our amazing app</h1>
+                    <h1>Food Inventory App</h1>
                 </div>
 
                 <div className="row justify-content-center" >
-                    <div className="col-4 text-center">
+                    <div className="col-md-4 col-sm-10 text-center">
 
                         <div id="signInContainer">
                             <form>
