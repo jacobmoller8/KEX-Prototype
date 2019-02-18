@@ -6,9 +6,13 @@ class Welcome extends Component {
     render() {
         return (
             <div className="Welcome">
-                <div className="container-fluid" id="header">
+                <div className="container-fluid header">
                     <h1>Food Inventory App</h1>
+                    <div className="container-fluid profileIconHolder">
+                        <img src={require('../Images/carrot4.png')} className="profileIcon" alt="loginIcon"/>
+                    </div>
                 </div>
+                
 
                 <div className="row justify-content-center" >
                     <div className="col-md-4 col-sm-10 text-center">

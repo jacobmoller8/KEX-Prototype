@@ -1,8 +1,7 @@
-#header {
-    background-color: darkgreen;
-    text-align: center;
-    padding: 20px;    
+.row{
+    margin: 0px;
 }
+
 
 #signInContainer {
     margin-top: 100px;
@@ -11,6 +10,6 @@
     padding: 20px;
 }
 
-#registerText {
+#registerText { 
     margin-top: 50px;
 }
