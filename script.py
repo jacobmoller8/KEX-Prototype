@@ -15,12 +15,27 @@ config = {
     "serviceAccount": "key-firebase.json"
 }
 
-username = "user1"
+username = "Red"
+password = "Cobra28"
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 inventory = []
+
+json_inv = json.dumps(inventory)
+
+
+json_inv = json.dumps(inventory)
+data = {
+    "username": username,
+    "password": password,
+    "inventory": json_inv,
+    "trash": json_inv,
+    "shopping": json_inv,
+    "errors": json_inv
+}
+db.child("users").child(username).set(data)
 
 
 def get_from_firebase():
@@ -82,4 +97,4 @@ def barcode_scanner_input():
         barcode_scanner_input()
 
 
-get_from_firebase()
+# get_from_firebase()
