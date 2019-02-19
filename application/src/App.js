@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 
-import Welcome from './Welcome/Welcome';
-import Inventory from './Inventory/Inventory'
+import Welcome from './Components/Welcome/Welcome';
+import Inventory from './Components/Inventory/Inventory'
 
 class App extends Component {
   constructor(props) {
