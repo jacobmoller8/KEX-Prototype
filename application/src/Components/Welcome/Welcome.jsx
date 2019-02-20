@@ -23,13 +23,13 @@ class Welcome extends Component {
                                     <input type="password" className="form-control" id="InputPassword" placeholder="*******"></input>
                                 </div>
                                 <Link to="/Inventory">
-																	<button type="submit" className="btn btn-primary">Sign In</button>
+																	<button type="submit" className="btn btn-warning">Sign In</button>
 																</Link>
                             </form>
                         </div>
 
                         <p id="registerText">Haven't got an account?</p>
-                        <button type="submit" className="btn btn-primary">Register</button>
+                        <button type="submit" className="btn btn-warning">Register</button>
 
                     </div>
 
