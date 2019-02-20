@@ -7,7 +7,7 @@ class Welcome extends Component {
     render() {
         return (
             <div className="Welcome">
-                {<Header/>}
+                {<Header />}
 
                 <div className="row justify-content-center" >
                     <div className="col-md-4 col-sm-10 text-center">
@@ -15,16 +15,16 @@ class Welcome extends Component {
                         <div id="signInContainer">
                             <form>
                                 <div className="form-group">
-                                    <label for="exampleInputEmail1">Username:</label>
+                                    <label htmlFor="exampleInputEmail1">Username:</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool"></input>
                                 </div>
                                 <div className="form-group">
-                                    <label for="exampleInputPassword1">Password:</label>
+                                    <label htmlFor="exampleInputPassword1">Password:</label>
                                     <input type="password" className="form-control" id="InputPassword" placeholder="*******"></input>
                                 </div>
                                 <Link to="/Inventory">
-																	<button type="submit" className="btn btn-warning">Sign In</button>
-																</Link>
+                                    <button type="submit" className="btn btn-warning">Sign In</button>
+                                </Link>
                             </form>
                         </div>
 

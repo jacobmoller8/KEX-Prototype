@@ -5,6 +5,14 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+import { createStore } from "redux";
+
+function reducer() {
+    return "state";
+}
+
+const store = createStore(reducer);
+
 
 ReactDOM.render((
     <BrowserRouter>
