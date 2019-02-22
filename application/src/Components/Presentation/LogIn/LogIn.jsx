@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './LogIn.css';
-import { Link } from 'react-router-dom'
 
 
 export const LogIn = props => (

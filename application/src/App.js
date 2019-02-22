@@ -4,6 +4,7 @@ import './App.css';
 
 import LogInScreen from './Components/Container/LogInScreen';
 import MainScreen from './Components/Container/MainScreen';
+import ItemScreen from './Components/Container/ItemScreen';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
         <header className="App-header">
           <Route exact path="/" render={() => <LogInScreen />} />
           <Route path="/MainScreen" render={() => <MainScreen />} />
+          <Route path="/ItemScreen" render={() => <ItemScreen />} />
         </header>
 
       </div>

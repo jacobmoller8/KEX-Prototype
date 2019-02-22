@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import store from '../../Store/store';
 import Header from '../Presentation/Header/Header';
 import Navigation from '../Presentation/Navigation/Navigation';
-import inventory from '../Presentation/Inventory/Inventory';
 import Inventory from '../Presentation/Inventory/Inventory';
 
 class MainScreen extends Component {
