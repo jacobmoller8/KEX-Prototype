@@ -8,17 +8,23 @@ export default class Navigation extends Component {
         <div className="row">
           <div className="container-fluid col-4 btnContainer">
             <div className="container-fluid btnCircle">
-              <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img>
+              <span className="Centerer">
+                <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img>
+              </span>
             </div>
           </div>
           <div className="container-fluid col-4 btnContainer">
             <div className="container-fluid btnCircle">
-              <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="InventoryIcon"></img>
+              <span className="Centerer">
+                <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="InventoryIcon"></img>
+              </span>
             </div>
           </div>
           <div className="container-fluid col-4 btnContainer">
             <div className="container-fluid btnCircle">
-              <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="TrashIcon"></img>
+              <span className="Centerer">
+                <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="TrashIcon"></img>
+              </span>
             </div>
           </div>
         </div>
