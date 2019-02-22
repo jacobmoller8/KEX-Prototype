@@ -27,17 +27,21 @@ export default class Header extends Component {
 	render() {
 
 		return (
-			<div>
+			<div className="row">
 				<div className="container-fluid header">
 					<Button variant="warning" className="signOutBtn" onClick={() => console.log("hello")} style={this.ifLoggedIn()}>Log out</Button>
-					<h1>Food Inventory App</h1>
 				</div>
-				<div className="arch"></div>
-				<div className="container-fluid profileIconHolder">
-					<img src={require('../../../Images/carrot4.png')} className="profileIcon" alt="loginIcon" />
+				<div className="arch"/>
+				<div className="container-fluid col-8 offset-2 offset-sm-4 col-sm-4 profileBtnContainer">
+					<Button className="profileBtn">  <img className="profileImage" src={require('../../../Images/carrot4.png')} alt="shoppingIcon"></img> </Button>
 				</div>
+
 			</div>
 
 		)
 	}
 }
+
+/* 				<div className="container-fluid profileIconHolder">
+					<img src={require('../../../Images/carrot4.png')} className="profileIcon" alt="loginIcon" />
+				</div> */

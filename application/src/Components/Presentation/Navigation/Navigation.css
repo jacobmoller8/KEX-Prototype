@@ -3,8 +3,14 @@
 }
 
 .navBar{
-    top: 260px;
-    position: absolute;
+    top: 50px;
+		position: relative;
+		text-align: center;
+}
+
+.navRow{
+	height:150px;
+	margin-bottom: 20px;
 }
 
 .icon{

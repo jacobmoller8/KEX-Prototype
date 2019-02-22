@@ -18,7 +18,7 @@ export default class Inventory extends Component {
     })
 
     return (
-      <div>
+      <div className="row">	
         <div className="container-fluid col-10 col-sm-8 inventoryBody">
           <h3 className="title">My Inventory:</h3>
           <Table striped hover responsive>
@@ -40,6 +40,6 @@ export default class Inventory extends Component {
           </div>
         </div>
       </div>
-    )
+		)
   }
 }
