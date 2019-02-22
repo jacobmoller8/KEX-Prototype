@@ -21,36 +21,22 @@ export function addUser(user) {
 
 }
 
-export function tryLoginUser(username, password) {
-    var firebaseCall = databaseRef.ref("users/" + username)
+export function tryLoginUser(username) {
 
-    console.log(username);
-    console.log(password);
+    return dispatch => {
+        var firebaseCall = databaseRef.ref("users/" + username)
 
-    firebaseCall.on('value', snapshot => {
-        var userObject = snapshot.val()
-        console.log(userObject)
-
-        if (username === userObject["username"] && password === userObject["password"]) {
-            console.log("log in accepted")
-            return {
+        firebaseCall.on('value', snapshot => {
+            var userObject = snapshot.val()
+            console.log(userObject)
+            dispatch({
                 type: LOGIN_USER,
                 payload: {
                     user: userObject
                 }
-            }
-        } else {
-            console.log("log in denied")
-        }
-
-    });
-    return {
-        type: LOGIN_USER,
-        payload: {
-            user: "access Denied"
-        }
+            })
+        });
     }
-
 }
 
 

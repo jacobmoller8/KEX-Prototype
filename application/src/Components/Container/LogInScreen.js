@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import store from '../../Store/store'
 import { addUser, fetchUser, tryLoginUser } from "../../Actions/firebaseActions";
+import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import { LogIn } from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header';
 
@@ -17,7 +18,7 @@ class LogInScreen extends Component {
         this.onPassInput = this.onPassInput.bind(this);
         this.state = {
             username: "",
-            password: ""
+            password: "",
         }
     }
 
@@ -48,15 +49,8 @@ class LogInScreen extends Component {
     }
     onLoginClick(e) {
         e.preventDefault();
-        console.log(this.state.username)
-        console.log(this.state.password)
         this.props.tryLoginUser(this.state.username, this.state.password)
-    }
-
-    onUpdateUser() {
-        //this.props.addUser("ReactTest2");
-        //this.props.fetchUser("Red");
-        this.props.tryLoginUser("Green", "Flamingo74")
+        setTimeout(console.log(store.getState().firebase), 2000);
     }
 
     render() {
@@ -64,8 +58,8 @@ class LogInScreen extends Component {
             <div className="LogInScreen">
                 {<Header isLoggedIn={false} />}
                 {<LogIn
-                    onUserInput={this.onUserInput}
-                    onPassInput={this.onPassInput}
+                    onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
+                    onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
                     onLoginClick={this.onLoginClick} />}
             </div>
         );
@@ -74,12 +68,16 @@ class LogInScreen extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
+
 });
 
 const mapActionsToProps = {
     addUser: addUser,
     fetchUser: fetchUser,
-    tryLoginUser: tryLoginUser
+    tryLoginUser: tryLoginUser,
+    userLoginUserInput: userLoginUserInput,
+    userLoginPassInput: userLoginPassInput
+
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(LogInScreen);
