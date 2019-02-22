@@ -3,21 +3,23 @@ import './Navigation.css';
 import { Button } from 'react-bootstrap'
 
 export default class Navigation extends Component {
-  render() {
-    return (
-      <div className="container-fluid offset-2 col-8 offset-lg-3 col-lg-6 navBar">
-        <div className="row">
-          <div className="container-fluid col-4 btnContainer">
-            <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
-          </div>
-          <div className="container-fluid col-4 btnContainer">
-          <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="shoppingIcon"></img> </Button>
-          </div>
-          <div className="container-fluid col-4 btnContainer">
-          <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
-          </div>
-        </div>
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div className="row navRow">
+				<div className="container-fluid offset-2 col-8 offset-lg-3 col-lg-6 navBar">
+					<div className="row">
+						<div className="container-fluid col-4 btnContainer">
+							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
+						</div>
+						<div className="container-fluid col-4 btnContainer">
+							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="shoppingIcon"></img> </Button>
+						</div>
+						<div className="container-fluid col-4 btnContainer">
+							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
