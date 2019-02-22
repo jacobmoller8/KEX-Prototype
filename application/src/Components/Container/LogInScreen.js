@@ -41,7 +41,7 @@ class LogInScreen extends Component {
     render() {
         return (
             <div className="LogInScreen">
-                {<Header />}
+                {<Header isLoggedIn={false}/>}
                 {<LogIn />}
             </div>
         );
