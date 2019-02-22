@@ -62,7 +62,7 @@ class LogInScreen extends Component {
     render() {
         return (
             <div className="LogInScreen">
-                {<Header />}
+                {<Header isLoggedIn={false} />}
                 {<LogIn
                     onUserInput={this.onUserInput}
                     onPassInput={this.onPassInput}
