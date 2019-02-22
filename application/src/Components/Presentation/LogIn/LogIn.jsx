@@ -20,7 +20,7 @@ export default class LogIn extends Component {
                   <label htmlFor="exampleInputPassword1">Password:</label>
                   <input type="password" className="form-control" id="InputPassword" placeholder="*******"></input>
                 </div>
-                <Link to="/Inventory">
+                <Link to="/MainScreen">
                   <button type="submit" className="btn btn-warning">Sign In</button>
                 </Link>
               </form>
