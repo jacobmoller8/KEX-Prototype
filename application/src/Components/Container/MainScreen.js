@@ -9,7 +9,7 @@ class MainScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        inventory: store.getState().inventory,
+        inventory: {items: [1234, 4124, 135224, 634576]},
         trash: store.getState().trash,
         shopping: store.getState().shopping
     }
@@ -20,7 +20,7 @@ class MainScreen extends Component {
       <div>
         <Header isLoggedIn={true} />
         <Navigation />
-        <Inventory />
+        <Inventory currentInventory={this.state.inventory}/>
       </div>
     )
   }

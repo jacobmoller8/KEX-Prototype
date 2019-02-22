@@ -5,3 +5,66 @@
     border-radius: 15px;
     top: 25px;
 }
+
+.itemBtn{
+    float:right;
+}
+
+.title{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.delItemBtn{
+    width: 8vw;
+    height: 3vw;
+    max-width: 100px;
+    max-height: 40px;
+    min-width: 90px;
+    min-height: 40px;
+    background-color: rgb(249, 145, 34);
+    border-radius: 15px;
+    border-color: rgb(249, 145, 34);
+    margin-bottom: 10px;
+}
+
+.delItemBtn:hover{
+    border-color: red;
+    background-color: red;
+}
+
+.addItemBtn{
+    width: 10vw;
+    height: 10vw;
+    max-width: 80px;
+    max-height: 80px;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: rgb(249, 145, 34);
+    border-radius: 50%;
+    border-color: rgb(249, 145, 34);
+    margin-bottom: 15px;
+}
+
+.addItemBtn:hover{
+    border-color: rgb(255, 214, 169);
+    background-color: rgb(255, 214, 169);
+    transform: scale(1.25, 1.25);
+    transition: all .2s ease;
+}
+
+.addItemContainer{
+    text-align: center;
+    padding: 15px;
+}
+
+.timeAdded{
+    color: grey;
+    font-weight: 100;
+}
+
+.comment{
+    color: grey;
+    font-weight: 100; 
+}

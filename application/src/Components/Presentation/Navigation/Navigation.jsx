@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Navigation.css';
+import { Button } from 'react-bootstrap'
 
 export default class Navigation extends Component {
   render() {
@@ -7,25 +8,13 @@ export default class Navigation extends Component {
       <div className="container-fluid offset-2 col-8 offset-lg-3 col-lg-6 navBar">
         <div className="row">
           <div className="container-fluid col-4 btnContainer">
-            <div className="container-fluid btnCircle">
-              <span className="Centerer">
-                <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img>
-              </span>
-            </div>
+            <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
           </div>
           <div className="container-fluid col-4 btnContainer">
-            <div className="container-fluid btnCircle">
-              <span className="Centerer">
-                <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="InventoryIcon"></img>
-              </span>
-            </div>
+          <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="shoppingIcon"></img> </Button>
           </div>
           <div className="container-fluid col-4 btnContainer">
-            <div className="container-fluid btnCircle">
-              <span className="Centerer">
-                <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="TrashIcon"></img>
-              </span>
-            </div>
+          <Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
           </div>
         </div>
       </div>
