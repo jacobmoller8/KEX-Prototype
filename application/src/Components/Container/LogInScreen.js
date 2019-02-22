@@ -50,7 +50,7 @@ class LogInScreen extends Component {
     render() {
         return (
             <div className="LogInScreen">
-                {<Header />}
+                {<Header isLoggedIn={false}/>}
                 {<LogIn onClick={(e) => this.onClick(e, "username", "password")} />}
             </div>
         );
