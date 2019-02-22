@@ -3,6 +3,7 @@ import { databaseRef } from "../Firebase/firebase";
 export const ADD_USER = "users:addUser";
 export const REMOVE_USER = "users:removeUser";
 export const FETCH_USER = "users:fetchUser";
+export const LOGIN_USER = "user:tryLogin";
 
 export function addUser(user) {
 
@@ -19,6 +20,18 @@ export function addUser(user) {
     }
 
 }
+
+export function tryLoginUser(username, password) {
+    var usernameFirebase = databaseRef.ref("users/" + username + "username")
+    var passwordFirebase = databaseRef.ref("users/" + password + "password")
+
+    console.log(usernameFirebase);
+    console.log(passwordFirebase);
+
+
+}
+
+
 
 export function removeUser(user) {
     //databaseRef.set(user);
