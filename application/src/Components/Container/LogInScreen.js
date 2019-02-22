@@ -12,8 +12,12 @@ class LogInScreen extends Component {
 
     constructor(props) {
         super(props)
+        this.onLoginClick = this.onLoginClick.bind(this);
+        this.onUserInput = this.onUserInput.bind(this);
+        this.onPassInput = this.onPassInput.bind(this);
         this.state = {
-            user: store.getState().user
+            username: "",
+            password: ""
         }
     }
 
@@ -32,13 +36,21 @@ class LogInScreen extends Component {
     componentWillUnmount() {
         this._isMounted = false;
     }
-
-    onClick(e, username, password) {
+    onUserInput(evt) {
+        this.setState({
+            username: evt.target.value
+        })
+    }
+    onPassInput(evt) {
+        this.setState({
+            password: evt.target.value
+        })
+    }
+    onLoginClick(e) {
         e.preventDefault();
-        console.log("hej")
-        console.log(username)
-        console.log(password)
-        //this.props.tryLoginUser("Green", "Flamingo74")
+        console.log(this.state.username)
+        console.log(this.state.password)
+        this.props.tryLoginUser(this.state.username, this.state.password)
     }
 
     onUpdateUser() {
@@ -51,7 +63,10 @@ class LogInScreen extends Component {
         return (
             <div className="LogInScreen">
                 {<Header />}
-                {<LogIn onClick={(e) => this.onClick(e, "username", "password")} />}
+                {<LogIn
+                    onUserInput={this.onUserInput}
+                    onPassInput={this.onPassInput}
+                    onLoginClick={this.onLoginClick} />}
             </div>
         );
     }

@@ -8,7 +8,7 @@ export default class Header extends Component {
 		return (
 			<div>
 				<div className="container-fluid header">
-					<Button variant="warning" className="signOutBtn" onClick={console.log("hello")}>Log out</Button>
+					<Button variant="warning" className="signOutBtn" onClick={() => console.log("hello")}>Log out</Button>
 					<h1>Food Inventory App</h1>
 				</div>
 				<div className="arch"></div>

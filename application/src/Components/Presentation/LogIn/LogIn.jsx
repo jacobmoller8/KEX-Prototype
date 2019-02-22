@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './LogIn.css';
-import { Link } from 'react-router-dom'
+
 
 
 export const LogIn = props => (
@@ -13,14 +13,14 @@ export const LogIn = props => (
           <form>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Username:</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool"></input>
+              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool" onChange={props.onUserInput}></input>
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Password:</label>
-              <input type="password" className="form-control" id="InputPassword" placeholder="*******"></input>
+              <input type="password" className="form-control" id="InputPassword" placeholder="*******" onChange={props.onPassInput}></input>
             </div>
 
-            <button onClick={(e) => props.onClick(e, "hejhopp", "snopp")} type="submit" className="btn btn-warning">Sign In</button>
+            <button onClick={props.onLoginClick} type="submit" className="btn btn-warning">Sign In</button>
 
           </form>
         </div>
