@@ -28,6 +28,12 @@ export function tryLoginUser(username, password) {
     console.log(usernameFirebase);
     console.log(passwordFirebase);
 
+    return {
+        type: LOGIN_USER,
+        payload: {
+            user: username
+        }
+    }
 
 }
 
