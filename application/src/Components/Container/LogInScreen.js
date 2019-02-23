@@ -15,6 +15,7 @@ class LogInScreen extends Component {
         super(props)
         this.onLoginClick = this.onLoginClick.bind(this);
 
+        //For later not used
         this.state = {
             username: "",
             password: "",
@@ -24,6 +25,7 @@ class LogInScreen extends Component {
     componentDidMount() {
         this._isMounted = true;
 
+        //For later not used
         store.subscribe(() => {
             if (this._isMounted) {
                 this.setState({
@@ -40,9 +42,6 @@ class LogInScreen extends Component {
     onLoginClick(e) {
         e.preventDefault();
         this.props.tryLoginUser(this.props.user["username"])
-
-        console.log(this.props.firebase["username"])
-        console.log(this.props.user["username"])
         setTimeout(() => {
             this.loginControlCheck();
         }, 2000);
