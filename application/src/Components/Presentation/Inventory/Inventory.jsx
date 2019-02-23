@@ -10,11 +10,12 @@ export default class Inventory extends Component {
     currentInventory.items.map((item, key) => {
       inventoryList.push(<tr key={key}>
 
-        <th className="itemName">{item}</th>
-        <th className="timeAdded">today</th>
-        <th className="comment">good</th>
-        <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
-      </tr>)
+        <td className="itemName">{item}</td>
+        <td className="timeAdded">today</td>
+        <td className="comment">good</td>
+        <td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+			</tr>)
+			return inventoryList
     })
 
     return (
