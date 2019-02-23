@@ -14,8 +14,7 @@ class LogInScreen extends Component {
     constructor(props) {
         super(props)
         this.onLoginClick = this.onLoginClick.bind(this);
-        this.onUserInput = this.onUserInput.bind(this);
-        this.onPassInput = this.onPassInput.bind(this);
+
         this.state = {
             username: "",
             password: "",
@@ -37,20 +36,24 @@ class LogInScreen extends Component {
     componentWillUnmount() {
         this._isMounted = false;
     }
-    onUserInput(evt) {
-        this.setState({
-            username: evt.target.value
-        })
-    }
-    onPassInput(evt) {
-        this.setState({
-            password: evt.target.value
-        })
-    }
+
     onLoginClick(e) {
         e.preventDefault();
-        this.props.tryLoginUser(this.state.username, this.state.password)
-        setTimeout(console.log(store.getState().firebase), 2000);
+        this.props.tryLoginUser(this.props.user["username"])
+
+        console.log(this.props.firebase["username"])
+        console.log(this.props.user["username"])
+        setTimeout(() => {
+            this.loginControlCheck();
+        }, 2000);
+    }
+    loginControlCheck() {
+        if (this.props.user["username"] === this.props.firebase["username"] &&
+            this.props.user["password"] === this.props.firebase["password"]) {
+            console.log("reached")
+            this.props.history.push('/MainScreen')
+        }
+
     }
 
     render() {
@@ -68,6 +71,7 @@ class LogInScreen extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
+    firebase: state.firebase
 
 });
 

@@ -28,7 +28,6 @@ export function tryLoginUser(username) {
 
         firebaseCall.on('value', snapshot => {
             var userObject = snapshot.val()
-            console.log(userObject)
             dispatch({
                 type: LOGIN_USER,
                 payload: {
