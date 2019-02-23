@@ -48,5 +48,14 @@
   
   
   .signOutBtn{
-    float: right;
-  }
+		float: right;
+		color: white;
+		background-color: rgb(249, 145, 34);
+		border-color: rgb(249, 145, 34);
+		box-shadow: 1px 1px 2px 1px rgb(75, 75, 75);
+	}
+	
+	.signOutBtn:hover{
+		background-color: rgb(255, 170, 79);
+		border-color: rgb(255, 170, 79);
+	}
