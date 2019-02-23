@@ -9,13 +9,13 @@ export default class Navigation extends Component {
 				<div className="container-fluid offset-1 col-10 offset-md-3 col-md-6 navBar">
 					<div className="row">
 						<div className="container-fluid col-4 btnContainer">
-							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
+							<Button className="roundBtn" onClick={() => {this.props.switchScreenTo('shopping')}}>  <img className="icon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
 						</div>
 						<div className="container-fluid col-4 btnContainer">
-							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="shoppingIcon"></img> </Button>
+							<Button className="roundBtn" onClick={() => {this.props.switchScreenTo('inventory')}}>  <img className="icon" src={require('../../../Images/Icons/Inventory.svg')} alt="shoppingIcon"></img> </Button>
 						</div>
 						<div className="container-fluid col-4 btnContainer">
-							<Button className="roundBtn">  <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
+							<Button className="roundBtn" onClick={() => {this.props.switchScreenTo('trash')}}>  <img className="icon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button>
 						</div>
 					</div>
 				</div>

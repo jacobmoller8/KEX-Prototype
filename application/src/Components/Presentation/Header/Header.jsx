@@ -41,7 +41,3 @@ export default class Header extends Component {
 		)
 	}
 }
-
-/* 				<div className="container-fluid profileIconHolder">
-					<img src={require('../../../Images/carrot4.png')} className="profileIcon" alt="loginIcon" />
-				</div> */

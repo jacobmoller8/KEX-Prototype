@@ -5,6 +5,7 @@ import inventoryReducer from "../Reducers/inventoryReducer";
 import trashReducer from "../Reducers/trashReducer";
 import shoppingReducer from "../Reducers/shoppingReducer";
 import userReducer from "../Reducers/userReducer";
+import mainScreenModeReducer from "../Reducers/mainScreenModeReducer"
 import thunk from "redux-thunk";
 
 
@@ -13,8 +14,8 @@ const allReducers = combineReducers({
     inventory: inventoryReducer,
     trash: trashReducer,
     shopping: shoppingReducer,
-    user: userReducer
-
+		user: userReducer,
+		mainScreen: mainScreenModeReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

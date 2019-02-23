@@ -7,6 +7,7 @@ export default class Trash extends Component {
     return (
       <div>
         <div className="container-fluid col-10 col-sm-8 trashBody">
+					<h3>My Trash:</h3>
           <ListGroup>
             <ListGroupItem>
               Lorem, ipsum.

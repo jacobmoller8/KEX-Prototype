@@ -7,6 +7,7 @@ export default class Shopping extends Component {
     return (
       <div>
         <div className="container-fluid col-10 col-sm-8 shoppingBody">
+				<h3>My Shopping List: </h3>
           <ListGroup>
             <ListGroupItem>
               Lorem, ipsum.

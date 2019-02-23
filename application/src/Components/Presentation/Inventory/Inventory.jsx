@@ -6,7 +6,8 @@ export default class Inventory extends Component {
 
   render() {
     var inventoryList = [];
-    const { currentInventory } = this.props
+		const { currentInventory } = this.props
+		if(currentInventory.length > 0){
     currentInventory.items.map((item, key) => {
       inventoryList.push(<tr key={key}>
 
@@ -16,7 +17,7 @@ export default class Inventory extends Component {
         <td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 			</tr>)
 			return inventoryList
-    })
+    })}
 
     return (
       <div className="row">	
