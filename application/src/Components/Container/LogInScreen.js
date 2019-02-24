@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import store from '../../Store/store'
 import { addUser, fetchUser, tryLoginUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
-import { LogIn } from '../Presentation/LogIn/LogIn'
+import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
 import { withRouter } from "react-router-dom";
 
@@ -84,4 +84,4 @@ const mapActionsToProps = {
 
 }
 
-export default  withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
