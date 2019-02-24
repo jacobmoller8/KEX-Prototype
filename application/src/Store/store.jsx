@@ -14,8 +14,8 @@ const allReducers = combineReducers({
     inventory: inventoryReducer,
     trash: trashReducer,
     shopping: shoppingReducer,
-		user: userReducer,
-		mainScreen: mainScreenModeReducer
+    user: userReducer,
+    mainScreen: mainScreenModeReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
