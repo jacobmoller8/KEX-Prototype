@@ -1,11 +1,11 @@
-
-
 # https://github.com/thisbejim/Pyrebase
 # python3 -m pip install pyrebase
+# pip install datetime
 # python3 script.py
 
 import pyrebase
 import json
+from datetime import date
 
 config = {
     "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
@@ -21,38 +21,78 @@ password = "Cobra28"
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-inventory = []
 
-json_inv = json.dumps(inventory)
+def add_user():
 
-
-json_inv = json.dumps(inventory)
-data = {
-    "username": username,
-    "password": password,
-    "inventory": json_inv,
-    "trash": json_inv,
-    "shopping": json_inv,
-    "errors": json_inv
-}
-db.child("users").child(username).set(data)
+    db.child("users").child(username).child("username").set(username)
+    db.child("users").child(username).child("password").set(password)
 
 
-def get_from_firebase():
+def add_to_inventory(code):
 
-    firebase = pyrebase.initialize_app(config)
-    db = firebase.database()
-    db_inv = db.child("users").child(username).child("inventory").get()
-    inventory = json.loads(db_inv.val())
+    try:
+        quant = int(db.child("users").child(username).child(
+            "inventory").child(code).child("quantity").get().val())
 
-    barcode_scanner_input()
+        dates = db.child("users").child(username).child(
+            "inventory").child(code).child("dates").get().val()
+    except:
+        quant = 0
+        dates = []
+
+    today = str(date.today())
+
+    dates.append(today)
+    print(dates)
+
+    product = {
+        "EANcode": code,
+        "name": "",
+        "dates": dates,
+        "comment": "",
+        "quantity": quant + 1
+    }
+
+    db.child("users").child(username).child(
+        "inventory").child(code).set(product)
+
+    return
 
 
-def send_to_firebase():
+def remove_from_inventory(code):
 
-    json_inv = json.dumps(inventory)
-    data = {"inventory": json_inv}
-    db.child("users").child(username).update(data)
+    try:
+        quant = int(db.child("users").child(username).child(
+            "inventory").child(code).child("quantity").get().val())
+
+        dates = db.child("users").child(username).child(
+            "inventory").child(code).child("dates").get().val()
+    except:
+        quant = 0
+        dates = []
+
+    if quant == 1:
+        try:
+            db.child("users").child(username).child(
+                "inventory").child(code).remove()
+        except:
+            print("not in inventory")
+    else:
+        try:
+            dates.pop(0)
+
+            product = {
+                "EANcode": code,
+                "name": "",
+                "dates": dates,
+                "comment": "",
+                "quantity": quant - 1
+            }
+            db.child("users").child(username).child(
+                "inventory").child(code).set(product)
+        except:
+            print("not in inventory")
+
     return
 
 
@@ -68,15 +108,9 @@ def barcode_scanner_output():
         print("already in output")
         barcode_scanner_output()
     else:
-        try:
-            inventory.remove(x)
-            print("item removed")
-            print(inventory)
-            send_to_firebase()
-            barcode_scanner_output()
-        except:
-            print("not in inventory")
-            barcode_scanner_output()
+        remove_from_inventory(x)
+        print("item removed")
+        barcode_scanner_output()
 
 
 def barcode_scanner_input():
@@ -90,11 +124,11 @@ def barcode_scanner_input():
     if x == 2:
         barcode_scanner_output()
     else:
-        inventory.append(x)
+        add_to_inventory(x)
         print("item added")
-        print(inventory)
-        send_to_firebase()
         barcode_scanner_input()
 
 
+# add_user()
+barcode_scanner_input()
 # get_from_firebase()
