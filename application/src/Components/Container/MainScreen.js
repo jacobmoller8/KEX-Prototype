@@ -14,9 +14,9 @@ class MainScreen extends Component {
 		this.screenChangeHandler = this.screenChangeHandler.bind(this)
 
 		this.state = {
-			inventory: '',
-			trash: '',
-			shopping: '',
+			inventory: {},
+			trash: {},
+			shopping: {},
 			screenMode: 'inventory'
 		}
 	}
@@ -32,7 +32,6 @@ class MainScreen extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps)
 		this.setState({
 			inventory: nextProps.inventory,
 			trash: nextProps.trash,
@@ -42,8 +41,6 @@ class MainScreen extends Component {
 	}
 
 	render() {
-		console.log(this.state.screenMode)
-
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory'){
 			currentScreen = <Inventory currentInventory={this.state.inventory} />
@@ -64,9 +61,9 @@ class MainScreen extends Component {
 
 const mapStateToProps = state => {
 	return {
-		inventory: state.inventory,
-		trash: state.trash,
-		shopping: state.shopping,
+		inventory: state.firebase.inventory,
+		trash: state.firebase.trash,
+		shopping: state.firebase.shopping,
 		screenMode: state.mainScreen.mainScreenMode
 	}
 };
