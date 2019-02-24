@@ -48,10 +48,14 @@ class LogInScreen extends Component {
         }, 2000);
     }
     loginControlCheck() {
-        if (this.props.user["username"] === this.props.firebase["username"] &&
-            this.props.user["password"] === this.props.firebase["password"]) {
-            console.log("reached")
-            this.props.history.push('/MainScreen')
+        try {
+            if (this.props.user["username"] === this.props.firebase["username"] &&
+                this.props.user["password"] === this.props.firebase["password"]) {
+                this.props.history.push('/MainScreen')
+            }
+        }
+        catch {
+            console.log("Wrong username or password")
         }
 
     }

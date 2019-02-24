@@ -43,7 +43,6 @@ class MainScreen extends Component {
 	}
 
 	onLogoutClick(e) {
-		console.log("hej")
 		e.preventDefault();
 		this.props.history.push('/')
 	}
