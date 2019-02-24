@@ -78,17 +78,20 @@ def remove_from_inventory(code):
         except:
             print("not in inventory")
     else:
-        dates.pop(0)
+        try:
+            dates.pop(0)
 
-        product = {
-            "EANcode": code,
-            "name": "",
-            "dates": dates,
-            "comment": "",
-            "quantity": quant - 1
-        }
-        db.child("users").child(username).child(
-            "inventory").child(code).set(product)
+            product = {
+                "EANcode": code,
+                "name": "",
+                "dates": dates,
+                "comment": "",
+                "quantity": quant - 1
+            }
+            db.child("users").child(username).child(
+                "inventory").child(code).set(product)
+        except:
+            print("not in inventory")
 
     return
 
