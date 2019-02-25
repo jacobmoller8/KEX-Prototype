@@ -75,6 +75,8 @@ def remove_from_inventory(code):
         try:
             db.child("users").child(username).child(
                 "inventory").child(code).remove()
+
+            add_to_trash(code)
         except:
             print("not in inventory")
     else:
@@ -90,8 +92,42 @@ def remove_from_inventory(code):
             }
             db.child("users").child(username).child(
                 "inventory").child(code).set(product)
+
+            add_to_trash(code)
+
         except:
             print("not in inventory")
+
+    return
+
+
+def add_to_trash(code):
+
+    try:
+        quant = int(db.child("users").child(username).child(
+            "trash").child(code).child("quantity").get().val())
+
+        dates = db.child("users").child(username).child(
+            "trash").child(code).child("dates").get().val()
+    except:
+        quant = 0
+        dates = []
+
+    today = str(date.today())
+
+    dates.append(today)
+    print(dates)
+
+    product = {
+        "EANcode": code,
+        "name": "",
+        "dates": dates,
+        "comment": "",
+        "quantity": quant + 1
+    }
+
+    db.child("users").child(username).child(
+        "trash").child(code).set(product)
 
     return
 
