@@ -1,7 +1,8 @@
 .inventoryBody{
     position: relative;
     background-color: white;
-    padding: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
     border-radius: 15px;
 }
 
@@ -11,7 +12,8 @@
 
 .title{
     text-align: center;
-    padding-bottom: 20px;
+		padding-bottom: 20px;
+		font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -20,7 +22,7 @@
     height: 3vw;
     max-width: 100px;
     max-height: 40px;
-    min-width: 90px;
+    min-width: 50px;
     min-height: 40px;
     background-color: rgb(249, 145, 34);
     border-radius: 15px;
@@ -39,8 +41,8 @@
     height: 10vw;
     max-width: 80px;
     max-height: 80px;
-    min-width: 50px;
-    min-height: 50px;
+    min-width: 60px;
+    min-height: 60px;
     background-color: rgb(249, 145, 34);
     border-radius: 50%;
     border-color: rgb(249, 145, 34);
