@@ -1,6 +1,71 @@
 .trashBody{
+    position: relative;
     background-color: white;
-    padding: 20px;
+    padding: 10px;
+    padding-top: 20px;
     border-radius: 15px;
-    top: 25px;
+}
+
+.itemBtn{
+    float:right;
+}
+
+.title{
+    text-align: center;
+		padding-bottom: 20px;
+		font-family: 'Open Sans', sans-serif;
+}
+
+
+.delItemBtn{
+    width: 8vw;
+    height: 3vw;
+    max-width: 100px;
+    max-height: 40px;
+    min-width: 50px;
+    min-height: 40px;
+    background-color: rgb(249, 145, 34);
+    border-radius: 15px;
+    border-color: rgb(249, 145, 34);
+		margin-bottom: 10px;
+		box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
+}
+
+.delItemBtn:hover{
+    border-color: red;
+    background-color: red;
+}
+
+.addShoppingItemBtn{
+    width: 8vw;
+    height: 3vw;
+    max-width: 100px;
+    max-height: 40px;
+    min-width: 50px;
+    min-height: 40px;
+    background-color: #75AC4A;
+    border-radius: 15px;
+    border-color: #75AC4A;
+		margin-bottom: 10px;
+		box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
+}
+
+.addShoppingItemBtn:hover{
+    border-color: #308D40;
+    background-color: #308D40;
+}
+
+.addItemContainer{
+    text-align: center;
+    padding: 15px;
+}
+
+.timeAdded{
+    color: grey;
+    font-weight: 100;
+}
+
+.comment{
+    color: grey;
+    font-weight: 100; 
 }
