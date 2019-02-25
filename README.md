@@ -35,7 +35,7 @@ Jacob Möller & Hugo Bergqvist
 - Error-handling
 
 ### Scanner - Prototype
-	- Print barcodes for check in / check out
-	- Label raspberries
+- Print barcodes for check in / check out
+- Label raspberries
 
 
