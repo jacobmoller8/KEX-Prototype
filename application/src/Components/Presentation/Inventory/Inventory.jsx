@@ -18,7 +18,7 @@ export default class Inventory extends Component {
 						<td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 					</tr>)
 			}
-		} else { inventoryList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td></tr> }
+		} else { inventoryList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
 
 		return (
 			<div className="row">
