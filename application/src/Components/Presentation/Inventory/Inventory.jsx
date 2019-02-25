@@ -12,8 +12,8 @@ export default class Inventory extends Component {
 					<tr key={currentInventory[key].EANcode}>
 						<td className="itemName">{currentInventory[key].name}</td>
 						<td className="quantity">{currentInventory[key].quantity}</td>
-						<td className="timeAdded">{currentInventory[key].dates[0]}</td>
-						<td className="comment">{currentInventory[key].comment}</td>
+						<td className="timeAdded d-none d-sm-table-cell">{currentInventory[key].dates[0]}</td>
+						<td className="comment d-none d-sm-table-cell">{currentInventory[key].comment}</td>
 						<td> <Button className="addShoppingItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
 						<td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 					</tr>)
@@ -22,15 +22,15 @@ export default class Inventory extends Component {
 
 		return (
 			<div className="row">
-				<div className="container-fluid col-lg-6 col-md-10 col-sm-11 inventoryBody">
+				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 inventoryBody">
 					<h3 className="title">My Inventory:</h3>
 					<Table striped hover responsive className="inventoryTable">
 						<thead>
 							<tr>
-								<th>Name:</th>
-								<th>Qty:</th>
-								<th>Added:</th>
-								<th>Comment:</th>
+								<th>Name</th>
+								<th>Qty</th>
+								<th className="d-none d-sm-table-cell">Added:</th>
+								<th className="d-none d-sm-table-cell">Comment:</th>
 								<th>Add</th>
 								<th>Delete</th>
 							</tr>

@@ -41,7 +41,7 @@
     height: 3vw;
     max-width: 100px;
     max-height: 40px;
-    min-width: 90px;
+    min-width: 50px;
     min-height: 40px;
     background-color: #75AC4A;
     border-radius: 15px;
@@ -54,7 +54,6 @@
     border-color: #308D40;
     background-color: #308D40;
 }
-
 
 
 .addItemBtn{
