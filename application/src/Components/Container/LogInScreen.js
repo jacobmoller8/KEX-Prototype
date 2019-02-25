@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import store from '../../Store/store'
 import { addUser, fetchUser, tryLoginUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
-import { LogIn } from '../Presentation/LogIn/LogIn'
+import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
 import { withRouter } from "react-router-dom";
 
@@ -48,10 +48,14 @@ class LogInScreen extends Component {
         }, 2000);
     }
     loginControlCheck() {
-        if (this.props.user["username"] === this.props.firebase["username"] &&
-            this.props.user["password"] === this.props.firebase["password"]) {
-            console.log("reached")
-            this.props.history.push('/MainScreen')
+        try {
+            if (this.props.user["username"] === this.props.firebase["username"] &&
+                this.props.user["password"] === this.props.firebase["password"]) {
+                this.props.history.push('/MainScreen')
+            }
+        }
+        catch {
+            console.log("Wrong username or password")
         }
 
     }
@@ -84,4 +88,4 @@ const mapActionsToProps = {
 
 }
 
-export default  withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));

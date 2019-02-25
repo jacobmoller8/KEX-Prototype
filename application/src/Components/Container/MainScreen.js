@@ -5,6 +5,7 @@ import Navigation from '../Presentation/Navigation/Navigation';
 import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
+import { withRouter } from "react-router-dom";
 
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions'
 
@@ -12,6 +13,7 @@ class MainScreen extends Component {
 	constructor(props) {
 		super(props)
 		this.screenChangeHandler = this.screenChangeHandler.bind(this)
+		this.onLogoutClick = this.onLogoutClick.bind(this);
 
 		this.state = {
 			inventory: {},
@@ -21,12 +23,12 @@ class MainScreen extends Component {
 		}
 	}
 
-	screenChangeHandler(toScreen){
-		if (toScreen === 'inventory'){
+	screenChangeHandler(toScreen) {
+		if (toScreen === 'inventory') {
 			this.props.setInventory();
-		}else if (toScreen === 'trash'){
+		} else if (toScreen === 'trash') {
 			this.props.setTrash();
-		}else{
+		} else {
 			this.props.setShopping();
 		}
 	}
@@ -40,18 +42,23 @@ class MainScreen extends Component {
 		})
 	}
 
+	onLogoutClick(e) {
+		e.preventDefault();
+		this.props.history.push('/')
+	}
+
 	render() {
 		var currentScreen = this.state.screenMode
-		if (currentScreen === 'inventory'){
+		if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} />
-		}else if (currentScreen === 'trash'){
+		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash />
-		}else{
+		} else {
 			currentScreen = <Shopping />
 		}
 		return (
 			<div>
-				<Header isLoggedIn={true} />
+				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} />
 				<Navigation switchScreenTo={this.screenChangeHandler} />
 				{currentScreen}
 			</div>
@@ -77,4 +84,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainScreen));
