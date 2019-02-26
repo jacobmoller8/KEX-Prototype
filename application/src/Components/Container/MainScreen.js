@@ -7,7 +7,7 @@ import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
 import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryActions';
-import { removeTrashItem } from '../../Actions/trashActions';
+import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 
@@ -40,6 +40,8 @@ class MainScreen extends Component {
 	onAddTo(item, from) {
 		if (from === 'inventory') {
 			addInvToShopping(this.props.user.username, item);
+		}else if(from === 'trash'){
+			addTrashToShopping(this.props.user.username, item);
 		}
 	}
 
@@ -72,7 +74,7 @@ class MainScreen extends Component {
 		if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo}/>
 		} else {
 			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} />
 		}
