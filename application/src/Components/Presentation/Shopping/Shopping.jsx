@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Shopping.css';
 import { Button, Table } from 'react-bootstrap';
+import FancyCheckbox from '../Material-Checkbox/Checkbox'
+
 
 export default class Shopping extends Component {
 
@@ -15,6 +17,7 @@ export default class Shopping extends Component {
             <td className="quantity">{currentShopping[key].quantity}</td>
             <td className="timeAdded d-none d-sm-table-cell">{currentShopping[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentShopping[key].comment}</td>
+            <td> <FancyCheckbox/></td>
             <td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
       }
@@ -31,6 +34,7 @@ export default class Shopping extends Component {
                 <th>Qty</th>
                 <th className="d-none d-sm-table-cell">Added:</th>
                 <th className="d-none d-sm-table-cell">Comment:</th>
+                <th>Check</th>
                 <th>Remove</th>
               </tr>
             </thead>
