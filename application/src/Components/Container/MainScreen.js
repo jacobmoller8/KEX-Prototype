@@ -6,7 +6,7 @@ import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
-
+import removeItem  from '../../Actions/inventoryActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions'
 
 class MainScreen extends Component {
@@ -14,6 +14,7 @@ class MainScreen extends Component {
 		super(props)
 		this.screenChangeHandler = this.screenChangeHandler.bind(this)
 		this.onLogoutClick = this.onLogoutClick.bind(this);
+		this.onDelete = this.onDelete.bind(this);
 
 		this.state = {
 			inventory: {},
@@ -21,6 +22,10 @@ class MainScreen extends Component {
 			shopping: {},
 			screenMode: 'inventory'
 		}
+	}
+
+	onDelete(item){
+		removeItem(this.props.user.username, item);
 	}
 
 	screenChangeHandler(toScreen) {
@@ -50,7 +55,7 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} />
 		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash currentTrash={this.state.trash} />
 		} else {
@@ -68,6 +73,8 @@ class MainScreen extends Component {
 
 const mapStateToProps = state => {
 	return {
+		user: state.user,
+		firebase: state.firebase,
 		inventory: state.firebase.inventory,
 		trash: state.firebase.trash,
 		shopping: state.firebase.shopping,
@@ -79,7 +86,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
-		setTrash: () => dispatch(setTrash('trash'))
+		setTrash: () => dispatch(setTrash('trash')),
+		removeItem: () => dispatch(removeItem())
 	}
 };
 
