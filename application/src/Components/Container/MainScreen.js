@@ -7,7 +7,8 @@ import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
 import removeInventoryItem  from '../../Actions/inventoryActions';
-import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions'
+import removeTrashItem from '../../Actions/trashActions';
+import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 
 class MainScreen extends Component {
 	constructor(props) {
@@ -24,8 +25,12 @@ class MainScreen extends Component {
 		}
 	}
 
-	onDelete(item){
-		removeInventoryItem(this.props.user.username, item);
+	onDelete(item, from){
+		if (from === 'inventory'){
+			removeInventoryItem(this.props.user.username, item);
+		}else if (from === 'trash'){
+			removeTrashItem(this.props.user.username, item)
+		}
 	}
 
 	screenChangeHandler(toScreen) {
@@ -57,7 +62,7 @@ class MainScreen extends Component {
 		if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete}/>
 		} else {
 			currentScreen = <Shopping />
 		}
@@ -87,7 +92,8 @@ const mapDispatchToProps = dispatch => {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
 		setTrash: () => dispatch(setTrash('trash')),
-		removeItem: () => dispatch(removeInventoryItem())
+		removeItem: () => dispatch(removeInventoryItem()),
+		removeTrashItem: () => dispatch(removeTrashItem())
 	}
 };
 

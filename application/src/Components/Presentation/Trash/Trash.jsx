@@ -15,7 +15,7 @@ export default class Trash extends Component {
             <td className="timeAdded d-none d-sm-table-cell">{currentTrash[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentTrash[key].comment}</td>
             <td> <Button className="addShoppingItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
-            <td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+            <td> <Button className="delItemBtn" onClick={()=>this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
       }
     } else { trashList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
