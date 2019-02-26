@@ -7,9 +7,15 @@ export const ADD_ITEM = 'ADD_ITEM';
 
 /* ------------- ACTION CREATORS ------------- */
 export default function removeItem(user, item) {
-
+	const EANcode = item.EANcode
+	console.log(EANcode)
 	//remove item
-	databaseRef.ref('users/' + user + '/inventory').child(item).remove();
+	databaseRef.ref('users/' + user + '/inventory').child(EANcode).remove();
+
+	// add to trash
+	databaseRef.ref('users/' + user + '/trash').child(EANcode).set(item)
+
+
 	return dispatch => {
 
 		//get new copy of inventory
