@@ -6,7 +6,7 @@ import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
-import removeItem  from '../../Actions/inventoryActions';
+import removeInventoryItem  from '../../Actions/inventoryActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions'
 
 class MainScreen extends Component {
@@ -25,7 +25,7 @@ class MainScreen extends Component {
 	}
 
 	onDelete(item){
-		removeItem(this.props.user.username, item);
+		removeInventoryItem(this.props.user.username, item);
 	}
 
 	screenChangeHandler(toScreen) {
@@ -87,7 +87,7 @@ const mapDispatchToProps = dispatch => {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
 		setTrash: () => dispatch(setTrash('trash')),
-		removeItem: () => dispatch(removeItem())
+		removeItem: () => dispatch(removeInventoryItem())
 	}
 };
 

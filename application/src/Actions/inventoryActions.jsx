@@ -6,9 +6,9 @@ export const EDIT_INV_ITEM = 'EDIT_INV_ITEM';
 export const ADD_INV_ITEM = 'ADD_INV_ITEM';
 
 /* ------------- ACTION CREATORS ------------- */
-export default function removeItem(user, item) {
+export default function removeInventoryItem(user, item) {
 	const EANcode = item.EANcode
-	console.log(EANcode)
+
 	//remove item
 	databaseRef.ref('users/' + user + '/inventory').child(EANcode).remove();
 
@@ -22,10 +22,8 @@ export default function removeItem(user, item) {
 		var firebaseCall = databaseRef.ref("users/" + user)
 
 		firebaseCall.once('value', snapshot => {
-			console.log("Reached")
 			snapshot.forEach(childSnap => {
 				var item = childSnap.val();
-				console.log("ITEM: " + childSnap.val())
 				if (item === "inventory") {
 					dispatch({
 						type: REMOVE_INV_ITEM,
