@@ -18,8 +18,8 @@ export default class AddItem extends Component {
                 <label htmlFor="quantityLabel">Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" onChange={console.log("click")}></input>
               </div>
-              <button onClick={console.log("click")} type="submit" className="btn btn-danger">Go Back</button>
-              <button onClick={console.log("click")} type="submit" className="btn btn-success">Add Item</button>
+              <button onClick={this.props.onGoBackClick} type="submit" className="btn btn-danger">Go Back</button>
+              <button onClick={this.props.onAddItemClick} type="submit" className="btn btn-success">Add Item</button>
 
             </form>
 

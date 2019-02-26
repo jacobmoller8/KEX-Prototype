@@ -33,7 +33,7 @@ class MainScreen extends Component {
 			removeInventoryItem(this.props.user.username, item);
 		} else if (from === 'trash') {
 			removeTrashItem(this.props.user.username, item)
-		} else if (from === 'shopping'){
+		} else if (from === 'shopping') {
 			removeShoppingItem(this.props.user.username, item)
 		}
 	}
@@ -41,7 +41,7 @@ class MainScreen extends Component {
 	onAddTo(item, from) {
 		if (from === 'inventory') {
 			addInvToShopping(this.props.user.username, item);
-		}else if(from === 'trash'){
+		} else if (from === 'trash') {
 			addTrashToShopping(this.props.user.username, item);
 		}
 	}
@@ -80,9 +80,9 @@ class MainScreen extends Component {
 		if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo}/>
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} />
 		}
 		return (
 			<div>
