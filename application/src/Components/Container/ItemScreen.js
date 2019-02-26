@@ -28,19 +28,14 @@ class ItemScreen extends Component {
 
   onAddItemClick(e) {
     e.preventDefault();
-
     if (this.props.screenMode === "inventory") {
-      console.log("inventory")
       addCustomItemToInventory(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
       this.resetState()
-
     }
     if (this.props.screenMode === "shopping") {
-      console.log("shopping")
       addCustomItemToShopping(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
       this.resetState()
     }
-
   }
 
   resetState() {

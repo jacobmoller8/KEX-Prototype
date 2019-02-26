@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import store from '../../Store/store'
 import { addUser, tryLoginUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import LogIn from '../Presentation/LogIn/LogIn'
@@ -10,34 +9,9 @@ import { withRouter } from "react-router-dom";
 
 class LogInScreen extends Component {
 
-    _isMounted = false;
-
     constructor(props) {
         super(props)
         this.onLoginClick = this.onLoginClick.bind(this);
-
-        //For later not used
-        this.state = {
-            username: "",
-            password: "",
-        }
-    }
-
-    componentDidMount() {
-        this._isMounted = true;
-
-        //For later not used
-        store.subscribe(() => {
-            if (this._isMounted) {
-                this.setState({
-                    user: store.getState().user
-                });
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        this._isMounted = false;
     }
 
     onLoginClick(e) {
@@ -92,3 +66,28 @@ const mapActionsToProps = {
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
+
+
+/*
+        this.state = {
+            username: "",
+            password: "",
+        }
+
+componentDidMount() {
+    this._isMounted = true;
+
+    //For later not used
+    store.subscribe(() => {
+        if (this._isMounted) {
+            this.setState({
+                user: store.getState().user
+            });
+        }
+    });
+}
+
+componentWillUnmount() {
+    this._isMounted = false;
+}
+*/
