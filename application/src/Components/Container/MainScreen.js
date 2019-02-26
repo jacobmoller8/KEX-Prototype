@@ -24,7 +24,7 @@ class MainScreen extends Component {
 			inventory: {},
 			trash: {},
 			shopping: {},
-			screenMode: 'inventory'
+			screenMode: "inventory"
 		}
 	}
 

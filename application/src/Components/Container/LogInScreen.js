@@ -6,6 +6,7 @@ import { userLoginUserInput, userLoginPassInput } from "../../Actions/userAction
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
 import { withRouter } from "react-router-dom";
+import { setInventory } from '../../Actions/mainScreenActions';
 
 
 class LogInScreen extends Component {
@@ -45,20 +46,23 @@ class LogInScreen extends Component {
         this.props.tryLoginUser(this.props.user["username"])
         setTimeout(() => {
             this.loginControlCheck();
-        }, 2000);
+        }, 1000);
     }
     loginControlCheck() {
         try {
             if (this.props.user["username"] === this.props.firebase["username"] &&
                 this.props.user["password"] === this.props.firebase["password"]) {
+                this.props.setInventory();
                 this.props.history.push('/MainScreen')
-						}else{console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
-						" this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])}
+
+            } else {
+                console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
+                    " this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])
+            }
         }
         catch {
             console.log("Wrong username or password")
         }
-
     }
 
     render() {
@@ -76,17 +80,19 @@ class LogInScreen extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
-    firebase: state.firebase
+    firebase: state.firebase,
+    screenMode: state.mainScreen.mainScreenMode
 
 });
 
 const mapActionsToProps = {
+
     addUser: addUser,
     fetchUser: fetchUser,
     tryLoginUser: tryLoginUser,
     userLoginUserInput: userLoginUserInput,
-    userLoginPassInput: userLoginPassInput
-
+    userLoginPassInput: userLoginPassInput,
+    setInventory: () => setInventory('inventory')
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
