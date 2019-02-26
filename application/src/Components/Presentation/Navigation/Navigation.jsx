@@ -3,8 +3,8 @@ import './Navigation.css';
 import { Button } from 'react-bootstrap'
 
 const pressedStyle = ({
-	borderColor: 'rgb(255, 214, 169)',
-	backgroundColor: 'rgb(255, 214, 169)',
+	borderColor: '#75AC4A',
+	backgroundColor: '#75AC4A',
 	transform: 'scale(1.25, 1.25)'
 })
 
