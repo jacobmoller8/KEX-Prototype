@@ -1,9 +1,11 @@
 import { databaseRef } from "../Firebase/firebase";
 
+/* ------------- ACTIONS ------------- */
 export const ADD_USER = "users:addUser";
 export const REMOVE_USER = "users:removeUser";
 export const LOGIN_USER = "user:tryLogin";
 
+/* ------------- ACTION CREATORS ------------- */
 export function addUser(user) {
 
     databaseRef.ref('users/' + user).set({
@@ -17,9 +19,7 @@ export function addUser(user) {
             user: user
         }
     }
-
 }
-
 
 export function tryLoginUser(username) {
 

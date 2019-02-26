@@ -44,7 +44,6 @@ export function addCustomItemToInventory(user, name, comment, quantity) {
 
     var EANCode = Math.floor(Math.random() * 10000000) + 1000000000;
     var date = new Date().toISOString().slice(0, 10);
-    console.log(date);
 
     var item = {
         "EANcode": EANCode,
