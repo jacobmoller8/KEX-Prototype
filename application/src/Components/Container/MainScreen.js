@@ -54,7 +54,7 @@ class MainScreen extends Component {
 		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash currentTrash={this.state.trash} />
 		} else {
-			currentScreen = <Shopping />
+			currentScreen = <Shopping currentShopping={this.state.shopping} />
 		}
 		return (
 			<div>
