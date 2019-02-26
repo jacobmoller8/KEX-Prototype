@@ -1,43 +1,16 @@
 import { databaseRef } from "../Firebase/firebase";
 
 /* ------------- ACTIONS ------------- */
-export const REMOVE_TRASH_ITEM = 'REMOVE_TRASH_ITEM';
-export const ADD_TRASH_TO_SHOP = 'ADD_TRASH_TO_SHOP';
+export const REMOVE_SHOP_ITEM = 'REMOVE_SHOP_ITEM';
+export const EMPTY_SHOP = 'EMPTY_SHOP';
 
 
-/* ------------- ACTION CREATORS ------------- */
-export  function removeTrashItem(user, item) {
+/* ------------ ACTION CREATORS --------- */
+export function removeShoppingItem(user, item) {
 	const EANcode = item.EANcode
 
 	//remove item
-	databaseRef.ref('users/' + user + '/trash').child(EANcode).remove();
-
-	return dispatch => {
-
-		//get new copy of trash
-		var firebaseCall = databaseRef.ref("users/" + user)
-
-		firebaseCall.once('value', snapshot => {
-			snapshot.forEach(childSnap => {
-				var item = childSnap.val();
-				if (item === "trash") {
-					dispatch({
-						type: REMOVE_TRASH_ITEM,
-						payload: {
-							trash: item
-						}
-					})
-				}
-			})
-		});
-	}
-}
-
-export function addTrashToShopping(user, item) {
-	const EANcode = item.EANcode
-
-	// add to shopping
-	databaseRef.ref('users/' + user + '/shopping').child(EANcode).set(item)
+	databaseRef.ref('users/' + user + '/shopping').child(EANcode).remove();
 
 	return dispatch => {
 
@@ -49,7 +22,40 @@ export function addTrashToShopping(user, item) {
 				var item = childSnap.val();
 				if (item === "shopping") {
 					dispatch({
-						type: ADD_TRASH_TO_SHOP,
+						type: REMOVE_SHOP_ITEM,
+						payload: {
+							shopping: item
+						}
+					})
+				}
+			})
+		});
+	}
+}
+
+
+// NOT YET ACTIVATED FUNCTION //
+
+export function emptyShoppingList(user){
+	const emptyShopping = {shopping: {}}
+
+	// delete old shoppinglist 
+	databaseRef.ref('users/' + user).child('shopping').remove();
+
+	// add new shoppinglist
+	databaseRef.ref('users/' + user).set(emptyShopping)
+
+	return dispatch => {
+
+		//get new copy of shopping
+		var firebaseCall = databaseRef.ref("users/" + user)
+
+		firebaseCall.once('value', snapshot => {
+			snapshot.forEach(childSnap => {
+				var item = childSnap.val();
+				if (item === "shopping") {
+					dispatch({
+						type: EMPTY_SHOP,
 						payload: {
 							shopping: item
 						}

@@ -7,7 +7,8 @@ import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
 import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryActions';
-import { removeTrashItem } from '../../Actions/trashActions';
+import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
+import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 
 class MainScreen extends Component {
@@ -32,12 +33,16 @@ class MainScreen extends Component {
 			removeInventoryItem(this.props.user.username, item);
 		} else if (from === 'trash') {
 			removeTrashItem(this.props.user.username, item)
+		} else if (from === 'shopping'){
+			removeShoppingItem(this.props.user.username, item)
 		}
 	}
 
 	onAddTo(item, from) {
 		if (from === 'inventory') {
 			addInvToShopping(this.props.user.username, item);
+		}else if(from === 'trash'){
+			addTrashToShopping(this.props.user.username, item);
 		}
 	}
 
@@ -75,9 +80,9 @@ class MainScreen extends Component {
 		if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo}/>
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} />
 		}
 		return (
 			<div>
@@ -104,10 +109,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
-		setTrash: () => dispatch(setTrash('trash')),
-		removeItem: () => dispatch(removeInventoryItem()),
-		removeTrashItem: () => dispatch(removeTrashItem()),
-		addInvToShopping: () => dispatch(addInvToShopping())
+		setTrash: () => dispatch(setTrash('trash'))
 	}
 };
 

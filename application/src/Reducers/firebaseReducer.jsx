@@ -1,6 +1,7 @@
 import { FETCH_USER, ADD_USER, LOGIN_USER } from '../Actions/firebaseActions';
 import { REMOVE_INV_ITEM, ADD_INV_TO_SHOP } from '../Actions/inventoryActions'
-import { REMOVE_TRASH_ITEM } from '../Actions/trashActions'
+import { REMOVE_TRASH_ITEM, ADD_TRASH_TO_SHOP } from '../Actions/trashActions'
+import { REMOVE_SHOP_ITEM } from '../Actions/shoppingActions'
 
 export default function firebaseReducer(state = "", { type, payload }) {
 	switch (type) {
@@ -21,11 +22,21 @@ export default function firebaseReducer(state = "", { type, payload }) {
 				trash: payload.trash
 			})
 		case ADD_INV_TO_SHOP:
-			return({
+			return ({
 				...state,
 				shopping: payload.shopping
 			})
-		
+		case REMOVE_SHOP_ITEM:
+			return ({
+				...state,
+				shopping: payload.shopping
+			})
+		case ADD_TRASH_TO_SHOP:
+			return ({
+				...state,
+				shopping: payload.shopping
+			})
+
 		default:
 			return state;
 	}
