@@ -52,7 +52,8 @@ class LogInScreen extends Component {
             if (this.props.user["username"] === this.props.firebase["username"] &&
                 this.props.user["password"] === this.props.firebase["password"]) {
                 this.props.history.push('/MainScreen')
-            }
+						}else{console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
+						" this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])}
         }
         catch {
             console.log("Wrong username or password")

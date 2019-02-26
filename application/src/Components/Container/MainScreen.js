@@ -6,20 +6,37 @@ import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
-
-import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions'
+import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryActions';
+import { removeTrashItem } from '../../Actions/trashActions';
+import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 
 class MainScreen extends Component {
 	constructor(props) {
 		super(props)
 		this.screenChangeHandler = this.screenChangeHandler.bind(this)
 		this.onLogoutClick = this.onLogoutClick.bind(this);
+		this.onDelete = this.onDelete.bind(this);
+		this.onAddTo = this.onAddTo.bind(this);
 
 		this.state = {
 			inventory: {},
 			trash: {},
 			shopping: {},
 			screenMode: 'inventory'
+		}
+	}
+
+	onDelete(item, from) {
+		if (from === 'inventory') {
+			removeInventoryItem(this.props.user.username, item);
+		} else if (from === 'trash') {
+			removeTrashItem(this.props.user.username, item)
+		}
+	}
+
+	onAddTo(item, from) {
+		if (from === 'inventory') {
+			addInvToShopping(this.props.user.username, item);
 		}
 	}
 
@@ -50,16 +67,16 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} />
 		} else {
 			currentScreen = <Shopping currentShopping={this.state.shopping} />
 		}
 		return (
 			<div>
 				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} />
-				<Navigation switchScreenTo={this.screenChangeHandler} />
+				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} />
 				{currentScreen}
 			</div>
 		)
@@ -68,6 +85,8 @@ class MainScreen extends Component {
 
 const mapStateToProps = state => {
 	return {
+		user: state.user,
+		firebase: state.firebase,
 		inventory: state.firebase.inventory,
 		trash: state.firebase.trash,
 		shopping: state.firebase.shopping,
@@ -79,7 +98,10 @@ const mapDispatchToProps = dispatch => {
 	return {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
-		setTrash: () => dispatch(setTrash('trash'))
+		setTrash: () => dispatch(setTrash('trash')),
+		removeItem: () => dispatch(removeInventoryItem()),
+		removeTrashItem: () => dispatch(removeTrashItem()),
+		addInvToShopping: () => dispatch(addInvToShopping())
 	}
 };
 

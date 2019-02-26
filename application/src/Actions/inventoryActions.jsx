@@ -1,32 +1,79 @@
 import { databaseRef } from "../Firebase/firebase";
-import store from "../Store/store"
 
 /* ------------- ACTIONS ------------- */
-export const REMOVE_ITEM = 'REMOVE_ITEM';
-export const EDIT_ITEM = 'EDIT_ITEM';
-export const ADD_ITEM = 'ADD_ITEM';
-
-/* ---------------- VARIABLES ----------------- */
-
-let currentUser = databaseRef.ref('users/' + store.getState().user.username)
+export const REMOVE_INV_ITEM = 'REMOVE_INV_ITEM';
+export const ADD_INV_TO_SHOP = 'ADD_INV_TO_SHOP'
+export const EDIT_INV_ITEM = 'EDIT_INV_ITEM';
+export const ADD_INV_ITEM = 'ADD_INV_ITEM';
 
 /* ------------- ACTION CREATORS ------------- */
-export default function removeItem(item) {
+export function removeInventoryItem(user, item) {
+	const EANcode = item.EANcode
 
-	databaseRef.ref('users/'+currentUser+'/inventory').child(item).remove();
+	//remove item
+	databaseRef.ref('users/' + user + '/inventory').child(EANcode).remove();
 
-	return ({
-		type: REMOVE_ITEM,
-		payload: databaseRef.ref('users/'+currentUser+'/inventory')
-	})
-};
+	// add to trash
+	databaseRef.ref('users/' + user + '/trash').child(EANcode).set(item)
+
+
+	return dispatch => {
+
+		//get new copy of inventory
+		var firebaseCall = databaseRef.ref("users/" + user)
+
+		firebaseCall.once('value', snapshot => {
+			snapshot.forEach(childSnap => {
+				var item = childSnap.val();
+				if (item === "inventory") {
+					dispatch({
+						type: REMOVE_INV_ITEM,
+						payload: {
+							inventory: item
+						}
+					})
+				}
+			})
+		});
+	}
+}
+
+export function addInvToShopping(user, item) {
+	const EANcode = item.EANcode
+
+	// add to shopping
+	databaseRef.ref('users/' + user + '/shopping').child(EANcode).set(item)
+
+	return dispatch => {
+
+		//get new copy of inventory
+		var firebaseCall = databaseRef.ref("users/" + user)
+
+		firebaseCall.once('value', snapshot => {
+			snapshot.forEach(childSnap => {
+				var item = childSnap.val();
+				if (item === "shopping") {
+					dispatch({
+						type: ADD_INV_TO_SHOP,
+						payload: {
+							shopping: item
+						}
+					})
+				}
+			})
+		});
+	}
+}
+
+
+
 
 export const editItem = (item) => ({
-	type: EDIT_ITEM,
+	type: EDIT_INV_ITEM,
 	payload: "CHANGE SCREEN TO ITEMSCREEN"
 });
 
 export const addItem = () => ({
-	type: ADD_ITEM,
+	type: ADD_INV_ITEM,
 	payload: "CHANGE SCREEN TO ITEMSCREEN"
 });
