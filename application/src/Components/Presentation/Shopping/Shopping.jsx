@@ -11,7 +11,7 @@ export default class Shopping extends Component {
       for (let key in currentShopping) {
         shoppingList.push(
           <tr key={currentShopping[key].EANcode}>
-            <td className="itemName">{currentShopping[key].name}</td>
+            <td className="itemName">{currentShopping[key].EANcode}</td>
             <td className="quantity">{currentShopping[key].quantity}</td>
             <td className="timeAdded d-none d-sm-table-cell">{currentShopping[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentShopping[key].comment}</td>

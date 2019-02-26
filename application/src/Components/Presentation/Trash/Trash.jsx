@@ -10,7 +10,7 @@ export default class Trash extends Component {
       for (let key in currentTrash) {
         trashList.push(
           <tr key={currentTrash[key].EANcode}>
-            <td className="itemName">{currentTrash[key].name}</td>
+            <td className="itemName">{currentTrash[key].EANcode}</td>
             <td className="quantity">{currentTrash[key].quantity}</td>
             <td className="timeAdded d-none d-sm-table-cell">{currentTrash[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentTrash[key].comment}</td>
