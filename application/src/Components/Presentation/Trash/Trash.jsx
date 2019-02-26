@@ -6,7 +6,7 @@ export default class Trash extends Component {
   render() {
     var trashList = [];
     const { currentTrash } = this.props
-    if (currentTrash !== undefined) {
+    if (currentTrash !== undefined && currentTrash !== '[]') {
       for (let key in currentTrash) {
         trashList.push(
           <tr key={currentTrash[key].EANcode}>

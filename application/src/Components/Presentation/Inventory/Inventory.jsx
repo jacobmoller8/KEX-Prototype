@@ -6,7 +6,7 @@ export default class Inventory extends Component {
 	render() {
 		var inventoryList = [];
 		const { currentInventory } = this.props
-		if (currentInventory !== undefined) {
+		if (currentInventory !== undefined && currentInventory !== '[]') {
 			for (let key in currentInventory) {
 				inventoryList.push(
 					<tr key={currentInventory[key].EANcode}>

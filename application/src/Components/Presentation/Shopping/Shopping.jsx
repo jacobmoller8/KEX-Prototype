@@ -9,8 +9,9 @@ export default class Shopping extends Component {
   render() {
     var shoppingList = [];
     const { currentShopping } = this.props
-    if (currentShopping !== undefined) {
+    if (currentShopping !== undefined && currentShopping !== '[]' ) {
       for (let key in currentShopping) {
+
         shoppingList.push(
           <tr key={currentShopping[key].EANcode}>
             <td className="itemName">{currentShopping[key].EANcode}</td>
@@ -20,8 +21,9 @@ export default class Shopping extends Component {
             <td> <FancyCheckbox/></td>
             <td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
-      }
-    } else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+          }
+      }else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+     
 
     return (
       <div className="row">

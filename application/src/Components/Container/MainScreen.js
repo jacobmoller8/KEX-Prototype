@@ -80,7 +80,7 @@ class MainScreen extends Component {
 		}
 		return (
 			<div>
-				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} />
+				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.user.username}/>
 				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} />
 				{currentScreen}
 			</div>
