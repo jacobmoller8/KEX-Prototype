@@ -1,5 +1,5 @@
 import { FETCH_USER, ADD_USER, LOGIN_USER } from '../Actions/firebaseActions';
-import { REMOVE_ITEM } from '../Actions/inventoryActions'
+import { REMOVE_INV_ITEM } from '../Actions/inventoryActions'
 
 export default function firebaseReducer(state = "", { type, payload }) {
     switch (type) {
@@ -9,7 +9,7 @@ export default function firebaseReducer(state = "", { type, payload }) {
             return payload.user;
         case ADD_USER:
             return payload.user;
-				case REMOVE_ITEM:
+				case REMOVE_INV_ITEM:
 						return ({
 							...state,
 							inventory: payload.inventory

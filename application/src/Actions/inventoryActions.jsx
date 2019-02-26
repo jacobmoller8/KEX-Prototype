@@ -1,9 +1,9 @@
 import { databaseRef } from "../Firebase/firebase";
 
 /* ------------- ACTIONS ------------- */
-export const REMOVE_ITEM = 'REMOVE_ITEM';
-export const EDIT_ITEM = 'EDIT_ITEM';
-export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_INV_ITEM = 'REMOVE_INV_ITEM';
+export const EDIT_INV_ITEM = 'EDIT_INV_ITEM';
+export const ADD_INV_ITEM = 'ADD_INV_ITEM';
 
 /* ------------- ACTION CREATORS ------------- */
 export default function removeItem(user, item) {
@@ -28,7 +28,7 @@ export default function removeItem(user, item) {
 				console.log("ITEM: " + childSnap.val())
 				if (item === "inventory") {
 					dispatch({
-						type: REMOVE_ITEM,
+						type: REMOVE_INV_ITEM,
 						payload: {
 							inventory: item
 						}
@@ -41,11 +41,11 @@ export default function removeItem(user, item) {
 
 
 export const editItem = (item) => ({
-	type: EDIT_ITEM,
+	type: EDIT_INV_ITEM,
 	payload: "CHANGE SCREEN TO ITEMSCREEN"
 });
 
 export const addItem = () => ({
-	type: ADD_ITEM,
+	type: ADD_INV_ITEM,
 	payload: "CHANGE SCREEN TO ITEMSCREEN"
 });
