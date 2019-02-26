@@ -6,7 +6,6 @@ import { userLoginUserInput, userLoginPassInput } from "../../Actions/userAction
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
 import { withRouter } from "react-router-dom";
-import { setInventory } from '../../Actions/mainScreenActions';
 
 
 class LogInScreen extends Component {
@@ -52,7 +51,6 @@ class LogInScreen extends Component {
         try {
             if (this.props.user["username"] === this.props.firebase["username"] &&
                 this.props.user["password"] === this.props.firebase["password"]) {
-                this.props.setInventory();
                 this.props.history.push('/MainScreen')
 
             } else {
@@ -92,7 +90,6 @@ const mapActionsToProps = {
     tryLoginUser: tryLoginUser,
     userLoginUserInput: userLoginUserInput,
     userLoginPassInput: userLoginPassInput,
-    setInventory: () => setInventory('inventory')
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
