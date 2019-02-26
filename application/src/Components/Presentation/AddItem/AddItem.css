@@ -1,0 +1,21 @@
+.addItemBody{
+    position: relative;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+    padding: 10px;
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
+.title{
+    text-align: center;
+	padding-bottom: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+.form-control {
+    margin-bottom: 10px;
+}
+.btn {
+    margin: 5px
+}

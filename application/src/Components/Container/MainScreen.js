@@ -14,16 +14,17 @@ import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenAct
 class MainScreen extends Component {
 	constructor(props) {
 		super(props)
-		this.screenChangeHandler = this.screenChangeHandler.bind(this)
+		this.screenChangeHandler = this.screenChangeHandler.bind(this);
 		this.onLogoutClick = this.onLogoutClick.bind(this);
 		this.onDelete = this.onDelete.bind(this);
 		this.onAddTo = this.onAddTo.bind(this);
+		this.onAddNewItemClick = this.onAddNewItemClick.bind(this);
 
 		this.state = {
 			inventory: {},
 			trash: {},
 			shopping: {},
-			screenMode: 'inventory'
+			screenMode: "inventory"
 		}
 	}
 
@@ -32,7 +33,7 @@ class MainScreen extends Component {
 			removeInventoryItem(this.props.user.username, item);
 		} else if (from === 'trash') {
 			removeTrashItem(this.props.user.username, item)
-		} else if (from === 'shopping'){
+		} else if (from === 'shopping') {
 			removeShoppingItem(this.props.user.username, item)
 		}
 	}
@@ -40,7 +41,7 @@ class MainScreen extends Component {
 	onAddTo(item, from) {
 		if (from === 'inventory') {
 			addInvToShopping(this.props.user.username, item);
-		}else if(from === 'trash'){
+		} else if (from === 'trash') {
 			addTrashToShopping(this.props.user.username, item);
 		}
 	}
@@ -64,6 +65,11 @@ class MainScreen extends Component {
 		})
 	}
 
+	onAddNewItemClick(e) {
+		e.preventDefault();
+		this.props.history.push('/ItemScreen')
+	}
+
 	onLogoutClick(e) {
 		e.preventDefault();
 		this.props.history.push('/')
@@ -72,11 +78,11 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo}/>
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} />
 		}
 		return (
 			<div>

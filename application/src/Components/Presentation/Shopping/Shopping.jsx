@@ -18,7 +18,7 @@ export default class Shopping extends Component {
             <td className="quantity">{currentShopping[key].quantity}</td>
             <td className="timeAdded d-none d-sm-table-cell">{currentShopping[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentShopping[key].comment}</td>
-            <td> <FancyCheckbox/></td>
+            <td> <FancyCheckbox /></td>
             <td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
           }
@@ -45,7 +45,7 @@ export default class Shopping extends Component {
             </tbody>
           </Table>
           <div className="container-fluid offset-2 col-8 offset-sm-4 col-sm-4 addItemContainer">
-            <Button className="addItemBtn">  <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
+            <Button className="addItemBtn" onClick={this.props.onAddNewItemClick}>  <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
             <h6>Add Item</h6>
           </div>
         </div>
