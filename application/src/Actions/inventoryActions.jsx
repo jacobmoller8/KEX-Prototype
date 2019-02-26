@@ -66,8 +66,6 @@ export function addInvToShopping(user, item) {
 }
 
 
-
-
 export const editItem = (item) => ({
 	type: EDIT_INV_ITEM,
 	payload: "CHANGE SCREEN TO ITEMSCREEN"

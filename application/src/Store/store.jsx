@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import firebaseReducer from "../Reducers/firebaseReducer";
 import userReducer from "../Reducers/userReducer";
-import mainScreenModeReducer from "../Reducers/mainScreenModeReducer"
+import mainScreenModeReducer from "../Reducers/mainScreenModeReducer";
 import thunk from "redux-thunk";
 
 

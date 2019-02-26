@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import store from '../../Store/store'
-import { addUser, fetchUser, tryLoginUser } from "../../Actions/firebaseActions";
+import { addUser, tryLoginUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
@@ -86,7 +86,6 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
 
     addUser: addUser,
-    fetchUser: fetchUser,
     tryLoginUser: tryLoginUser,
     userLoginUserInput: userLoginUserInput,
     userLoginPassInput: userLoginPassInput,

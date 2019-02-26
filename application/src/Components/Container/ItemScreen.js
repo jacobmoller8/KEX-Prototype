@@ -3,6 +3,8 @@ import Header from '../Presentation/Header/Header';
 import AddItem from '../Presentation/AddItem/AddItem';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
+
 
 class ItemScreen extends Component {
 
@@ -12,6 +14,15 @@ class ItemScreen extends Component {
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.onAddItemClick = this.onAddItemClick.bind(this);
     this.onGoBackClick = this.onGoBackClick.bind(this);
+    this.updateNameValue = this.updateNameValue.bind(this);
+    this.updateCommentValue = this.updateCommentValue.bind(this);
+    this.updateQuantityValue = this.updateQuantityValue.bind(this);
+
+    this.state = {
+      name: "",
+      comment: "",
+      quantity: ""
+    }
 
   }
 
@@ -20,11 +31,40 @@ class ItemScreen extends Component {
 
     if (this.props.screenMode === "inventory") {
       console.log("inventory")
+      addCustomItemToInventory(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
+      this.resetState()
+
     }
     if (this.props.screenMode === "shopping") {
       console.log("shopping")
+      addCustomItemToShopping(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
+      this.resetState()
     }
 
+  }
+
+  resetState() {
+    this.setState({
+      name: "",
+      comment: "",
+      quantity: ""
+    })
+  }
+
+  updateNameValue(input) {
+    this.setState({
+      name: input
+    })
+  }
+  updateCommentValue(input) {
+    this.setState({
+      comment: input
+    })
+  }
+  updateQuantityValue(input) {
+    this.setState({
+      quantity: input
+    })
   }
 
   onGoBackClick(e) {
@@ -41,7 +81,15 @@ class ItemScreen extends Component {
     return (
       <div>
         <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} />
-        <AddItem onAddItemClick={this.onAddItemClick} onGoBackClick={this.onGoBackClick}></AddItem>
+        <AddItem
+          onAddItemClick={this.onAddItemClick}
+          onGoBackClick={this.onGoBackClick}
+          NameValue={this.state.name}
+          CommentValue={this.state.comment}
+          QuantityValue={this.state.quantity}
+          updateNameValue={(e) => this.updateNameValue(e.target.value)}
+          updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
+          updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)} ></AddItem>
       </div>
     )
   }
@@ -49,18 +97,15 @@ class ItemScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
     firebase: state.firebase,
-    inventory: state.firebase.inventory,
-    trash: state.firebase.trash,
-    shopping: state.firebase.shopping,
     screenMode: state.mainScreen.mainScreenMode
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    addCustomItemToShopping: () => dispatch(addCustomItemToShopping()),
+    addCustomItemToInventory: () => dispatch(addCustomItemToInventory())
   }
 };
 
