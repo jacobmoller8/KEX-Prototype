@@ -75,7 +75,7 @@ class ItemScreen extends Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} />
+        <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.firebase.username} />
         <AddItem
           onAddItemClick={this.onAddItemClick}
           onGoBackClick={this.onGoBackClick}
