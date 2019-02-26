@@ -5,7 +5,7 @@ export const REMOVE_TRASH_ITEM = 'REMOVE_TRASH_ITEM';
 
 
 /* ------------- ACTION CREATORS ------------- */
-export default function removeTrashItem(user, item) {
+export  function removeTrashItem(user, item) {
 	const EANcode = item.EANcode
 
 	//remove item

@@ -6,8 +6,8 @@ import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
-import removeInventoryItem  from '../../Actions/inventoryActions';
-import removeTrashItem from '../../Actions/trashActions';
+import {removeInventoryItem, addInvToShopping}  from '../../Actions/inventoryActions';
+import {removeTrashItem} from '../../Actions/trashActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 
 class MainScreen extends Component {
@@ -16,6 +16,7 @@ class MainScreen extends Component {
 		this.screenChangeHandler = this.screenChangeHandler.bind(this)
 		this.onLogoutClick = this.onLogoutClick.bind(this);
 		this.onDelete = this.onDelete.bind(this);
+		this.onAddTo = this.onAddTo.bind(this);
 
 		this.state = {
 			inventory: {},
@@ -30,6 +31,12 @@ class MainScreen extends Component {
 			removeInventoryItem(this.props.user.username, item);
 		}else if (from === 'trash'){
 			removeTrashItem(this.props.user.username, item)
+		}
+	}
+
+	onAddTo(item, from){
+		if (from === 'inventory'){
+			addInvToShopping(this.props.user.username, item);
 		}
 	}
 
@@ -60,11 +67,11 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} />
 		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete}/>
 		} else {
-			currentScreen = <Shopping />
+			currentScreen = <Shopping currentShopping={this.state.shopping}/>
 		}
 		return (
 			<div>
@@ -93,7 +100,8 @@ const mapDispatchToProps = dispatch => {
 		setShopping: () => dispatch(setShopping('shopping')),
 		setTrash: () => dispatch(setTrash('trash')),
 		removeItem: () => dispatch(removeInventoryItem()),
-		removeTrashItem: () => dispatch(removeTrashItem())
+		removeTrashItem: () => dispatch(removeTrashItem()),
+		addInvToShopping: () => dispatch(addInvToShopping())
 	}
 };
 

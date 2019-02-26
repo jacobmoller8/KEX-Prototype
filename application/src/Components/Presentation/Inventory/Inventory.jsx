@@ -14,7 +14,7 @@ export default class Inventory extends Component {
 						<td className="quantity">{currentInventory[key].quantity}</td>
 						<td className="timeAdded d-none d-sm-table-cell">{currentInventory[key].dates[0]}</td>
 						<td className="comment d-none d-sm-table-cell">{currentInventory[key].comment}</td>
-						<td> <Button className="addShoppingItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
+						<td> <Button className="addShoppingItemBtn" onClick={() => this.props.onAddTo(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
 						<td> <Button className="delItemBtn" onClick={()=> this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 					</tr>)
 			}

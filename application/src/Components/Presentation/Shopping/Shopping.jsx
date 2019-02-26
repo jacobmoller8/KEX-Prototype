@@ -15,24 +15,22 @@ export default class Shopping extends Component {
             <td className="quantity">{currentShopping[key].quantity}</td>
             <td className="timeAdded d-none d-sm-table-cell">{currentShopping[key].dates[0]}</td>
             <td className="comment d-none d-sm-table-cell">{currentShopping[key].comment}</td>
-            <td> <Button className="addShoppingItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
             <td> <Button className="delItemBtn">  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
       }
-    } else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+    } else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
 
     return (
       <div className="row">
         <div className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
           <h3 className="title">My Shopping List:</h3>
-          <Table striped hover responsive className="shoppinhTable">
+          <Table striped hover responsive className="shoppingTable">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Qty</th>
                 <th className="d-none d-sm-table-cell">Added:</th>
                 <th className="d-none d-sm-table-cell">Comment:</th>
-                <th>Add</th>
                 <th>Delete</th>
               </tr>
             </thead>
