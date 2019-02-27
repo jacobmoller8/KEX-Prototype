@@ -15,7 +15,7 @@ const allReducers = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(allReducers,
-    { user: { username: "", password: "" } },
+    { user: { username: "", password: "" }, mainScreen:{mainScreenMode:'inventory'} },
     composeEnhancers(applyMiddleware(thunk)));
 
 export default store

@@ -10,6 +10,7 @@ import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryAc
 import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
+import store from '../../Store/store'
 
 class MainScreen extends Component {
 	constructor(props) {
@@ -62,6 +63,13 @@ class MainScreen extends Component {
 			trash: nextProps.trash,
 			shopping: nextProps.shopping,
 			screenMode: nextProps.screenMode
+		})
+	}
+
+	componentWillMount(){
+		let temp = store.getState().mainScreen.mainScreenMode
+		this.setState({
+			screenMode: temp
 		})
 	}
 
