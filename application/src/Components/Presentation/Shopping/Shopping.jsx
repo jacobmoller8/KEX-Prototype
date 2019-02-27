@@ -8,7 +8,8 @@ export default class Shopping extends Component {
 
   render() {
     var shoppingList = [];
-    const { currentShopping } = this.props
+		const { currentShopping } = this.props
+		console.log("CURRENT SHOPPING: " +  JSON.stringify(currentShopping))
     if (currentShopping !== undefined && currentShopping !== '[]' ) {
       for (let key in currentShopping) {
 
