@@ -134,7 +134,11 @@ def add_to_trash(code):
 
 def barcode_scanner_output():
 
-    x = int(input("barcode OUT: "))
+    try:
+        x = int(input("barcode OUT: "))
+    except:
+        print("error input code")
+        barcode_scanner_output()
 
     if x == 0:
         exit()
@@ -151,7 +155,12 @@ def barcode_scanner_output():
 
 def barcode_scanner_input():
 
-    x = int(input("barcode IN: "))
+    try:
+        x = int(input("barcode IN: "))
+    except:
+        print("error input code")
+        barcode_scanner_input()
+
     if x == 0:
         exit()
     if x == 1 or x == "":
