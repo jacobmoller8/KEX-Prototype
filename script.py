@@ -176,4 +176,3 @@ def barcode_scanner_input():
 
 # add_user()
 barcode_scanner_input()
-# get_from_firebase()
