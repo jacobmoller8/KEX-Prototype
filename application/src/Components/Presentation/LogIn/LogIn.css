@@ -12,3 +12,7 @@
 #registerText { 
     margin-top: 50px;
 }
+
+#logInBtnContainer{
+	display: inline-block;
+}

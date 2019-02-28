@@ -9,60 +9,75 @@ import { withRouter } from "react-router-dom";
 
 class LogInScreen extends Component {
 
-    constructor(props) {
-        super(props)
-        this.onLoginClick = this.onLoginClick.bind(this);
-    }
+	constructor(props) {
+		super(props)
+		this.onLoginClick = this.onLoginClick.bind(this);
 
-    onLoginClick(e) {
-        e.preventDefault();
-        this.props.tryLoginUser(this.props.user["username"])
-        setTimeout(() => {
-            this.loginControlCheck();
-        }, 1000);
-    }
-    loginControlCheck() {
-        try {
-            if (this.props.user["username"] === this.props.firebase["username"] &&
-                this.props.user["password"] === this.props.firebase["password"]) {
-                this.props.history.push('/MainScreen')
+		this.state={
+			logInError: false
+		}
 
-            } else {
-                console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
-                    " this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])
-            }
-        }
-        catch {
-            console.log("Wrong username or password")
-        }
-    }
+	}
 
-    render() {
-        return (
-            <div className="LogInScreen">
-                {<Header isLoggedIn={false} />}
-                {<LogIn
-                    onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
-                    onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
-                    onLoginClick={this.onLoginClick} />}
-            </div>
-        );
-    }
+	onLoginClick(e) {
+		this.props.tryLoginUser(this.props.user["username"])
+		setTimeout(() => {
+			this.loginControlCheck();
+		}, 1000);
+	}
+
+	loginControlCheck() {
+		try {
+			if (this.props.user["username"] === this.props.firebase["username"] &&
+				this.props.user["password"] === this.props.firebase["password"]) {
+				this.setState({
+					logInError: false
+				})
+				this.props.history.push('/MainScreen')
+
+			} else {
+				this.setState({
+					logInError: true
+				})
+				console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
+					" this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])
+			}
+		}
+		catch {
+			this.setState({
+				logInError: true
+			})
+			console.log("Wrong username or password")
+		}
+	}
+
+	render() {
+		return (
+			<div className="LogInScreen">
+				{<Header isLoggedIn={false} />}
+				{<LogIn
+					onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
+					onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
+					onLoginClick={this.onLoginClick} 
+					logInError={this.state.logInError}/>}
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-    user: state.user,
-    firebase: state.firebase,
-    screenMode: state.mainScreen.mainScreenMode
+	user: state.user,
+	firebase: state.firebase,
+	screenMode: state.mainScreen.mainScreenMode
 
 });
 
 const mapActionsToProps = {
 
-    addUser: addUser,
-    tryLoginUser: tryLoginUser,
-    userLoginUserInput: userLoginUserInput,
-    userLoginPassInput: userLoginPassInput,
+	addUser: addUser,
+	tryLoginUser: tryLoginUser,
+	userLoginUserInput: userLoginUserInput,
+	userLoginPassInput: userLoginPassInput,
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
