@@ -6,8 +6,8 @@ Jacob Möller & Hugo Bergqvist
 ## Todo
 
 ### Database
-- Remove unused Users
-- Update the users we are going to use
+- Remove unused Users (DONE)
+- Update the users we are going to use (DONE)
 
 ### Application
 - Implement Redux (DONE) 
