@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CircularIntegration from '../Loaders/ButtonLoader'
+import CircularIntegration from '../../MaterialComponents//Loaders/ButtonLoader'
 import './LogIn.css';
 import LogInError from '../LogInError/LogInError'
 

@@ -67,9 +67,15 @@ class MainScreen extends Component {
 	}
 
 	componentWillMount(){
-		let temp = store.getState().mainScreen.mainScreenMode
+		let screenOnMount = store.getState().mainScreen.mainScreenMode;
+		let inventoryOnMount = store.getState().firebase.inventory;
+		let shoppingOnMount = store.getState().firebase.shopping;
+		let trashOnMount = store.getState().firebase.trash;
 		this.setState({
-			screenMode: temp
+			inventory: inventoryOnMount,
+			trash: trashOnMount,
+			shopping: shoppingOnMount,
+			screenMode: screenOnMount
 		})
 	}
 

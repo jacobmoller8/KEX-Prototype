@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Shopping.css';
 import { Button, Table } from 'react-bootstrap';
-import FancyCheckbox from '../Material-Checkbox/Checkbox'
+import FancyCheckbox from '../../MaterialComponents/Material-Checkbox/Checkbox'
 
 
 export default class Shopping extends Component {

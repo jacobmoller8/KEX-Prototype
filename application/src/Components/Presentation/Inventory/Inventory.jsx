@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Inventory.css';
 import { Button, Table } from 'react-bootstrap';
-import SuccessSnackbar from '../Snackbars/SnackbarSucces'
+import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 export default class Inventory extends Component {
 
 	render() {
