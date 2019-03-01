@@ -11,15 +11,14 @@ class LogInScreen extends Component {
 
 	constructor(props) {
 		super(props)
-		this.onLoginClick = this.onLoginClick.bind(this);
 
-		this.state={
+		this.state = {
 			logInError: false
 		}
 
 	}
 
-	onLoginClick(e) {
+	onLoginClick = (e) => {
 		this.props.tryLoginUser(this.props.user["username"])
 		setTimeout(() => {
 			this.loginControlCheck();
@@ -58,8 +57,8 @@ class LogInScreen extends Component {
 				{<LogIn
 					onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
 					onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
-					onLoginClick={this.onLoginClick} 
-					logInError={this.state.logInError}/>}
+					onLoginClick={this.onLoginClick}
+					logInError={this.state.logInError} />}
 			</div>
 		);
 	}

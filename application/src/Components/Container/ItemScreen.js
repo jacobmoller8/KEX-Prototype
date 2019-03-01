@@ -11,13 +11,6 @@ class ItemScreen extends Component {
   constructor(props) {
     super(props)
 
-    this.onLogoutClick = this.onLogoutClick.bind(this);
-    this.onAddItemClick = this.onAddItemClick.bind(this);
-    this.onGoBackClick = this.onGoBackClick.bind(this);
-    this.updateNameValue = this.updateNameValue.bind(this);
-    this.updateCommentValue = this.updateCommentValue.bind(this);
-    this.updateQuantityValue = this.updateQuantityValue.bind(this);
-
     this.state = {
       name: "",
       comment: "",
@@ -26,7 +19,7 @@ class ItemScreen extends Component {
 
   }
 
-  onAddItemClick(e) {
+  onAddItemClick = (e) => {
     e.preventDefault();
     if (this.props.screenMode === "inventory") {
       addCustomItemToInventory(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
@@ -38,7 +31,7 @@ class ItemScreen extends Component {
     }
   }
 
-  resetState() {
+  resetState = () => {
     this.setState({
       name: "",
       comment: "",
@@ -46,28 +39,28 @@ class ItemScreen extends Component {
     })
   }
 
-  updateNameValue(input) {
+  updateNameValue = (input) => {
     this.setState({
       name: input
     })
   }
-  updateCommentValue(input) {
+  updateCommentValue = (input) => {
     this.setState({
       comment: input
     })
   }
-  updateQuantityValue(input) {
+  updateQuantityValue = (input) => {
     this.setState({
       quantity: input
     })
   }
 
-  onGoBackClick(e) {
+  onGoBackClick = (e) => {
     e.preventDefault();
     this.props.history.push('/MainScreen');
   }
 
-  onLogoutClick(e) {
+  onLogoutClick = (e) => {
     e.preventDefault();
     this.props.history.push('/');
   }

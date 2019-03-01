@@ -15,21 +15,13 @@ import store from '../../Store/store'
 class MainScreen extends Component {
 	constructor(props) {
 		super(props)
-		this.screenChangeHandler = this.screenChangeHandler.bind(this);
-		this.onLogoutClick = this.onLogoutClick.bind(this);
-		this.onDelete = this.onDelete.bind(this);
-		this.onAddTo = this.onAddTo.bind(this);
-		this.onAddNewItemClick = this.onAddNewItemClick.bind(this);
 
 		this.state = {
-			inventory: {},
-			trash: {},
-			shopping: {},
 			screenMode: "inventory"
 		}
 	}
 
-	onDelete(item, from) {
+	onDelete = (item, from) => {
 		if (from === 'inventory') {
 			removeInventoryItem(this.props.user.username, item);
 		} else if (from === 'trash') {
@@ -39,7 +31,7 @@ class MainScreen extends Component {
 		}
 	}
 
-	onAddTo(item, from) {
+	onAddTo = (item, from) => {
 		if (from === 'inventory') {
 			addInvToShopping(this.props.user.username, item);
 		} else if (from === 'trash') {
@@ -47,7 +39,7 @@ class MainScreen extends Component {
 		}
 	}
 
-	screenChangeHandler(toScreen) {
+	screenChangeHandler = (toScreen) => {
 		if (toScreen === 'inventory') {
 			this.props.setInventory();
 		} else if (toScreen === 'trash') {
@@ -66,7 +58,7 @@ class MainScreen extends Component {
 		})
 	}
 
-	componentWillMount(){
+	componentWillMount() {
 		let screenOnMount = store.getState().mainScreen.mainScreenMode;
 		let inventoryOnMount = store.getState().firebase.inventory;
 		let shoppingOnMount = store.getState().firebase.shopping;
@@ -79,12 +71,12 @@ class MainScreen extends Component {
 		})
 	}
 
-	onAddNewItemClick(e) {
+	onAddNewItemClick = (e) => {
 		e.preventDefault();
 		this.props.history.push('/ItemScreen')
 	}
 
-	onLogoutClick(e) {
+	onLogoutClick = (e) => {
 		e.preventDefault();
 		this.props.history.push('/')
 	}
@@ -100,7 +92,7 @@ class MainScreen extends Component {
 		}
 		return (
 			<div>
-				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.user.username}/>
+				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.user.username} />
 				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} />
 				{currentScreen}
 			</div>
