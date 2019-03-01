@@ -1,6 +1,6 @@
 /* ------------- ACTIONS ------------- */
-export const USER_INPUT = "user:userLoginUserInput";
-export const PASS_INPUT = "user:userLoginPassInput";
+export const USER_INPUT = "USER_INPUT";
+export const PASS_INPUT = "PASS_INPUT";
 
 /* ------------- ACTION CREATORS ------------- */
 export function userLoginUserInput(username) {

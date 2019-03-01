@@ -4,7 +4,7 @@ import { REMOVE_TRASH_ITEM, ADD_TRASH_TO_SHOP } from '../Actions/trashActions';
 import { REMOVE_SHOP_ITEM } from '../Actions/shoppingActions';
 import { ADD_CUSTOM_TO_SHOP, ADD_CUSTOM_TO_INV } from '../Actions/addCustomItemActions';
 
-export default function firebaseReducer(state = "", { type, payload }) {
+export default function firebaseReducer(state = {}, { type, payload }) {
 	switch (type) {
 		case LOGIN_USER:
 			return payload.user;

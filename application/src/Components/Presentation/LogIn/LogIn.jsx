@@ -20,11 +20,11 @@ export default class LogIn extends Component {
 						<div id="signInContainer">
 							<form>
 								<div className="form-group">
-									<label htmlFor="exampleInputEmail1">Username:</label>
+									<label>Username:</label>
 									<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool" onBlur={this.props.onUserInput}></input>
 								</div>
 								<div className="form-group">
-									<label htmlFor="exampleInputPassword1">Password:</label>
+									<label>Password:</label>
 									<input type="password" className="form-control" id="InputPassword" placeholder="*******" onBlur={this.props.onPassInput}></input>
 								</div>
 								{errorBox}

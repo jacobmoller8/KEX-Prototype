@@ -11,11 +11,11 @@ export default class AddItem extends Component {
 
             <form>
               <div className="form-group">
-                <label htmlFor="itemNameLabel">Name:</label>
+                <label>Name:</label>
                 <input type="text" className="form-control" id="nameInput" value={this.props.NameValue} onChange={this.props.updateNameValue}></input>
-                <label htmlFor="commentLabel">Comment:</label>
+                <label>Comment:</label>
                 <input type="text" className="form-control" id="commentInput" value={this.props.CommentValue} onChange={this.props.updateCommentValue}></input>
-                <label htmlFor="quantityLabel">Quantity (Number):</label>
+                <label>Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" value={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
               <button onClick={this.props.onGoBackClick} type="submit" className="btn btn-danger">Go Back</button>

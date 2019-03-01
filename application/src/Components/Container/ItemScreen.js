@@ -22,11 +22,11 @@ class ItemScreen extends Component {
   onAddItemClick = (e) => {
     e.preventDefault();
     if (this.props.screenMode === "inventory") {
-      addCustomItemToInventory(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
+      addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
       this.resetState()
     }
     if (this.props.screenMode === "shopping") {
-      addCustomItemToShopping(this.props.firebase.username, this.state.name, this.state.comment, this.state.quantity)
+      addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity)
       this.resetState()
     }
   }
@@ -68,7 +68,7 @@ class ItemScreen extends Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.firebase.username} />
+        <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.username} />
         <AddItem
           onAddItemClick={this.onAddItemClick}
           onGoBackClick={this.onGoBackClick}
@@ -85,7 +85,7 @@ class ItemScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    firebase: state.firebase,
+    username: state.firebase.username,
     screenMode: state.mainScreen.mainScreenMode
   }
 };

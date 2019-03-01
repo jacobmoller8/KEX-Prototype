@@ -80,28 +80,3 @@ const mapActionsToProps = {
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));
-
-
-/*
-        this.state = {
-            username: "",
-            password: "",
-        }
-
-componentDidMount() {
-    this._isMounted = true;
-
-    //For later not used
-    store.subscribe(() => {
-        if (this._isMounted) {
-            this.setState({
-                user: store.getState().user
-            });
-        }
-    });
-}
-
-componentWillUnmount() {
-    this._isMounted = false;
-}
-*/

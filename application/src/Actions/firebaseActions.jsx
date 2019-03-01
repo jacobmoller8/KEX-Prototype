@@ -1,9 +1,9 @@
 import { databaseRef } from "../Firebase/firebase";
 
 /* ------------- ACTIONS ------------- */
-export const ADD_USER = "users:addUser";
-export const REMOVE_USER = "users:removeUser";
-export const LOGIN_USER = "user:tryLogin";
+export const ADD_USER = "ADD_USER";
+export const REMOVE_USER = "REMOVE_USER";
+export const LOGIN_USER = "LOGIN_USER";
 
 /* ------------- ACTION CREATORS ------------- */
 export function addUser(user) {
