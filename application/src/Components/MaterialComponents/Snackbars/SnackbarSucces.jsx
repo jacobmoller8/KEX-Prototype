@@ -100,7 +100,7 @@ class SuccessSnackbar extends React.Component {
 		const { classes } = this.props;
 
 		return (
-			<div>
+			<React.Fragment>
 				<Button id="addToShopIcon" className={classes.margin} onClick={this.handleClick} >  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
 				<Snackbar
 					anchorOrigin={{
@@ -117,7 +117,7 @@ class SuccessSnackbar extends React.Component {
 						message='Added Item to Shopping List' 
 					/>
 				</Snackbar>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

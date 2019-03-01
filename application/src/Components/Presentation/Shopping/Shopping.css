@@ -69,3 +69,7 @@
     color: grey;
     font-weight: 100; 
 }
+
+.shoppingTable td{
+    vertical-align: middle;
+}
