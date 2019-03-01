@@ -8,8 +8,8 @@ export default class LogIn extends Component {
 
 	render() {
 		let errorBox = <span id="noError"></span>
-		if (this.props.logInError){
-			errorBox = <LogInError/>
+		if (this.props.logInError) {
+			errorBox = <LogInError />
 		}
 
 		return (
@@ -21,16 +21,16 @@ export default class LogIn extends Component {
 							<form>
 								<div className="form-group">
 									<label htmlFor="exampleInputEmail1">Username:</label>
-									<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool" onChange={this.props.onUserInput}></input>
+									<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="JohnnyCool" onBlur={this.props.onUserInput}></input>
 								</div>
 								<div className="form-group">
 									<label htmlFor="exampleInputPassword1">Password:</label>
-									<input type="password" className="form-control" id="InputPassword" placeholder="*******" onChange={this.props.onPassInput}></input>
+									<input type="password" className="form-control" id="InputPassword" placeholder="*******" onBlur={this.props.onPassInput}></input>
 								</div>
 								{errorBox}
 								<br />
 								<div id="logInBtnContainer">
-										<CircularIntegration onButtonClick={this.props.onLoginClick} />
+									<CircularIntegration onButtonClick={this.props.onLoginClick} />
 								</div>
 							</form>
 						</div>
