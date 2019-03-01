@@ -21,13 +21,18 @@ class ItemScreen extends Component {
 
   onAddItemClick = (e) => {
     e.preventDefault();
-    if (this.props.screenMode === "inventory") {
-      addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
-      this.resetState()
+    if (isNaN(this.state.quantity)) {
+      console.log("Quantity is not a number")
     }
-    if (this.props.screenMode === "shopping") {
-      addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity)
-      this.resetState()
+    else {
+      if (this.props.screenMode === "inventory") {
+        addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+        this.resetState()
+      }
+      if (this.props.screenMode === "shopping") {
+        addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+        this.resetState()
+      }
     }
   }
 

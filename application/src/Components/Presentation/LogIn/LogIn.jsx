@@ -15,7 +15,7 @@ export default class LogIn extends Component {
 		return (
 			<div>
 				<div className="row justify-content-center" >
-					<div className="col-md-4 col-sm-10 text-center">
+					<div className="col-lg-6 col-md-10 col-sm-10 text-center">
 
 						<div id="signInContainer">
 							<form>

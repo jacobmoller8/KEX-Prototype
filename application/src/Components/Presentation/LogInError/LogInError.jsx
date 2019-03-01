@@ -5,9 +5,9 @@ export default function LogInError() {
 	return (
 		<div id="logInErrorBox">
 			<div className="container-fluid errorMessage">
-				<div className="row">
+				<div className="row justify-content-center align-items-center">
 					<img className="errIcon" src={require('../../../Images/Icons/NoRed.svg')} alt="errorIcon"></img>
-					<p id="errText"> Invalid Username or Password </p>
+					<p id="errText" className="align-self-center"> Invalid username or password </p>
 				</div>
 			</div>
 		</div>
