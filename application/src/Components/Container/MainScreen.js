@@ -11,15 +11,20 @@ import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions'
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
+import {setFilter, emptyFilter} from '../../Actions/searchActions'
 import store from '../../Store/store'
 
 class MainScreen extends Component {
-	constructor(props) {
+	constructor(props){
 		super(props)
 
-		this.state = {
-			screenMode: "inventory"
-		}
+		this.onDelete = this.onDelete.bind(this);
+		this.onAddTo = this.onAddTo.bind(this);
+		this.onSearchChange = this.onSearchChange.bind(this);
+		this.screenChangeHandler = this.screenChangeHandler.bind(this);
+		this.onAddNewItemClick = this.onAddNewItemClick.bind(this);
+		this.onEditItemClick = this.onEditItemClick.bind(this);
+		this.onLogoutClick = this.onLogoutClick.bind(this);
 	}
 
 	onDelete = (item, from) => {
@@ -40,7 +45,13 @@ class MainScreen extends Component {
 		}
 	}
 
+	onSearchChange = (e) => {
+		console.log(e.target.value)
+		store.dispatch(setFilter(e.target.value))
+	}
+
 	screenChangeHandler = (toScreen) => {
+		store.dispatch(emptyFilter())
 		if (toScreen === 'inventory') {
 			this.props.setInventory();
 		} else if (toScreen === 'trash') {
@@ -73,16 +84,19 @@ class MainScreen extends Component {
 	}
 
 	onAddNewItemClick = (e) => {
+		store.dispatch(emptyFilter())
 		e.preventDefault();
 		this.props.history.push('/AddItemScreen')
 	}
 	onEditItemClick = (id) => {
+		store.dispatch(emptyFilter())
 		console.log(id + " clicked")
 		appendCurrentItem(this.props.user.username, this.state.screenMode, id)
 		this.props.history.push('/EditItemScreen/' + id)
 	}
 
 	onLogoutClick = (e) => {
+		store.dispatch(emptyFilter())
 		e.preventDefault();
 		this.props.history.push('/')
 	}
@@ -90,11 +104,11 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
 		}
 		return (
 			<div>
