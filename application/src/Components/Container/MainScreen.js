@@ -75,6 +75,10 @@ class MainScreen extends Component {
 		e.preventDefault();
 		this.props.history.push('/AddItemScreen')
 	}
+	onEditItemClick = (id) => {
+
+		console.log(id + " clicked")
+	}
 
 	onLogoutClick = (e) => {
 		e.preventDefault();
@@ -84,11 +88,11 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} />
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} />
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} />
 		}
 		return (
 			<div>

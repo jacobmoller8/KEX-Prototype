@@ -10,12 +10,12 @@ export default class Trash extends Component {
       for (let key in currentTrash) {
         trashList.push(
           <tr key={currentTrash[key].EANcode}>
-            <td className="itemName">{currentTrash[key].EANcode}</td>
-            <td className="quantity">{currentTrash[key].quantity}</td>
-            <td className="timeAdded d-none d-sm-table-cell">{currentTrash[key].dates[0]}</td>
-            <td className="comment d-none d-sm-table-cell">{currentTrash[key].comment}</td>
-            <td> <Button className="addShoppingItemBtn" onClick={()=>this.props.onAddTo(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
-            <td> <Button className="delItemBtn" onClick={()=>this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+            <td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].EANcode}</td>
+            <td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
+            <td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
+            <td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
+            <td> <Button className="addShoppingItemBtn" onClick={() => this.props.onAddTo(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
+            <td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
       }
     } else { trashList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }

@@ -8,23 +8,23 @@ export default class Shopping extends Component {
 
   render() {
     var shoppingList = [];
-		const { currentShopping } = this.props
-		console.log("CURRENT SHOPPING: " +  JSON.stringify(currentShopping))
-    if (currentShopping !== undefined && currentShopping !== '[]' ) {
+    const { currentShopping } = this.props
+    console.log("CURRENT SHOPPING: " + JSON.stringify(currentShopping))
+    if (currentShopping !== undefined && currentShopping !== '[]') {
       for (let key in currentShopping) {
 
         shoppingList.push(
           <tr key={currentShopping[key].EANcode}>
-            <td className="itemName">{currentShopping[key].EANcode}</td>
-            <td className="quantity">{currentShopping[key].quantity}</td>
-            <td className="timeAdded d-none d-sm-table-cell">{currentShopping[key].dates[0]}</td>
-            <td className="comment d-none d-sm-table-cell">{currentShopping[key].comment}</td>
+            <td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].EANcode}</td>
+            <td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
+            <td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
+            <td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
             <td> <FancyCheckbox /></td>
             <td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
           </tr>)
-          }
-      }else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
-     
+      }
+    } else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+
 
     return (
       <div className="row">
