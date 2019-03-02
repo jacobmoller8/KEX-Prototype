@@ -10,6 +10,7 @@ import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryAc
 import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
+import { appendCurrentItem } from '../../Actions/currentItemActions';
 import store from '../../Store/store'
 
 class MainScreen extends Component {
@@ -76,8 +77,9 @@ class MainScreen extends Component {
 		this.props.history.push('/AddItemScreen')
 	}
 	onEditItemClick = (id) => {
-
 		console.log(id + " clicked")
+		appendCurrentItem(this.props.user.username, this.state.screenMode, id)
+		this.props.history.push('/EditItemScreen/' + id)
 	}
 
 	onLogoutClick = (e) => {
@@ -119,7 +121,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
-		setTrash: () => dispatch(setTrash('trash'))
+		setTrash: () => dispatch(setTrash('trash')),
+		appendCurrentItem: appendCurrentItem
 	}
 };
 

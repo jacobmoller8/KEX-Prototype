@@ -6,21 +6,6 @@ export const REMOVE_USER = "REMOVE_USER";
 export const LOGIN_USER = "LOGIN_USER";
 
 /* ------------- ACTION CREATORS ------------- */
-export function addUser(user) {
-
-    databaseRef.ref('users/' + user).set({
-        username: "username",
-        email: "email",
-    });
-
-    return {
-        type: ADD_USER,
-        payload: {
-            user: user
-        }
-    }
-}
-
 export function tryLoginUser(username) {
 
     return dispatch => {
@@ -35,6 +20,24 @@ export function tryLoginUser(username) {
                 }
             })
         });
+    }
+}
+
+
+
+/* ------------- NOT USED FUNCTIONS ------------ */
+export function addUser(user) {
+
+    databaseRef.ref('users/' + user).set({
+        username: "username",
+        email: "email",
+    });
+
+    return {
+        type: ADD_USER,
+        payload: {
+            user: user
+        }
     }
 }
 
