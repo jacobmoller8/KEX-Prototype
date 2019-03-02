@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addUser, tryLoginUser } from "../../Actions/firebaseActions";
+import { addUser, tryLoginUser, removeUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
@@ -38,6 +38,7 @@ class LogInScreen extends Component {
 				this.setState({
 					logInError: true
 				})
+				this.props.removeUser()
 				console.log("this.props.user: " + this.props.user["username"] + " this.props.password: " + this.props.user["password"] +
 					" this.props.firebase.user: " + this.props.firebase["username"] + "this.firebase.pw: " + this.props.firebase["password"])
 			}
@@ -46,7 +47,8 @@ class LogInScreen extends Component {
 			this.setState({
 				logInError: true
 			})
-			console.log("Wrong username or password")
+			this.props.removeUser()
+			console.log("wrong user/pass")
 		}
 	}
 
@@ -77,6 +79,7 @@ const mapActionsToProps = {
 	tryLoginUser: tryLoginUser,
 	userLoginUserInput: userLoginUserInput,
 	userLoginPassInput: userLoginPassInput,
+	removeUser: removeUser
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(LogInScreen));

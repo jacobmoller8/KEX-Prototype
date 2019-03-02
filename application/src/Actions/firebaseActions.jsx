@@ -37,3 +37,13 @@ export function tryLoginUser(username) {
         });
     }
 }
+
+export function removeUser() {
+
+    return {
+        type: REMOVE_USER,
+        payload: {
+            user: {}
+        }
+    }
+}

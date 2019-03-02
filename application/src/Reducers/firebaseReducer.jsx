@@ -1,4 +1,4 @@
-import { ADD_USER, LOGIN_USER } from '../Actions/firebaseActions';
+import { ADD_USER, LOGIN_USER, REMOVE_USER } from '../Actions/firebaseActions';
 import { REMOVE_INV_ITEM, ADD_INV_TO_SHOP } from '../Actions/inventoryActions';
 import { REMOVE_TRASH_ITEM, ADD_TRASH_TO_SHOP } from '../Actions/trashActions';
 import { REMOVE_SHOP_ITEM } from '../Actions/shoppingActions';
@@ -9,6 +9,8 @@ export default function firebaseReducer(state = {}, { type, payload }) {
 		case LOGIN_USER:
 			return payload.user;
 		case ADD_USER:
+			return payload.user;
+		case REMOVE_USER:
 			return payload.user;
 		case REMOVE_INV_ITEM:
 			return ({

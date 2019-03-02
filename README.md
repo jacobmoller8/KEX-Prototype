@@ -35,8 +35,8 @@ Jacob Möller & Hugo Bergqvist
 			Prepare for API-data
 
 	- Log In
-			Button spinner
-			Empty redux state on wrong password /w feedback
+			Button spinner (DONE)
+			Empty redux state on wrong password /w feedback (DONE)
 
 - Redux setup:
 	- Actions:
