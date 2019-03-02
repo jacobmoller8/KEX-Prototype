@@ -15,10 +15,6 @@ import {setFilter, emptyFilter} from '../../Actions/searchActions'
 import store from '../../Store/store'
 
 class MainScreen extends Component {
-	constructor(props){
-		super(props)
-
-	}
 
 	onDelete = (item, from) => {
 		if (from === 'inventory') {
