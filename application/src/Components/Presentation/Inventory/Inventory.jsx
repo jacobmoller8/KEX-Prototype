@@ -25,7 +25,7 @@ export default class Inventory extends Component {
 				}
 			} else {
 				for (let key in currentInventory) {
-					let itemName = currentInventory[key].name
+					let itemName = currentInventory[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						inventoryList.push(
 							<tr key={currentInventory[key].EANcode} >

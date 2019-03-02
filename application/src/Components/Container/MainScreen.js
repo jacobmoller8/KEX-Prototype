@@ -18,13 +18,6 @@ class MainScreen extends Component {
 	constructor(props){
 		super(props)
 
-		this.onDelete = this.onDelete.bind(this);
-		this.onAddTo = this.onAddTo.bind(this);
-		this.onSearchChange = this.onSearchChange.bind(this);
-		this.screenChangeHandler = this.screenChangeHandler.bind(this);
-		this.onAddNewItemClick = this.onAddNewItemClick.bind(this);
-		this.onEditItemClick = this.onEditItemClick.bind(this);
-		this.onLogoutClick = this.onLogoutClick.bind(this);
 	}
 
 	onDelete = (item, from) => {
@@ -39,9 +32,9 @@ class MainScreen extends Component {
 
 	onAddTo = (item, from) => {
 		if (from === 'inventory') {
-			addInvToShopping(this.props.user.username, item);
+			store.dispatch(addInvToShopping(this.props.user.username, item));
 		} else if (from === 'trash') {
-			addTrashToShopping(this.props.user.username, item);
+			store.dispatch(addTrashToShopping(this.props.user.username, item));
 		}
 	}
 

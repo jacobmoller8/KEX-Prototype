@@ -26,7 +26,7 @@ export default class Trash extends Component {
 				}
 			} else {
 				for (let key in currentTrash) {
-					let itemName = currentTrash[key].name
+					let itemName = currentTrash[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						trashList.push(
 							<tr key={currentTrash[key].EANcode}>

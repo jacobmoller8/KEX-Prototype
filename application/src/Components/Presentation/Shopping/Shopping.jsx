@@ -28,7 +28,7 @@ export default class Shopping extends Component {
 				}
 			} else {
 				for (let key in currentShopping) {
-					let itemName = currentShopping[key].name
+					let itemName = currentShopping[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						shoppingList.push(
 							<tr key={currentShopping[key].EANcode}>
