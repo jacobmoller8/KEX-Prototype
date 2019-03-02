@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
 
 
-class ItemScreen extends Component {
+class AddItemScreen extends Component {
 
   constructor(props) {
     super(props)
@@ -103,4 +103,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ItemScreen));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddItemScreen));

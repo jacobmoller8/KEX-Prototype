@@ -73,7 +73,7 @@ class MainScreen extends Component {
 
 	onAddNewItemClick = (e) => {
 		e.preventDefault();
-		this.props.history.push('/ItemScreen')
+		this.props.history.push('/AddItemScreen')
 	}
 
 	onLogoutClick = (e) => {
