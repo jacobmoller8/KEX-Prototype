@@ -99,6 +99,7 @@ class SuccessSnackbar extends React.Component {
 	render() {
 		const { classes } = this.props;
 
+
 		return (
 			<React.Fragment>
 				<Button id="addToShopIcon" className={classes.margin} onClick={this.handleClick} >  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button>
@@ -108,13 +109,13 @@ class SuccessSnackbar extends React.Component {
 						horizontal: 'left',
 					}}
 					open={this.state.open}
-					autoHideDuration={6000}
+					autoHideDuration={1000}
 					onClose={this.handleClose}
 				>
 					<MySnackbarContentWrapper
 						onClose={this.handleClose}
 						variant="success"
-						message='Added Item to Shopping List' 
+						message='Added Item to Shopping List'
 					/>
 				</Snackbar>
 			</React.Fragment>

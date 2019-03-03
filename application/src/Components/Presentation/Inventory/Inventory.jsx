@@ -19,7 +19,7 @@ export default class Inventory extends Component {
 							<td className="quantity" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].comment}</td>
-							<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' /></td>
+							<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' actionStatus='move'/></td>
 							<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 						</tr>)
 				}

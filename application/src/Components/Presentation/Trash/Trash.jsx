@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Trash.css';
 import { Button, Table } from 'react-bootstrap';
 import Search from '../Search/Search'
+import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 import store from '../../../Store/store'
 
 export default class Trash extends Component {
@@ -20,7 +21,7 @@ export default class Trash extends Component {
 							<td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
-							<td> <Button className="addShoppingItemBtn" onClick={() => this.props.onAddTo(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
+							<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentTrash[key]} comesFrom='trash' actionStatus='move' /></td>
 							<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 						</tr>)
 				}
