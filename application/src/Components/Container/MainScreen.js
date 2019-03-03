@@ -11,8 +11,8 @@ import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions'
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
-import { setFilter, emptyFilter } from '../../Actions/searchActions'
-import store from '../../Store/store'
+import { setFilter, emptyFilter } from '../../Actions/searchActions';
+import store from '../../Store/store';
 
 class MainScreen extends Component {
 
@@ -79,7 +79,6 @@ class MainScreen extends Component {
 	}
 	onEditItemClick = (id) => {
 		store.dispatch(emptyFilter())
-		console.log(id + " clicked")
 		store.dispatch(appendCurrentItem(this.props.user.username, this.state.screenMode, id))
 		this.props.history.push('/EditItemScreen/' + id)
 	}

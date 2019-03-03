@@ -12,14 +12,14 @@ export default class EditItem extends Component {
             <form>
               <div className="form-group">
                 <label>Name:</label>
-                <input type="text" className="form-control" id="nameInput" value={this.props.NameValue} onChange={this.props.updateNameValue}></input>
+                <input type="text" className="form-control" id="nameInput" defaultValue={this.props.NameValue} onChange={this.props.updateNameValue}></input>
                 <label>Comment:</label>
-                <input type="text" className="form-control" id="commentInput" value={this.props.CommentValue} onChange={this.props.updateCommentValue}></input>
+                <input type="text" className="form-control" id="commentInput" defaultValue={this.props.CommentValue} onChange={this.props.updateCommentValue}></input>
                 <label>Quantity (Number):</label>
-                <input type="text" className="form-control" id="quantityInput" value={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
+                <input type="text" className="form-control" id="quantityInput" defaultValue={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
               <button onClick={this.props.onGoBackClick} type="submit" className="btn goBackButton">Go Back</button>
-              <button onClick={this.props.onAddItemClick} type="submit" className="btn confirmButton">Confirm</button>
+              <button onClick={this.props.onConfirmItemClick} type="submit" className="btn confirmButton">Confirm</button>
 
             </form>
 
