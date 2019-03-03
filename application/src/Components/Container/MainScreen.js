@@ -11,7 +11,7 @@ import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions'
 import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
-import {setFilter, emptyFilter} from '../../Actions/searchActions'
+import { setFilter, emptyFilter } from '../../Actions/searchActions'
 import store from '../../Store/store'
 
 class MainScreen extends Component {
@@ -35,7 +35,6 @@ class MainScreen extends Component {
 	}
 
 	onSearchChange = (e) => {
-		console.log(e.target.value)
 		store.dispatch(setFilter(e.target.value))
 	}
 
@@ -64,6 +63,7 @@ class MainScreen extends Component {
 		let inventoryOnMount = store.getState().firebase.inventory;
 		let shoppingOnMount = store.getState().firebase.shopping;
 		let trashOnMount = store.getState().firebase.trash;
+		
 		this.setState({
 			inventory: inventoryOnMount,
 			trash: trashOnMount,
@@ -93,11 +93,11 @@ class MainScreen extends Component {
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
+			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
+			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange}/>
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
 		}
 		return (
 			<div>

@@ -1,0 +1,10 @@
+.searchContainer{
+	padding:15px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background-color: rgba(116, 173, 73, 0.1);
+}
+
+#searchInput{
+	border-radius: 5px;
+}
