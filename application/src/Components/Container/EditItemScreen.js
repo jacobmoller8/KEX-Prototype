@@ -14,9 +14,9 @@ class EditItemScreen extends Component {
         super(props)
 
         this.state = {
-            name: "",
-            comment: "",
-            quantity: ""
+            name: this.props.name,
+            comment: this.props.comment,
+            quantity: this.props.quantity
         }
     }
 
@@ -36,17 +36,15 @@ class EditItemScreen extends Component {
         })
     }
 
-    onAddItemClick = (e) => {
+    onConfirmItemClick = (e) => {
         e.preventDefault();
         if (isNaN(this.state.quantity)) {
-            console.log("Quantity is not a number")
+            console.log("Quantity input is not a number")
         }
         else {
-            confirmCurrentItem(this.props.username, this.state.name, this.state.comment, this.state.quantity)
-            this.resetState()
+            confirmCurrentItem(this.props.username, this.props.screenMode, this.props.item, this.state.name, this.state.comment, this.state.quantity)
         }
     }
-
 
     onGoBackClick = (e) => {
         store.dispatch(removeCurrentItem());
@@ -81,7 +79,11 @@ class EditItemScreen extends Component {
 const mapStateToProps = state => {
     return {
         username: state.firebase.username,
-        screenMode: state.mainScreen.mainScreenMode
+        screenMode: state.mainScreen.mainScreenMode,
+        item: state.currentItem.item.EANcode,
+        name: state.currentItem.item.name,
+        comment: state.currentItem.item.comment,
+        quantity: state.currentItem.item.quantity,
     }
 };
 

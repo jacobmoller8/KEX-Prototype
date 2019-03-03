@@ -28,6 +28,8 @@ export function appendCurrentItem(username, screenMode, id) {
 
 export function confirmCurrentItem(username, screenMode, id, name, comment, quantity) {
 
+    console.log(username + screenMode + id + name + comment + quantity)
+
     var item = {
         "EANcode": id,
         "name": name,
@@ -35,7 +37,7 @@ export function confirmCurrentItem(username, screenMode, id, name, comment, quan
         "quantity": parseInt(quantity)
     }
 
-    databaseRef.ref('users/' + username + screenMode).child(id).update(item);
+    databaseRef.ref('users/' + username + '/' + screenMode).child(id).update(item);
 
     return dispatch => {
         var firebaseCall = databaseRef.ref("users/" + username + "/" + screenMode + "/" + id)
