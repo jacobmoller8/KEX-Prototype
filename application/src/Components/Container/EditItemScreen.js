@@ -25,7 +25,7 @@ class EditItemScreen extends Component {
     render() {
         return (
             <div>
-                <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.username} />
+                <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser='editItem' />
                 <EditItem onGoBackClick={this.onGoBackClick}></EditItem>
             </div>
         )
