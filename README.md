@@ -14,6 +14,7 @@ Jacob Möller & Hugo Bergqvist
 - Login and connection to database (DONE) 
 - Handle Session/LocalStorage/Cookie (Part of redux?) (<-- PRIO )
 - API Implemention to Add Item
+- Search Bar (DONE)
 
 - Components:
 	- Inventory
