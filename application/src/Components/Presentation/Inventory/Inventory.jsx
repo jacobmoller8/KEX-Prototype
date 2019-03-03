@@ -14,13 +14,13 @@ export default class Inventory extends Component {
 			if (filterValue === '' || filterValue === undefined) {
 				for (let key in currentInventory) {
 					inventoryList.push(
-						<tr key={currentInventory[key].EANcode} >
-							<td className="itemName" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].EANcode}</td>
-							<td className="quantity" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].quantity}</td>
-							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].dates[0]}</td>
-							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].comment}</td>
-							<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' /></td>
-							<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+						<tr key={currentInventory[key].EANcode } onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)} >
+							<td className="itemName" >{currentInventory[key].EANcode}</td>
+							<td className="quantity" >{currentInventory[key].quantity}</td>
+							<td className="timeAdded d-none d-sm-table-cell" >{currentInventory[key].dates[0]}</td>
+							<td className="comment d-none d-sm-table-cell" >{currentInventory[key].comment}</td>
+							<td onClick={(e) => e.stopPropagation()}> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' actionStatus='move'/></td>
+							<td onClick={(e) => e.stopPropagation()}> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 						</tr>)
 				}
 			} else {
@@ -28,13 +28,13 @@ export default class Inventory extends Component {
 					let itemName = currentInventory[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						inventoryList.push(
-							<tr key={currentInventory[key].EANcode} >
-								<td className="itemName" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].EANcode}</td>
-								<td className="quantity" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].quantity}</td>
-								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].dates[0]}</td>
-								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)}>{currentInventory[key].comment}</td>
-								<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' /></td>
-								<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+							<tr key={currentInventory[key].EANcode} onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)} >
+								<td className="itemName" >{currentInventory[key].EANcode}</td>
+								<td className="quantity" >{currentInventory[key].quantity}</td>
+								<td className="timeAdded d-none d-sm-table-cell" >{currentInventory[key].dates[0]}</td>
+								<td className="comment d-none d-sm-table-cell" >{currentInventory[key].comment}</td>
+								<td onClick={(e) => e.stopPropagation()}> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentInventory[key]} comesFrom='inventory' /></td>
+								<td onClick={(e) => e.stopPropagation()}> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentInventory[key], 'inventory')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
 							</tr>)
 					}
 				}

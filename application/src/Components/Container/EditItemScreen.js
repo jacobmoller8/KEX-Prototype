@@ -62,6 +62,7 @@ class EditItemScreen extends Component {
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.username} />
                 <EditItem
                     NameValue={store.getState().currentItem.item.name}
@@ -73,6 +74,10 @@ class EditItemScreen extends Component {
                     onConfirmItemClick={this.onConfirmItemClick}
                     onGoBackClick={this.onGoBackClick}>
                 </EditItem>
+=======
+                <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser='editItem' />
+                <EditItem onGoBackClick={this.onGoBackClick}></EditItem>
+>>>>>>> 7d7de51b712075456588794153995e77a8383cf9
             </div>
         )
     }

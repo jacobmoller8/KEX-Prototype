@@ -75,3 +75,19 @@
 .inventoryTable td{
     vertical-align: middle;
 }
+
+.itemName{
+    cursor: pointer
+}
+
+.quantity{
+    cursor: pointer
+}
+
+.timeAdded{
+    cursor: pointer
+}
+
+.comment{
+    cursor: pointer
+}
