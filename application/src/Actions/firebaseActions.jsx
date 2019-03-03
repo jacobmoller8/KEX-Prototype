@@ -3,7 +3,7 @@ import { databaseRef } from "../Firebase/firebase";
 /* ------------- ACTIONS ------------- */
 export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
-export const LOGIN_USER = "LOGIN_USER";
+export const UPDATE_FIREBASE_DATA = "UPDATE_FIREBASE_DATA";
 
 /* ------------- ACTION CREATORS ------------- */
 export function tryLoginUser(username) {
@@ -14,7 +14,7 @@ export function tryLoginUser(username) {
         firebaseCall.on('value', snapshot => {
             var userObject = snapshot.val()
             dispatch({
-                type: LOGIN_USER,
+                type: UPDATE_FIREBASE_DATA,
                 payload: {
                     user: userObject
                 }
