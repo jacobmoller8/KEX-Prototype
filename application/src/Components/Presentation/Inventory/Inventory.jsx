@@ -39,7 +39,7 @@ export default class Inventory extends Component {
 					}
 				}
 			}
-		} else { inventoryList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+		} else { inventoryList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td className="d-none d-sm-table-cell">-</td><td className="d-none d-sm-table-cell">-</td></tr> }
 
 		return (
 			<div className="row">

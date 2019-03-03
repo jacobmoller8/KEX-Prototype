@@ -43,7 +43,7 @@ export default class Shopping extends Component {
 				}
 			}
 		}
-		else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+		else { shoppingList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td className="d-none d-sm-table-cell">-</td><td className="d-none d-sm-table-cell">-</td></tr> }
 
 
 		return (

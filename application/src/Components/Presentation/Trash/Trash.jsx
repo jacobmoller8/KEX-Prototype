@@ -41,7 +41,7 @@ export default class Trash extends Component {
 					}
 				}
 			}
-		} else { trashList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> }
+		} else { trashList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td className="d-none d-sm-table-cell">-</td><td className="d-none d-sm-table-cell">-</td></tr> }
 
 		return (
 			<div className="row">
