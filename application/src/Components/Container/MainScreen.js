@@ -63,7 +63,7 @@ class MainScreen extends Component {
 		let inventoryOnMount = store.getState().firebase.inventory;
 		let shoppingOnMount = store.getState().firebase.shopping;
 		let trashOnMount = store.getState().firebase.trash;
-		
+
 		this.setState({
 			inventory: inventoryOnMount,
 			trash: trashOnMount,
@@ -80,7 +80,7 @@ class MainScreen extends Component {
 	onEditItemClick = (id) => {
 		store.dispatch(emptyFilter())
 		console.log(id + " clicked")
-		appendCurrentItem(this.props.user.username, this.state.screenMode, id)
+		store.dispatch(appendCurrentItem(this.props.user.username, this.state.screenMode, id))
 		this.props.history.push('/EditItemScreen/' + id)
 	}
 
@@ -125,7 +125,6 @@ const mapDispatchToProps = dispatch => {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
 		setTrash: () => dispatch(setTrash('trash')),
-		appendCurrentItem: appendCurrentItem
 	}
 };
 

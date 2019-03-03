@@ -4,15 +4,27 @@ export const REMOVE_CURRENT_ITEM = 'REMOVE_CURRENT_ITEM';
 
 /* ------------- ACTION CREATORS ------------- */
 
-export function appendCurrentItem(username, screenMode, itemId) {
-
-    console.log(username)
-    console.log(screenMode)
-    console.log(itemId)
+export function appendCurrentItem(username, screenMode, id) {
 
     return {
         type: APPEND_CURRENT_ITEM,
-        itemId
+        payload: {
+            username: username,
+            screenMode: screenMode,
+            id: id
+        }
+    }
+}
+
+export function removeCurrentItem() {
+
+    return {
+        type: REMOVE_CURRENT_ITEM,
+        payload: {
+            username: "",
+            screenMode: "",
+            id: ""
+        }
     }
 }
 
