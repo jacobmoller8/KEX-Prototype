@@ -18,8 +18,8 @@ export default class AddItem extends Component {
                 <label>Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" value={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
-              <button onClick={this.props.onGoBackClick} type="submit" className="btn btn-danger">Go Back</button>
-              <button onClick={this.props.onAddItemClick} type="submit" className="btn btn-success">Add Item</button>
+              <button onClick={this.props.onGoBackClick} type="submit" className="btn goBackButton">Go Back</button>
+              <button onClick={this.props.onAddItemClick} type="submit" className="btn confirmButton">Add Item</button>
 
             </form>
 

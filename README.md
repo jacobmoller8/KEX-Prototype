@@ -18,7 +18,7 @@ Jacob Möller & Hugo Bergqvist
 
 - Components:
 	- Inventory
-			Load inventory on first mount of component
+			Load inventory on first mount of component (DONE)
 			Feedback on addToList ( SNACKBAR )
 
 	- Trash
