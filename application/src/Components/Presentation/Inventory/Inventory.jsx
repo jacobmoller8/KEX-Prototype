@@ -15,7 +15,7 @@ export default class Inventory extends Component {
 				for (let key in currentInventory) {
 					inventoryList.push(
 						<tr key={currentInventory[key].EANcode } onClick={() => this.props.onEditItemClick(currentInventory[key].EANcode)} >
-							<td className="itemName" >{currentInventory[key].EANcode}</td>
+							<td className="itemName" >{currentInventory[key].name}</td>
 							<td className="quantity" >{currentInventory[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" >{currentInventory[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" >{currentInventory[key].comment}</td>

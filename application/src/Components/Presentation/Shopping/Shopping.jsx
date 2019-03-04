@@ -18,7 +18,7 @@ export default class Shopping extends Component {
 				for (let key in currentShopping) {
 					shoppingList.push(
 						<tr key={currentShopping[key].EANcode}>
-							<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].EANcode}</td>
+							<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
 							<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>

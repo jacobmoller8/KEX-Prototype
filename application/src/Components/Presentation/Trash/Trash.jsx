@@ -17,7 +17,7 @@ export default class Trash extends Component {
 				for (let key in currentTrash) {
 					trashList.push(
 						<tr key={currentTrash[key].EANcode}>
-							<td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].EANcode}</td>
+							<td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].name}</td>
 							<td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
