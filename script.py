@@ -5,8 +5,10 @@
 
 import pyrebase
 import json
+import requests
 from datetime import date
 
+# FIREBASE CONFIG
 config = {
     "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
     "authDomain": "kex-scanner-project.firebaseapp.com",
@@ -15,11 +17,20 @@ config = {
     "serviceAccount": "key-firebase.json"
 }
 
-username = "Red"
-password = "Cobra28"
-
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
+
+# API CONFIG
+payload = {"grant_type": "client_credentials",
+           "client_secret": "q1tnWxDWObB0KhWO4MZnUc8Abe6MkmUk53UAqMjK",
+           "client_id": "2"}
+
+access_token = requests.post(
+    "https://consupedia.se/oauth/token", json=payload).json()["access_token"]
+
+# USER CONFIG
+username = "Red"
+password = "Cobra28"
 
 
 def add_user():
@@ -43,11 +54,18 @@ def add_to_inventory(code):
     today = str(date.today())
 
     dates.append(today)
-    print(dates)
+
+    api_headers = {"Accept": "application/json", "Authorization": access_token}
+    api_string = "https://consupedia.se/api/students/products/" + str(code)
+    api_response = requests.get(api_string, headers=api_headers)
+    json_data = json.loads(api_response.text)
+
+    print(json_data)
+    print(json_data["name"])
 
     product = {
         "EANcode": code,
-        "name": "",
+        "name": json_data["name"],
         "dates": dates,
         "comment": "",
         "quantity": quant + 1
