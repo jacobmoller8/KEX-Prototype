@@ -5,6 +5,7 @@
 
 import pyrebase
 import json
+import requests
 from datetime import date
 
 config = {
@@ -20,6 +21,27 @@ password = "Cobra28"
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
+
+
+def api_request():
+
+    payload = {"grant_type": "client_credentials",
+               "client_id": "2",
+               "client_secret": "q1tnWxDWObB0KhWO4MZnUc8Abe6MkmUk53UAqMjK"}
+
+    access_token = requests.post(
+        "https://consupedia.se/oauth/token", params=payload).json()["access_token"]
+
+    # access_token = requests.post(
+    #    "https://consupedia.se/oauth/token?grant_type=client_credentials&client_id=2&client_secret=q1tnWxDWObB0KhWO4MZnUc8Abe6MkmUk53UAqMjK")
+
+    response = requests.get("https://consupedia.se/api/students/products/7340011320753",
+                            headers={"Accept": "application/json", "Authorization": "access_token"})
+
+    json_data = json.loads(response.text)
+
+    print(json_data)
+    return
 
 
 def add_user():
@@ -175,4 +197,6 @@ def barcode_scanner_input():
 
 
 # add_user()
-barcode_scanner_input()
+# barcode_scanner_input()
+
+api_request()
