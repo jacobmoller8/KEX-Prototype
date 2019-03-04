@@ -55,17 +55,22 @@ def add_to_inventory(code):
 
     dates.append(today)
 
-    api_headers = {"Accept": "application/json", "Authorization": access_token}
-    api_string = "https://consupedia.se/api/students/products/" + str(code)
-    api_response = requests.get(api_string, headers=api_headers)
-    json_data = json.loads(api_response.text)
+    try:
+        api_headers = {
+            "Accept": "application/json",
+            "Authorization": access_token}
+        api_string = "https://consupedia.se/api/students/products/" + str(code)
+        api_response = requests.get(api_string, headers=api_headers)
+        json_data = json.loads(api_response.text)
+        name = json_data["name"]
+    except:
+        name = "Okänd Kod"
 
     print(json_data)
-    print(json_data["name"])
 
     product = {
         "EANcode": code,
-        "name": json_data["name"],
+        "name": name,
         "dates": dates,
         "comment": "",
         "quantity": quant + 1
