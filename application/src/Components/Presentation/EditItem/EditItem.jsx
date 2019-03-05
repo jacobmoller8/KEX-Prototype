@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'react-bootstrap';
 import './EditItem.css';
 
 export default class EditItem extends Component {
@@ -18,8 +19,17 @@ export default class EditItem extends Component {
                 <label>Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" defaultValue={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
-              <button onClick={this.props.onGoBackClick} type="submit" className="btn goBackButton">Go Back</button>
-              <button onClick={this.props.onConfirmItemClick} type="submit" className="btn confirmButton">Confirm</button>
+              
+              <div className="row btnRow">
+                <div className="container-fluid col-4 backBtnCont">
+                  <Button className="btn goBackButton" type="submit" onClick={this.props.onGoBackClick}>  <img className="backIcon" src={require('../../../Images/Icons/back.svg')} alt="shoppingIcon"></img> </Button>
+                  <p> Back </p>
+                </div>
+                <div className="container-fluid col-4 confirmBtnCont">
+                  <Button className="btn confirmButton" type="submit" onClick={this.props.onConfirmItemClick}> <img className="addIcon" src={require('../../../Images/Icons/yes.svg')} alt="shoppingIcon"></img> </Button>
+                  <p> Save </p>
+                </div>
+              </div>
 
             </form>
 
