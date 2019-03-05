@@ -1,18 +1,46 @@
-import { SET_ACCESS_TOKEN, EMPTY_TOKENS } from '../Actions/apiActions';
+import { SET_ACCESS_TOKEN, EMPTY_TOKENS, RECIEVE_ITEM, REQUEST_ITEM, ERROR_ON_FETCH } from '../Actions/apiActions';
+
+const initialState = {
+	apiInfo: '',
+	fetching: false,
+	fetched: false,
+	error: null
+}
 
 
-export default function apiReducer(state = '', { type, payload }) {
+export default function apiReducer(state = initialState, { type, payload }) {
 	switch (type) {
 		case SET_ACCESS_TOKEN: {
 			return {
 				accessToken: payload
 			}
-        }
-        case EMPTY_TOKENS: {
-            return {
-                accessToken: payload
-            }
-        }
+		}
+		case EMPTY_TOKENS: {
+			return {
+				accessToken: payload
+			}
+		}
+		case REQUEST_ITEM: {
+			return {
+				...state,
+				fetching: true
+			}
+		}
+		case ERROR_ON_FETCH: {
+			return {
+				...state,
+				fetching: false,
+				error: payload
+			}
+		}
+		case RECIEVE_ITEM: {
+			return {
+				...state,
+				fetching: false,
+				fetched: true,
+				fetchedItem: payload
+			}
+		}
 		default:
 			return state;
 	}

@@ -1,0 +1,14 @@
+.searchBox{
+	background-color: rgba(249, 145, 34, 0.4);
+	border-radius: 15px;
+}
+
+.ApiSearchBtn{
+	background-color: #75AC4A;
+	border: none;
+}
+
+.ApiSearchBtn:hover{
+	background-color: rgb(84, 126, 52);
+}
+

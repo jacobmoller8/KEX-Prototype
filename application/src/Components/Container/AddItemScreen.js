@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
 import { store } from '../../Store/store';
 import { tryLoginUser } from '../../Actions/firebaseActions';
+import { fetchItem } from '../../Actions/apiActions';
 
 
 class AddItemScreen extends Component {
@@ -16,14 +17,21 @@ class AddItemScreen extends Component {
     this.state = {
       name: "",
       comment: "",
-      quantity: ""
+			quantity: "",
+			EANSearchValue: ""
     }
 
   }
   componentWillMount() {
     let username = store.getState().user.username
     store.dispatch(tryLoginUser(username))
-  }
+	}
+	
+	onApiSearch = () => {
+		console.log('SEARCH VALUE: ' + this.state.EANSearchValue)
+		store.dispatch(fetchItem(this.state.EANSearchValue))
+		console.log(store.getState().apiInfo.fetchedItem)
+	}
 
   onAddItemClick = (e) => {
     e.preventDefault();
@@ -46,7 +54,8 @@ class AddItemScreen extends Component {
     this.setState({
       name: "",
       comment: "",
-      quantity: ""
+			quantity: "",
+			EANSearchValue: ""
     })
   }
 
@@ -64,7 +73,13 @@ class AddItemScreen extends Component {
     this.setState({
       quantity: input
     })
-  }
+	}
+	
+	updateEANSearchValue = (input) => {
+		this.setState({
+      EANSearchValue: input
+		})
+	}
 
   onGoBackClick = (e) => {
     e.preventDefault();
@@ -80,15 +95,18 @@ class AddItemScreen extends Component {
     return (
       <div>
         <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.username} />
-        <AddItem
+				<AddItem
           onAddItemClick={this.onAddItemClick}
           onGoBackClick={this.onGoBackClick}
           NameValue={this.state.name}
           CommentValue={this.state.comment}
-          QuantityValue={this.state.quantity}
+					QuantityValue={this.state.quantity}
+					EANSearchValue = {this.state.EANSearchValue}
+					updateEANSearchValue = {(e) => this.updateEANSearchValue(e.target.value)}
           updateNameValue={(e) => this.updateNameValue(e.target.value)}
           updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
-          updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)} ></AddItem>
+					updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
+					onApiSearch={() => this.onApiSearch()} ></AddItem>
       </div>
     )
   }

@@ -22,7 +22,7 @@ const allReducers = combineReducers({
     user: userReducer,
     mainScreen: mainScreenModeReducer,
     currentItem: currentItemReducer,
-    tokens: apiReducer
+    apiInfo: apiReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

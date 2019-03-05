@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import './AddItem.css';
+import SearchBoxAPI from '../SearchBoxAPI/SearchBoxAPI'
 
 export default class AddItem extends Component {
   render() {
@@ -29,8 +30,8 @@ export default class AddItem extends Component {
                   <p> Add </p>
                 </div>
               </div>
-
             </form>
+						<SearchBoxAPI onApiSearch={this.props.onApiSearch} valueHandler={this.props.EANSearchValue} changeHandler={this.props.updateEANSearchValue}/>
 
           </div>
         </div>
