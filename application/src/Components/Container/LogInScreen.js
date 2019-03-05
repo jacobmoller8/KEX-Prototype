@@ -4,6 +4,7 @@ import { addUser, tryLoginUser, removeUser } from "../../Actions/firebaseActions
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
+import getAccessToken from '../../Utilities/getAccessToken';
 import { withRouter } from "react-router-dom";
 
 
@@ -19,6 +20,7 @@ class LogInScreen extends Component {
 	}
 
 	onLoginClick = (e) => {
+		console.log(getAccessToken())
 		this.props.tryLoginUser(this.props.user["username"])
 		setTimeout(() => {
 			this.loginControlCheck();

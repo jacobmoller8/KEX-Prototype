@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# key files
+/Utilities/getAccessToken.js
+
 # production
 /build
 
