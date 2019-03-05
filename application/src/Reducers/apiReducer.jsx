@@ -4,6 +4,7 @@ const initialState = {
 	apiInfo: '',
 	fetching: false,
 	fetched: false,
+	fetchedItem: '',
 	error: null
 }
 

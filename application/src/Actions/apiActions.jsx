@@ -24,8 +24,9 @@ export const emptyToken = () => ({
 })
 
 export function fetchItem(EANcode) {
-	let currentToken = 'Bearer '+ store.getState().apiInfo.accessToken
+	let currentToken = store.getState().apiInfo.accessToken
 	let url = "https://consupedia.se/api/students/products/" + EANcode
+
 
 	return dispatch => {
 		dispatch({ type: REQUEST_ITEM })
@@ -38,7 +39,7 @@ export function fetchItem(EANcode) {
 		}).then((response) => {
 			dispatch({
 				type: RECIEVE_ITEM,
-				payload: response
+				payload: response.json()
 			})
 		}).catch((err) => {
 			dispatch({
