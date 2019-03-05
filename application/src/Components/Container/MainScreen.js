@@ -14,6 +14,7 @@ import { appendCurrentItem } from '../../Actions/currentItemActions';
 import { setFilter, emptyFilter } from '../../Actions/searchActions';
 import { store } from '../../Store/store';
 import { tryLoginUser } from '../../Actions/firebaseActions';
+import { emptyToken } from '../../Actions/apiActions'
 
 class MainScreen extends Component {
 
@@ -90,6 +91,7 @@ class MainScreen extends Component {
 	}
 
 	onLogoutClick = (e) => {
+		store.dispatch(emptyToken())
 		store.dispatch(emptyFilter())
 		e.preventDefault();
 		this.props.history.push('/')

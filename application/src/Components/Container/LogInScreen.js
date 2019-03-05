@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { addUser, tryLoginUser, removeUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
+import { setToken } from '../../Actions/apiActions';
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
-import getAccessToken from '../../Utilities/getAccessToken';
 import { withRouter } from "react-router-dom";
+import { store } from '../../Store/store'
 
 
 class LogInScreen extends Component {
@@ -21,6 +22,7 @@ class LogInScreen extends Component {
 
 	onLoginClick = (e) => {
 		//console.log(getAccessToken())
+
 		this.props.tryLoginUser(this.props.user["username"])
 		setTimeout(() => {
 			this.loginControlCheck();
@@ -31,6 +33,7 @@ class LogInScreen extends Component {
 		try {
 			if (this.props.user["username"] === this.props.firebase["username"] &&
 				this.props.user["password"] === this.props.firebase["password"]) {
+				store.dispatch(setToken())
 				this.setState({
 					logInError: false
 				})
