@@ -65,6 +65,7 @@ class EditItemScreen extends Component {
                     NameValue={store.getState().currentItem.item.name}
                     CommentValue={store.getState().currentItem.item.comment}
                     QuantityValue={store.getState().currentItem.item.quantity}
+                    EANValue={store.getState().currentItem.item.EANcode}
                     updateNameValue={(e) => this.updateNameValue(e.target.value)}
                     updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
                     updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
