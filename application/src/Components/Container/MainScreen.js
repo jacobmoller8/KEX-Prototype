@@ -12,6 +12,7 @@ import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
 import { setFilter, emptyFilter } from '../../Actions/searchActions';
+import { emptyToken } from '../../Actions/apiActions'
 import store from '../../Store/store';
 
 class MainScreen extends Component {
@@ -84,6 +85,7 @@ class MainScreen extends Component {
 	}
 
 	onLogoutClick = (e) => {
+		store.dispatch(emptyToken())
 		store.dispatch(emptyFilter())
 		e.preventDefault();
 		this.props.history.push('/')
