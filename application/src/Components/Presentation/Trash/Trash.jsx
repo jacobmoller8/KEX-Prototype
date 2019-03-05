@@ -3,7 +3,7 @@ import './Trash.css';
 import { Button, Table } from 'react-bootstrap';
 import Search from '../Search/Search'
 import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
-import store from '../../../Store/store'
+import { store } from '../../../Store/store'
 
 export default class Trash extends Component {
 	render() {
@@ -12,7 +12,7 @@ export default class Trash extends Component {
 		const { currentTrash } = this.props
 
 		if (currentTrash !== undefined && currentTrash !== '[]') {
-			
+
 			if (filterValue === '' || filterValue === undefined) {
 				for (let key in currentTrash) {
 					trashList.push(

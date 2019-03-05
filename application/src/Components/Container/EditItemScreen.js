@@ -3,9 +3,9 @@ import Header from '../Presentation/Header/Header';
 import EditItem from '../Presentation/EditItem/EditItem';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import store from '../../Store/store';
+import { store } from '../../Store/store';
 import { removeCurrentItem, confirmCurrentItem } from '../../Actions/currentItemActions';
-
+import { tryLoginUser } from '../../Actions/firebaseActions';
 
 
 class EditItemScreen extends Component {
@@ -18,6 +18,10 @@ class EditItemScreen extends Component {
             comment: this.props.comment,
             quantity: this.props.quantity
         }
+    }
+    componentWillMount() {
+        let username = store.getState().user.username
+        store.dispatch(tryLoginUser(username))
     }
 
     updateNameValue = (input) => {

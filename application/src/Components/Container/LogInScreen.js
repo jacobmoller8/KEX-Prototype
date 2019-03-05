@@ -20,7 +20,7 @@ class LogInScreen extends Component {
 	}
 
 	onLoginClick = (e) => {
-		console.log(getAccessToken())
+		//console.log(getAccessToken())
 		this.props.tryLoginUser(this.props.user["username"])
 		setTimeout(() => {
 			this.loginControlCheck();

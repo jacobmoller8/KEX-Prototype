@@ -3,7 +3,7 @@ import './Shopping.css';
 import { Button, Table } from 'react-bootstrap';
 import FancyCheckbox from '../../MaterialComponents/Material-Checkbox/Checkbox'
 import Search from '../Search/Search'
-import store from '../../../Store/store'
+import { store } from '../../../Store/store'
 
 
 export default class Shopping extends Component {

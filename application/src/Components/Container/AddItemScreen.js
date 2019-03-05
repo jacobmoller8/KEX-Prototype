@@ -4,6 +4,8 @@ import AddItem from '../Presentation/AddItem/AddItem';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
+import { store } from '../../Store/store';
+import { tryLoginUser } from '../../Actions/firebaseActions';
 
 
 class AddItemScreen extends Component {
@@ -17,6 +19,10 @@ class AddItemScreen extends Component {
       quantity: ""
     }
 
+  }
+  componentWillMount() {
+    let username = store.getState().user.username
+    store.dispatch(tryLoginUser(username))
   }
 
   onAddItemClick = (e) => {

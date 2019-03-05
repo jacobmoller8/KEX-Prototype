@@ -12,7 +12,8 @@ import { removeShoppingItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
 import { setFilter, emptyFilter } from '../../Actions/searchActions';
-import store from '../../Store/store';
+import { store } from '../../Store/store';
+import { tryLoginUser } from '../../Actions/firebaseActions';
 
 class MainScreen extends Component {
 
@@ -59,6 +60,11 @@ class MainScreen extends Component {
 	}
 
 	componentWillMount() {
+
+		let username = store.getState().user.username
+		store.dispatch(tryLoginUser(username))
+
+
 		let screenOnMount = store.getState().mainScreen.mainScreenMode;
 		let inventoryOnMount = store.getState().firebase.inventory;
 		let shoppingOnMount = store.getState().firebase.shopping;
