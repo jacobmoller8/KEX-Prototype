@@ -6,14 +6,14 @@ import firebaseReducer from "../Reducers/firebaseReducer";
 import userReducer from "../Reducers/userReducer";
 import mainScreenModeReducer from "../Reducers/mainScreenModeReducer";
 import currentItemReducer from "../Reducers/currentItemReducer";
+import apiReducer from '../Reducers/apiReducer';
 
 import thunk from "redux-thunk";
-import apiReducer from '../Reducers/apiReducer';
+
 
 const persistConfig = {
     key: "root",
     storage: storage,
-    blacklist: ["firebase"]
 }
 
 
