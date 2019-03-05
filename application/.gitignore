@@ -9,7 +9,8 @@
 /coverage
 
 # key files
-/Utilities/getAccessToken.js
+application/src/Utilities/getAccessToken.js
+src/Utilities/getAccessToken.js
 
 # production
 /build
