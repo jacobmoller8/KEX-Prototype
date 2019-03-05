@@ -72,4 +72,10 @@
 
 .trashTable td{
     vertical-align: middle;
+    padding: 5px;
+}
+
+.trashTable th{
+    text-align: left;
+    padding: 5px;
 }

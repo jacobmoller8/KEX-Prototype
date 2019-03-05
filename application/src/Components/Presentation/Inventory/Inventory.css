@@ -72,8 +72,14 @@
     font-weight: 100; 
 }
 
+.inventoryTable th{
+    text-align: left;
+    padding: 5px;
+}
+
 .inventoryTable td{
     vertical-align: middle;
+    padding: 5px;
 }
 
 .itemName{

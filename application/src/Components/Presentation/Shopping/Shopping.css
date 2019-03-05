@@ -72,4 +72,10 @@
 
 .shoppingTable td{
     vertical-align: middle;
+    padding: 5px;
+}
+
+.shoppingTable th{
+    text-align: left;
+    padding: 5px;
 }
