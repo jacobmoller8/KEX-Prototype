@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CircularIntegration from '../../MaterialComponents//Loaders/ButtonLoader'
 import './LogIn.css';
 import LogInError from '../LogInError/LogInError'
+import { Button } from 'react-bootstrap';
 
 export default class LogIn extends Component {
 
@@ -36,7 +37,8 @@ export default class LogIn extends Component {
 						</div>
 
 						<p id="registerText">Haven't got an account?</p>
-						<button type="submit" className="btn btn-warning">Register</button>
+						<Button type="submit" className="btn btn-warning" id="registerBtn" disabled>Register</Button>
+						
 
 					</div>
 

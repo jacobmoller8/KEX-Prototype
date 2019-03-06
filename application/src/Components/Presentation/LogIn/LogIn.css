@@ -16,3 +16,7 @@
 #logInBtnContainer{
 	display: inline-block;
 }
+
+#registerBtn{
+    background-color: rgb(249, 145, 34);
+}
