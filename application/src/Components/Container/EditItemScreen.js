@@ -19,7 +19,9 @@ class EditItemScreen extends Component {
         this.state = {
             name: this.props.name,
             comment: this.props.comment,
-            quantity: this.props.quantity
+            quantity: this.props.quantity,
+            status: "none",
+            message: ""
         }
     }
     componentWillMount() {
@@ -45,11 +47,12 @@ class EditItemScreen extends Component {
 
     onConfirmItemClick = (e) => {
         e.preventDefault();
-        if (isNaN(this.state.quantity)) {
-            console.log("Quantity input is not a number")
+        if (isNaN(this.state.quantity) || this.state.quantity === "") {
+            this.setState({ status: "error", message: "Quantity is not a number" })
         }
         else {
             confirmCurrentItem(this.props.username, this.props.screenMode, this.props.item, this.state.name, this.state.comment, this.state.quantity)
+            this.setState({ status: "accept", message: "Item updated successfully" })
         }
     }
 
@@ -62,8 +65,8 @@ class EditItemScreen extends Component {
     onLogoutClick = (e) => {
         e.preventDefault();
         store.dispatch(emptyToken())
-		store.dispatch(emptyFilter())
-		store.dispatch(userLogout())
+        store.dispatch(emptyFilter())
+        store.dispatch(userLogout())
         this.props.history.push('/');
     }
 
@@ -80,7 +83,9 @@ class EditItemScreen extends Component {
                     updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
                     updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
                     onConfirmItemClick={this.onConfirmItemClick}
-                    onGoBackClick={this.onGoBackClick}>
+                    onGoBackClick={this.onGoBackClick}
+                    status={this.state.status}
+                    message={this.state.message}>
                 </EditItem>
             </div>
         )

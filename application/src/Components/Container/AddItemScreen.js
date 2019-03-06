@@ -20,7 +20,9 @@ class AddItemScreen extends Component {
 			name: "",
 			comment: "",
 			quantity: "",
-			EANSearchValue: ""
+			EANSearchValue: "",
+			status: "none",
+			message: ""
 		}
 
 	}
@@ -39,12 +41,13 @@ class AddItemScreen extends Component {
 
 	onAddItemClick = (e) => {
 		e.preventDefault();
-		if (isNaN(this.state.quantity)) {
-			console.log("Quantity is not a number")
+		if (isNaN(this.state.quantity) || this.state.quantity === "") {
+			this.setState({ status: "error", message: "Quantity is not a number" })
 		}
 		else {
 			if (this.props.screenMode === "inventory") {
 				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
 			if (this.props.screenMode === "shopping") {
@@ -59,7 +62,7 @@ class AddItemScreen extends Component {
 			name: "",
 			comment: "",
 			quantity: "",
-			EANSearchValue: ""
+			EANSearchValue: "",
 		})
 	}
 
@@ -113,7 +116,9 @@ class AddItemScreen extends Component {
 					updateNameValue={(e) => this.updateNameValue(e.target.value)}
 					updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
 					updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
-					onApiSearch={() => this.onApiSearch()} ></AddItem>
+					onApiSearch={() => this.onApiSearch()}
+					status={this.state.status}
+					message={this.state.message}></AddItem>
 			</div>
 		)
 	}

@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './AddItem.css';
-import SearchBoxAPI from '../SearchBoxAPI/SearchBoxAPI'
+import SearchBoxAPI from '../SearchBoxAPI/SearchBoxAPI';
+import ItemFeedbackBox from "../ItemFeedbackBox/ItemFeedbackBox";
 
 export default class AddItem extends Component {
   render() {
+
+    if (this.props.status === "error" || this.props.status === "accept") {
+      var feedbackBox = <ItemFeedbackBox status={this.props.status} message={this.props.message} />
+    }
+
     return (
       <div>
         <div className="row">
@@ -20,6 +26,9 @@ export default class AddItem extends Component {
                 <label>Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" value={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
+
+              {feedbackBox}
+
               <div className="row btnRow">
                 <div className="container-fluid col-4 backBtnCont">
                   <Button className="btn goBackButton" type="submit" onClick={this.props.onGoBackClick}>  <img className="backIcon" src={require('../../../Images/Icons/back.svg')} alt="shoppingIcon"></img> </Button>
@@ -31,7 +40,7 @@ export default class AddItem extends Component {
                 </div>
               </div>
             </form>
-						<SearchBoxAPI onApiSearch={this.props.onApiSearch} valueHandler={this.props.EANSearchValue} changeHandler={this.props.updateEANSearchValue}/>
+            <SearchBoxAPI onApiSearch={this.props.onApiSearch} valueHandler={this.props.EANSearchValue} changeHandler={this.props.updateEANSearchValue} />
 
           </div>
         </div>

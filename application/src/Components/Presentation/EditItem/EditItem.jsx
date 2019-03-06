@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import './EditItem.css';
+import ItemFeedbackBox from "../ItemFeedbackBox/ItemFeedbackBox";
 
 export default class EditItem extends Component {
   render() {
+
+    if (this.props.status === "error" || this.props.status === "accept") {
+      var feedbackBox = <ItemFeedbackBox status={this.props.status} message={this.props.message} />
+    }
+
     return (
       <div>
         <div className="row">
@@ -20,7 +26,9 @@ export default class EditItem extends Component {
                 <label>Quantity (Number):</label>
                 <input type="text" className="form-control" id="quantityInput" defaultValue={this.props.QuantityValue} onChange={this.props.updateQuantityValue}></input>
               </div>
-              
+
+              {feedbackBox}
+
               <div className="row btnRow">
                 <div className="container-fluid col-4 backBtnCont">
                   <Button className="btn goBackButton" type="submit" onClick={this.props.onGoBackClick}>  <img className="backIcon" src={require('../../../Images/Icons/back.svg')} alt="shoppingIcon"></img> </Button>

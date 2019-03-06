@@ -28,8 +28,6 @@ export function appendCurrentItem(username, screenMode, id) {
 
 export function confirmCurrentItem(username, screenMode, id, name, comment, quantity) {
 
-    console.log(username + screenMode + id + name + comment + quantity)
-
     var item = {
         "EANcode": id,
         "name": name,
