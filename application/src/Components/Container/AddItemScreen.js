@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
 import { store } from '../../Store/store';
 import { tryLoginUser } from '../../Actions/firebaseActions';
-import { fetchItem } from '../../Actions/apiActions';
+import { fetchItem, emptyToken } from '../../Actions/apiActions';
+import { emptyFilter } from '../../Actions/searchActions';
+import { userLogout } from '../../Actions/userActions';
 
 
 class AddItemScreen extends Component {
@@ -90,6 +92,9 @@ class AddItemScreen extends Component {
 
 	onLogoutClick = (e) => {
 		e.preventDefault();
+		store.dispatch(emptyToken())
+		store.dispatch(emptyFilter())
+		store.dispatch(userLogout())
 		this.props.history.push('/');
 	}
 

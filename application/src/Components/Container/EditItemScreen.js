@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 import { store } from '../../Store/store';
 import { removeCurrentItem, confirmCurrentItem } from '../../Actions/currentItemActions';
 import { tryLoginUser } from '../../Actions/firebaseActions';
+import { emptyToken } from '../../Actions/apiActions';
+import { emptyFilter } from '../../Actions/searchActions';
+import { userLogout } from '../../Actions/userActions';
 
 
 class EditItemScreen extends Component {
@@ -58,6 +61,9 @@ class EditItemScreen extends Component {
 
     onLogoutClick = (e) => {
         e.preventDefault();
+        store.dispatch(emptyToken())
+		store.dispatch(emptyFilter())
+		store.dispatch(userLogout())
         this.props.history.push('/');
     }
 

@@ -1,7 +1,7 @@
 import { SET_ACCESS_TOKEN, EMPTY_TOKENS, RECIEVE_ITEM, REQUEST_ITEM, ERROR_ON_FETCH } from '../Actions/apiActions';
 
 const initialState = {
-	apiInfo: '',
+	accessToken: '',
 	fetching: false,
 	fetched: false,
 	fetchedItem: '',

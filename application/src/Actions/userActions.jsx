@@ -1,6 +1,7 @@
 /* ------------- ACTIONS ------------- */
 export const USER_INPUT = "USER_INPUT";
 export const PASS_INPUT = "PASS_INPUT";
+export const LOG_OUT = "LOG_OUT";
 
 /* ------------- ACTION CREATORS ------------- */
 export function userLoginUserInput(username) {
@@ -17,5 +18,11 @@ export function userLoginPassInput(password) {
         payload: {
             password: password
         }
+    }
+}
+
+export function userLogout() {
+    return {
+        type: LOG_OUT
     }
 }
