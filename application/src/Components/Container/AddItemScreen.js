@@ -45,13 +45,17 @@ class AddItemScreen extends Component {
 			this.setState({ status: "error", message: "Quantity is not a number" })
 		}
 		else {
-			if (this.props.screenMode === "inventory") {
+			if (this.state.quantity < 1) {
+				this.setState({ status: "error", message: "Quantity must be atleast 1" })
+			}
+			else if (this.props.screenMode === "inventory") {
 				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
 				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
-			if (this.props.screenMode === "shopping") {
+			else if (this.props.screenMode === "shopping") {
 				addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
 		}
@@ -65,27 +69,37 @@ class AddItemScreen extends Component {
 			EANSearchValue: "",
 		})
 	}
+	resetItemBoxState = () => {
+		this.setState({
+			status: "none",
+			message: ""
+		})
+	}
 
 	updateNameValue = (input) => {
 		this.setState({
 			name: input
 		})
+		this.resetItemBoxState()
 	}
 	updateCommentValue = (input) => {
 		this.setState({
 			comment: input
 		})
+		this.resetItemBoxState()
 	}
 	updateQuantityValue = (input) => {
 		this.setState({
 			quantity: input
 		})
+		this.resetItemBoxState()
 	}
 
 	updateEANSearchValue = (input) => {
 		this.setState({
 			EANSearchValue: input
 		})
+		this.resetItemBoxState()
 	}
 
 	onGoBackClick = (e) => {
