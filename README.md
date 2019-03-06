@@ -14,11 +14,10 @@ Jacob Möller & Hugo Bergqvist
 	- Trash
 
 	- Shopping
-			Empty List?
+			If time: Empty List?
 			If time: save checkbox state
 
 	- Add Item
-			Feedback on add item ( SNACKBAR )
 			API-Implementation
 
 	- Edit Item
