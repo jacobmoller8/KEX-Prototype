@@ -101,7 +101,7 @@ class AddItemScreen extends Component {
 	render() {
 		return (
 			<div>
-				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.username} />
+				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={"addItem"} />
 				<AddItem
 					onAddItemClick={this.onAddItemClick}
 					onGoBackClick={this.onGoBackClick}

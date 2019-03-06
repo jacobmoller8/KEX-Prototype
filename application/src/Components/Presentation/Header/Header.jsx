@@ -36,6 +36,8 @@ export default class Header extends Component {
 			profileIcon = <Button className="profileBtn">  <img className="profileImage" src={require('../../../Images/ProfileImages/GreenProfile.svg')} alt="shoppingIcon"></img> </Button>
 		}else if(this.props.currentUser === 'editItem'){
 			profileIcon = <Button className="profileBtn">  <img className="profileImage" src={require('../../../Images/ProfileImages/HeaderEditIcon.svg')} alt="shoppingIcon"></img> </Button>
+		}else if(this.props.currentUser === 'addItem'){
+			profileIcon = <Button className="profileBtn">  <img className="profileImage" src={require('../../../Images/ProfileImages/HeaderAddIcon.svg')} alt="shoppingIcon"></img> </Button>
 		}
 		
 		return (
