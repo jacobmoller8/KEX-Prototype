@@ -8,7 +8,9 @@
 	border: none;
 }
 
+@media (min-width:801px) {
 .ApiSearchBtn:hover{
 	background-color: rgb(84, 126, 52);
+}
 }
 

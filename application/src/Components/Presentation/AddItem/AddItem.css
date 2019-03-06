@@ -8,7 +8,6 @@
     border-radius: 15px;
 }
 
-
 .btnRow{
     margin-top: 30px;
 }
@@ -37,12 +36,6 @@
 	margin-bottom: 10px;
 	box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
 }
-
-.confirmButton:hover{
-	border-color: #308D40;
-	background-color: #308D40;
-}
-
 .goBackButton{
     width: 8vw;
     height: 3vw;
@@ -57,7 +50,15 @@
 	box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
 }
 
+
+
+@media (min-width:801px) {
+.confirmButton:hover{
+	border-color: #308D40;
+	background-color: #308D40;
+}
 .goBackButton:hover{
     border-color: red;
     background-color: red;
+}
 }
