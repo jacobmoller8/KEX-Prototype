@@ -42,42 +42,47 @@ def add_user():
 def add_to_inventory(code):
 
     try:
-        quant = int(db.child("users").child(username).child(
-            "inventory").child(code).child("quantity").get().val())
+        itemObject = db.child("users").child(username).child(
+            "inventory").child(code).get().val()
 
-        dates = db.child("users").child(username).child(
-            "inventory").child(code).child("dates").get().val()
+        name = itemObject["name"]
+        comment = itemObject["comment"]
+        quant = int(itemObject["quantity"])
+        dates = itemObject["dates"]
+
     except:
         quant = 0
         dates = []
+        comment = ""
+        try:
+            api_headers = {
+                "Accept": "application/json",
+                "Authorization": access_token}
+            api_string = "https://consupedia.se/api/students/products/" + \
+                str(code)
+            api_response = requests.get(api_string, headers=api_headers)
+            json_data = json.loads(api_response.text)
+            name = json_data["name"]
+            print(json_data)
+        except:
+            name = "Okänd Kod"
 
     today = str(date.today())
 
     dates.append(today)
 
-    try:
-        api_headers = {
-            "Accept": "application/json",
-            "Authorization": access_token}
-        api_string = "https://consupedia.se/api/students/products/" + str(code)
-        api_response = requests.get(api_string, headers=api_headers)
-        json_data = json.loads(api_response.text)
-        name = json_data["name"]
-    except:
-        name = "Okänd Kod"
-
-    print(json_data)
-
     product = {
         "EANcode": code,
         "name": name,
         "dates": dates,
-        "comment": "",
+        "comment": comment,
         "quantity": quant + 1
     }
 
     db.child("users").child(username).child(
-        "inventory").child(code).set(product)
+        "inventory").child(code).update(product)
+
+    print("item added to inventory")
 
     return
 
@@ -85,41 +90,44 @@ def add_to_inventory(code):
 def remove_from_inventory(code):
 
     try:
-        quant = int(db.child("users").child(username).child(
-            "inventory").child(code).child("quantity").get().val())
+        itemObject = db.child("users").child(username).child(
+            "inventory").child(code).get().val()
 
-        dates = db.child("users").child(username).child(
-            "inventory").child(code).child("dates").get().val()
+        quant = int(itemObject["quantity"])
+        dates = itemObject["dates"]
+
     except:
         quant = 0
         dates = []
 
     if quant == 1:
         try:
+            add_to_trash(code)
+
             db.child("users").child(username).child(
                 "inventory").child(code).remove()
 
-            add_to_trash(code)
+            print("item removed from inventory")
+
         except:
-            print("not in inventory")
+            print("not in inventory: error 1")
     else:
         try:
+            add_to_trash(code)
             dates.pop(0)
 
             product = {
                 "EANcode": code,
-                "name": "",
                 "dates": dates,
-                "comment": "",
                 "quantity": quant - 1
             }
             db.child("users").child(username).child(
-                "inventory").child(code).set(product)
+                "inventory").child(code).update(product)
 
-            add_to_trash(code)
+            print("item removed from inventory")
 
         except:
-            print("not in inventory")
+            print("not in inventory: error 2")
 
     return
 
@@ -127,30 +135,36 @@ def remove_from_inventory(code):
 def add_to_trash(code):
 
     try:
-        quant = int(db.child("users").child(username).child(
-            "trash").child(code).child("quantity").get().val())
+        itemObject = db.child("users").child(username).child(
+            "trash").child(code).get().val()
 
-        dates = db.child("users").child(username).child(
-            "trash").child(code).child("dates").get().val()
+        name = itemObject["name"]
+        comment = itemObject["comment"]
+        quant = int(itemObject["quantity"])
+        dates = itemObject["dates"]
     except:
         quant = 0
         dates = []
+        itemObject = db.child("users").child(username).child(
+            "inventory").child(code).get().val()
+        name = itemObject["name"]
+        comment = itemObject["comment"]
 
     today = str(date.today())
-
     dates.append(today)
-    print(dates)
 
     product = {
         "EANcode": code,
-        "name": "",
+        "name": name,
         "dates": dates,
-        "comment": "",
+        "comment": comment,
         "quantity": quant + 1
     }
 
     db.child("users").child(username).child(
         "trash").child(code).set(product)
+
+    print("item added to trash")
 
     return
 
@@ -172,7 +186,6 @@ def barcode_scanner_output():
         barcode_scanner_output()
     else:
         remove_from_inventory(x)
-        print("item removed")
         barcode_scanner_output()
 
 
@@ -193,7 +206,6 @@ def barcode_scanner_input():
         barcode_scanner_output()
     else:
         add_to_inventory(x)
-        print("item added")
         barcode_scanner_input()
 
 
