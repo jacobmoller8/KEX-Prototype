@@ -8,21 +8,27 @@ import { store } from '../../../Store/store'
 
 export default class Shopping extends Component {
 
+
 	render() {
 		let filterValue = store.getState().firebase.filter
 		var shoppingList = [];
 		const { currentShopping } = this.props
+		let checkStyle = ({color: 'grey'})
 
 		if (currentShopping !== undefined && currentShopping !== '[]') {
 			if (filterValue === '' || filterValue === undefined) {
 				for (let key in currentShopping) {
+					if (currentShopping[key].checked){
+						checkStyle = ({color: 'grey', textDecoration: 'line-through'})
+					}
+					else (checkStyle = ({color: 'black'}))
 					shoppingList.push(
-						<tr key={currentShopping[key].EANcode}>
+						<tr key={currentShopping[key].EANcode} style={checkStyle}>
 							<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
 							<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
 							<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 							<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
-							<td> <FancyCheckbox /></td>
+							<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck}/></td>
 							<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
 						</tr>)
 				}
@@ -36,7 +42,7 @@ export default class Shopping extends Component {
 								<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
 								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
-								<td> <FancyCheckbox /></td>
+								<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck}/></td>
 								<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
 							</tr>)
 					}

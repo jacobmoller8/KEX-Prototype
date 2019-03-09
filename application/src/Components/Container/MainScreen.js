@@ -8,7 +8,7 @@ import Shopping from '../Presentation/Shopping/Shopping';
 import { withRouter } from "react-router-dom";
 import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryActions';
 import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
-import { removeShoppingItem } from '../../Actions/shoppingActions';
+import { removeShoppingItem, checkItem } from '../../Actions/shoppingActions';
 import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenActions';
 import { appendCurrentItem } from '../../Actions/currentItemActions';
 import { setFilter, emptyFilter } from '../../Actions/searchActions';
@@ -99,6 +99,10 @@ class MainScreen extends Component {
 		this.props.history.push('/')
 	}
 
+	handleCheckItem = (item) =>{
+		store.dispatch(checkItem(this.props.user.username, item));
+	}
+
 	render() {
 		var currentScreen = this.state.screenMode
 		if (currentScreen === 'inventory') {
@@ -106,7 +110,7 @@ class MainScreen extends Component {
 		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
+			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} handleCheck={this.handleCheckItem} />
 		}
 		return (
 			<div>

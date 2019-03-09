@@ -24,7 +24,18 @@ class FancyCheckbox extends React.Component {
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
+        this.props.handleCheck(this.props.currentItem)
     };
+
+    componentWillMount(){
+        if (this.props.currentItem.checked === false){
+            this.setState({checked: false})
+        }else if (this.props.currentItem.checked === true){
+            this.setState({checked: true})
+        }else{
+            this.setState({checked: false})
+        }
+    }
 
     render() {
         const { classes } = this.props;
@@ -34,7 +45,7 @@ class FancyCheckbox extends React.Component {
                 <FormControlLabel
                     control={
                         <Checkbox
-                            checked={this.state.checkedG}
+                            checked={this.state.checked}
                             onChange={this.handleChange('checked')}
                             value="checked"
                             classes={{
