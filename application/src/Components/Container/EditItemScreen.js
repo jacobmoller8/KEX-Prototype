@@ -50,7 +50,7 @@ class EditItemScreen extends Component {
         if (isNaN(this.state.quantity) || this.state.quantity === "") {
             this.setState({ status: "error", message: "Quantity is not a number" })
         }
-        if (this.state.quantity < 1) {
+        else if (this.state.quantity < 1) {
             this.setState({ status: "error", message: "Quantity must be atleast 1" })
         }
         else {

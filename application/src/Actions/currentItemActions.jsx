@@ -28,11 +28,22 @@ export function appendCurrentItem(username, screenMode, id) {
 
 export function confirmCurrentItem(username, screenMode, id, name, comment, quantity) {
 
+    var date = new Date().toISOString().slice(0, 10);
+
+    var dates = []
+    var i
+
+    for (i = 0; i < quantity; i++) {
+        dates.push(date)
+    }
+
+
     var item = {
         "EANcode": id,
         "name": name,
         "comment": comment,
-        "quantity": parseInt(quantity)
+        "quantity": parseInt(quantity),
+        "dates": dates
     }
 
     databaseRef.ref('users/' + username + '/' + screenMode).child(id).update(item);
@@ -52,11 +63,6 @@ export function confirmCurrentItem(username, screenMode, id, name, comment, quan
         });
     }
 }
-
-
-
-
-
 
 export function removeCurrentItem() {
 
