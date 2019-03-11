@@ -8,6 +8,12 @@ Jacob Möller & Hugo Bergqvist
 
 ### Application
 
+- (Rename tryLoginUser)
+- Redux localstorage på telefonen
+- Maila consupedia
+-(try catch laddar items)
+
+
 - Components:
 	- Inventory
 
@@ -15,7 +21,6 @@ Jacob Möller & Hugo Bergqvist
 
 	- Shopping
 			If time: Empty List?
-			If time: save checkbox state
 
 	- Add Item
 			API-Implementation
