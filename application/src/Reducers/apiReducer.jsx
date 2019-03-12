@@ -35,6 +35,7 @@ export default function apiReducer(state = initialState, { type, payload }) {
 			}
 		}
 		case RECIEVE_ITEM: {
+			console.log("RECIEVED ITEM: " + payload)
 			return {
 				...state,
 				fetching: false,
