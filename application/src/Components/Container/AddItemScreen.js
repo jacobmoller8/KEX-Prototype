@@ -15,7 +15,6 @@ class AddItemScreen extends Component {
 
 	constructor(props) {
 		super(props)
-
 		this.state = {
 			name: "",
 			fetchedEAN: "",
@@ -32,23 +31,29 @@ class AddItemScreen extends Component {
 		store.dispatch(tryLoginUser(username))
 	}
 
+	componentWillReceiveProps(nextProps){
+		if (nextProps.fetchedItem){
+			let fetchedName = nextProps.fetchedItem.name
+			let fetchedEAN = this.state.EANSearchValue
+	
+			this.setState({
+				name: fetchedName,
+				fetchedEAN,
+				quantity: 1
+			})
+		}
+	}
+
 	onApiSearch = () => {
 		console.log('SEARCH VALUE: ' + this.state.EANSearchValue)
 		if (this.state.EANSearchValue.length === 13) {
-			store.dispatch(fetchItem(this.state.EANSearchValue))
-			if (store.getState().apiInfo.fetchedItem.name !== undefined){
-				let fetchedName = store.getState().apiInfo.fetchedItem.name
-				let fetchedEAN = this.state.EANSearchValue
-				this.setState({
-					name: fetchedName,
-					fetchedEAN: fetchedEAN,
-					quantity: 1
-				})
-			}
 
-		}
-		console.log(store.getState().apiInfo.fetchedItem)
+			store.dispatch(fetchItem(this.state.EANSearchValue))
+
+		}else{console.log("TOO SHORT/LONG BARCODE! Todo: popup info")}
+		console.log("FETCHED ITEM: ", store.getState().apiInfo.fetchedItem)
 	}
+
 
 	onAddItemClick = (e) => {
 		e.preventDefault();
@@ -152,7 +157,8 @@ class AddItemScreen extends Component {
 const mapStateToProps = state => {
 	return {
 		username: state.firebase.username,
-		screenMode: state.mainScreen.mainScreenMode
+		screenMode: state.mainScreen.mainScreenMode,
+		fetchedItem: state.apiInfo.fetchedItem
 	}
 };
 
