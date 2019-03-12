@@ -1,5 +1,4 @@
 import getAccessToken from '../Utilities/getAccessToken'
-import firebase from 'firebase/app'
 import { store } from '../Store/store'
 
 export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN";
@@ -30,7 +29,6 @@ export function fetchItem(EANcode) {
 	let cleanToken = currentToken.replace('"', '')
 
 	let url = `https://consupedia.se/api/students/products/${EANcode}`
-	console.log("URL ", url)
 	return dispatch => {
 		dispatch({ type: REQUEST_ITEM })
 		fetch(url, {

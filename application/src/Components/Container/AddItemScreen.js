@@ -18,6 +18,7 @@ class AddItemScreen extends Component {
 
 		this.state = {
 			name: "",
+			fetchedEAN: "",
 			comment: "",
 			quantity: "",
 			EANSearchValue: "",
@@ -35,6 +36,16 @@ class AddItemScreen extends Component {
 		console.log('SEARCH VALUE: ' + this.state.EANSearchValue)
 		if (this.state.EANSearchValue.length === 13) {
 			store.dispatch(fetchItem(this.state.EANSearchValue))
+			if (store.getState().apiInfo.fetchedItem.name !== undefined){
+				let fetchedName = store.getState().apiInfo.fetchedItem.name
+				let fetchedEAN = this.state.EANSearchValue
+				this.setState({
+					name: fetchedName,
+					fetchedEAN: fetchedEAN,
+					quantity: 1
+				})
+			}
+
 		}
 		console.log(store.getState().apiInfo.fetchedItem)
 	}
@@ -49,12 +60,12 @@ class AddItemScreen extends Component {
 				this.setState({ status: "error", message: "Quantity must be atleast 1" })
 			}
 			else if (this.props.screenMode === "inventory") {
-				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN)
 				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
 			else if (this.props.screenMode === "shopping") {
-				addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity)
+				addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN)
 				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
