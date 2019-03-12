@@ -8,11 +8,7 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-		],
-		"rewrites": [ {
-			"source": "/fetchBarcode",
-			"function": "fetchBarcode"
-		} ]
+		]
   },
   "functions": {
     "predeploy": [
