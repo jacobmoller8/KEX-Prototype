@@ -5,13 +5,18 @@ Jacob Möller & Hugo Bergqvist
 
 ## Todo
 
+- Hitta testpersoner
+- Mall för intervju
+- Manual för systemet
+- Instruktionsvideo
+- Bygga ihop alla system
+- Testa systemen
+- Skriva metod
 
 ### Application
 
 - (Rename tryLoginUser)
-- Redux localstorage på telefonen
-- Maila consupedia
--(try catch laddar items)
+- (try catch laddar items)
 
 
 - Components:
@@ -20,13 +25,13 @@ Jacob Möller & Hugo Bergqvist
 	- Trash
 
 	- Shopping
-			If time: Empty List?
+		- If time: Empty List?
 
 	- Add Item
-			API-Implementation
+		- API-Implementation
 
 	- Edit Item
-			API-Implementation
+		- API-Implementation
 
 	- Log In
 
