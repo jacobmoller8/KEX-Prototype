@@ -17,6 +17,7 @@ Jacob Möller & Hugo Bergqvist
 
 - (Rename tryLoginUser)
 - (try catch laddar items)
+- Kod rensning
 
 
 - Components:
@@ -28,10 +29,8 @@ Jacob Möller & Hugo Bergqvist
 		- If time: Empty List?
 
 	- Add Item
-		- API-Implementation
 
 	- Edit Item
-		- API-Implementation
 
 	- Log In
 
