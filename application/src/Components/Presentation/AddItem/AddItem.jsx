@@ -3,13 +3,24 @@ import { Button } from 'react-bootstrap';
 import './AddItem.css';
 import SearchBoxAPI from '../SearchBoxAPI/SearchBoxAPI';
 import ItemFeedbackBox from "../ItemFeedbackBox/ItemFeedbackBox";
+import APIError from '../APIErrorHandler/APIError'
+
+let APIErrorVisibility =({ display: 'none'})
 
 export default class AddItem extends Component {
+
   render() {
 
     if (this.props.status === "error" || this.props.status === "accept") {
       var feedbackBox = <ItemFeedbackBox status={this.props.status} message={this.props.message} />
-    }
+		}
+
+		if (this.props.currentError === ""){
+			APIErrorVisibility =({ display: 'none'})
+		}else{
+			APIErrorVisibility =({ display: 'block'})
+		}
+		
 
     return (
       <div>
@@ -40,6 +51,7 @@ export default class AddItem extends Component {
                 </div>
               </div>
             </form>
+						<APIError currentError={this.props.currentError} style={APIErrorVisibility}/>
             <SearchBoxAPI onApiSearch={this.props.onApiSearch} valueHandler={this.props.EANSearchValue} changeHandler={this.props.updateEANSearchValue} />
 
           </div>

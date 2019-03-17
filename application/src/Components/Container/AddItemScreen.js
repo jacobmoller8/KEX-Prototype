@@ -22,7 +22,8 @@ class AddItemScreen extends Component {
 			quantity: "",
 			EANSearchValue: "",
 			status: "none",
-			message: ""
+			message: "",
+			currentError: ""
 		}
 
 	}
@@ -31,27 +32,38 @@ class AddItemScreen extends Component {
 		store.dispatch(tryLoginUser(username))
 	}
 
-	componentWillReceiveProps(nextProps){
-		if (nextProps.fetchedItem){
-			let fetchedName = nextProps.fetchedItem.name
-			let fetchedEAN = this.state.EANSearchValue
-	
-			this.setState({
-				name: fetchedName,
-				fetchedEAN,
-				quantity: 1
-			})
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.fetchedItem) {
+			if (nextProps.fetchedItem.message) {
+				this.setState({
+					currentError: 'Unkown Barcode'
+				})
+			} else {
+				let fetchedName = nextProps.fetchedItem.name
+				let fetchedEAN = this.state.EANSearchValue
+
+				this.setState({
+					name: fetchedName,
+					fetchedEAN,
+					quantity: 1
+				})
+			}
 		}
 	}
 
 	onApiSearch = () => {
-		console.log('SEARCH VALUE: ' + this.state.EANSearchValue)
 		if (this.state.EANSearchValue.length === 13) {
+			if (/^\d+$/.test(this.state.EANSearchValue)) {
+				store.dispatch(fetchItem(this.state.EANSearchValue))
+			}
+			else {
+				this.setState({ currentError: 'The barcode can only contain numbers' })
+			}
 
-			store.dispatch(fetchItem(this.state.EANSearchValue))
+		} else {
+			this.setState({ currentError: `The barcode must contain 13 characters, your search contained: ${this.state.EANSearchValue.length}` })
+		}
 
-		}else{console.log("TOO SHORT/LONG BARCODE! Todo: popup info")}
-		console.log("FETCHED ITEM: ", store.getState().apiInfo.fetchedItem)
 	}
 
 
@@ -113,7 +125,8 @@ class AddItemScreen extends Component {
 
 	updateEANSearchValue = (input) => {
 		this.setState({
-			EANSearchValue: input
+			EANSearchValue: input,
+			currentError: ''
 		})
 		this.resetItemBoxState()
 	}
@@ -148,7 +161,8 @@ class AddItemScreen extends Component {
 					updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
 					onApiSearch={() => this.onApiSearch()}
 					status={this.state.status}
-					message={this.state.message}></AddItem>
+					message={this.state.message}
+					currentError={this.state.currentError}></AddItem>
 			</div>
 		)
 	}
