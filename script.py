@@ -191,7 +191,7 @@ def barcode_scanner_output():
     try:
         x = int(input("barcode OUT: "))
     except:
-        print("error input code")
+        print("error output code")
         barcode_scanner_output()
 
     if x == 0:
