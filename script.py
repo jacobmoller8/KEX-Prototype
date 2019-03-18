@@ -49,10 +49,15 @@ def add_to_inventory(code):
         comment = itemObject["comment"]
         quant = int(itemObject["quantity"])
         dates = itemObject["dates"]
+        try:
+            fullname = itemObject["fullname"]
+        except:
+            fullname = ""
 
     except:
         quant = 0
         dates = []
+        fullname = ""
         comment = ""
         try:
             api_headers = {
@@ -63,6 +68,7 @@ def add_to_inventory(code):
             api_response = requests.get(api_string, headers=api_headers)
             json_data = json.loads(api_response.text)
             name = json_data["name"]
+            fullname = json_data["fullname"]
             print(json_data)
         except:
             name = "Okänd Kod"
@@ -74,6 +80,7 @@ def add_to_inventory(code):
     product = {
         "EANcode": code,
         "name": name,
+        "fullname": fullname,
         "dates": dates,
         "comment": comment,
         "quantity": quant + 1
@@ -142,19 +149,29 @@ def add_to_trash(code):
         comment = itemObject["comment"]
         quant = int(itemObject["quantity"])
         dates = itemObject["dates"]
+        try:
+            fullname = itemObject["fullname"]
+        except:
+            fullname = ""
+
     except:
         quant = 0
         dates = []
-        itemObject = db.child("users").child(username).child(
-            "inventory").child(code).get().val()
-        name = itemObject["name"]
-        comment = itemObject["comment"]
+        try:
+            itemObject = db.child("users").child(username).child(
+                "inventory").child(code).get().val()
+            name = itemObject["name"]
+            fullname = itemObject["fullname"]
+            comment = itemObject["comment"]
+        except:
+            print("error adding to trash")
 
     today = str(date.today())
     dates.append(today)
 
     product = {
         "EANcode": code,
+        "fullname": fullname,
         "name": name,
         "dates": dates,
         "comment": comment,
