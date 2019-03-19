@@ -32,13 +32,11 @@
     border-color: rgb(249, 145, 34);
     box-shadow: 1px 1px 4px 2px #ccc;
 }
-@media (min-width:801px) {
 .roundBtn:hover{
     border-color: rgb(255, 214, 169);
     background-color: rgb(255, 214, 169);
     transform: scale(1.25, 1.25);
 		transition: all .2s ease;
-}
 }
 
 .roundBtn:active{

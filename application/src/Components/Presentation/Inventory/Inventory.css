@@ -43,7 +43,6 @@
 	margin-bottom: 15px;
 	box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
 }
-@media (min-width:801px) {
 .delItemBtn:hover{
     border-color: red;
     background-color: red;
@@ -55,7 +54,7 @@
     transform: scale(1.25, 1.25);
     transition: all .2s ease;
 }
-}
+
 
 .addItemContainer{
     text-align: center;
