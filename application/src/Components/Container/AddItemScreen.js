@@ -17,6 +17,7 @@ class AddItemScreen extends Component {
 		super(props)
 		this.state = {
 			name: "",
+			fullName: "",
 			fetchedEAN: "",
 			comment: "",
 			quantity: "",
@@ -40,10 +41,12 @@ class AddItemScreen extends Component {
 				})
 			} else {
 				let fetchedName = nextProps.fetchedItem.name
+				let fetchedFullName = nextProps.fetchedItem.fullname
 				let fetchedEAN = this.state.EANSearchValue
 
 				this.setState({
 					name: fetchedName,
+					fullName: fetchedFullName,
 					fetchedEAN,
 					quantity: 1
 				})
@@ -77,12 +80,12 @@ class AddItemScreen extends Component {
 				this.setState({ status: "error", message: "Quantity must be atleast 1" })
 			}
 			else if (this.props.screenMode === "inventory") {
-				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN)
+				addCustomItemToInventory(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN, this.state.fullName)
 				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
 			else if (this.props.screenMode === "shopping") {
-				addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN)
+				addCustomItemToShopping(this.props.username, this.state.name, this.state.comment, this.state.quantity, this.state.fetchedEAN, this.state.fullName)
 				this.setState({ status: "accept", message: "Item added successfully" })
 				this.resetState()
 			}
@@ -92,6 +95,7 @@ class AddItemScreen extends Component {
 	resetState = () => {
 		this.setState({
 			name: "",
+			fullName: "",
 			comment: "",
 			quantity: "",
 			EANSearchValue: "",
@@ -107,6 +111,12 @@ class AddItemScreen extends Component {
 	updateNameValue = (input) => {
 		this.setState({
 			name: input
+		})
+		this.resetItemBoxState()
+	}
+	updateFullNameValue = (input) => {
+		this.setState({
+			fullName: input
 		})
 		this.resetItemBoxState()
 	}
@@ -152,11 +162,13 @@ class AddItemScreen extends Component {
 					onAddItemClick={this.onAddItemClick}
 					onGoBackClick={this.onGoBackClick}
 					NameValue={this.state.name}
+					FullNameValue={this.state.fullName}
 					CommentValue={this.state.comment}
 					QuantityValue={this.state.quantity}
 					EANSearchValue={this.state.EANSearchValue}
 					updateEANSearchValue={(e) => this.updateEANSearchValue(e.target.value)}
 					updateNameValue={(e) => this.updateNameValue(e.target.value)}
+					updateFullNameValue={(e) => this.updateFullNameValue(e.target.value)}
 					updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
 					updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
 					onApiSearch={() => this.onApiSearch()}

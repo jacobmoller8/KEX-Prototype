@@ -5,7 +5,7 @@ export const ADD_CUSTOM_TO_SHOP = 'ADD_CUSTOM_TO_SHOP';
 export const ADD_CUSTOM_TO_INV = 'ADD_CUSTOM_TO_INV';
 
 /* ------------- ACTION CREATORS ------------- */
-export function addCustomItemToShopping(user, name, comment, quantity, fetchEAN) {
+export function addCustomItemToShopping(user, name, comment, quantity, fetchEAN, fullname) {
 	var EANcode = ""
 	console.log('FETCH EAN: ', fetchEAN)
 	if (fetchEAN !== "") {
@@ -19,6 +19,7 @@ export function addCustomItemToShopping(user, name, comment, quantity, fetchEAN)
 	var item = {
 		"EANcode": EANcode,
 		"name": name,
+		"fullname": fullname,
 		"dates": [date],
 		"comment": comment,
 		"quantity": parseInt(quantity)
@@ -46,7 +47,7 @@ export function addCustomItemToShopping(user, name, comment, quantity, fetchEAN)
 	}
 }
 
-export function addCustomItemToInventory(user, name, comment, quantity, fetchEAN) {
+export function addCustomItemToInventory(user, name, comment, quantity, fetchEAN, fullname) {
 
 	var EANcode = ""
 	console.log('FETCH EAN: ', fetchEAN)
@@ -59,6 +60,7 @@ export function addCustomItemToInventory(user, name, comment, quantity, fetchEAN
 
 	var item = {
 		"EANcode": EANcode,
+		"fullname": fullname,
 		"name": name,
 		"dates": [date],
 		"comment": comment,
