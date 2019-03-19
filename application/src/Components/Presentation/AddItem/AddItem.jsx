@@ -28,7 +28,7 @@ export default class AddItem extends Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="container-fluid col-lg-6 col-md-6 col-sm-11 addItemBody text-center">
+					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
 						<h3 className="title">Add Item:</h3>
 
 						<form>
