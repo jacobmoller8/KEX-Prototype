@@ -47,15 +47,15 @@ export default class Trash extends Component {
 		return (
 			<div className="row">
 				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 trashBody">
-					<h3 className="title">My Trash:</h3>
+					<h3 className="title">My Trash</h3>
 					<Search onSearch={this.props.onSearch} />
 					<Table striped hover responsive className="trashTable">
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>Qty</th>
-								<th className="d-none d-sm-table-cell">Added:</th>
-								<th className="d-none d-sm-table-cell">Comment:</th>
+								<th className="d-none d-sm-table-cell">Added</th>
+								<th className="d-none d-sm-table-cell">Comment</th>
 								<th>Add</th>
 								<th>Delete</th>
 							</tr>

@@ -16,7 +16,7 @@ export default class EditItem extends Component {
 			<div>
 				<div className="row">
 					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
-						<h3 className="title">Edit Item:</h3>
+						<h3 className="title">Edit Item</h3>
 						<p id="EANcode"> EAN code: {this.props.EANValue} </p>
 
 						<form autoComplete="off">

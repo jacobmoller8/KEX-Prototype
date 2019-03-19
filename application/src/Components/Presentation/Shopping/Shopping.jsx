@@ -59,15 +59,15 @@ export default class Shopping extends Component {
 		return (
 			<div className="row">
 				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
-					<h3 className="title">My Shopping List:</h3>
+					<h3 className="title">My Shopping List</h3>
 					<Search onSearch={this.props.onSearch} />
 					<Table striped hover responsive className="shoppingTable">
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>Qty</th>
-								<th className="d-none d-sm-table-cell">Added:</th>
-								<th className="d-none d-sm-table-cell">Comment:</th>
+								<th className="d-none d-sm-table-cell">Added</th>
+								<th className="d-none d-sm-table-cell">Comment</th>
 								<th>Check</th>
 								<th>Remove</th>
 							</tr>

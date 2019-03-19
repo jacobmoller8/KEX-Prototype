@@ -29,7 +29,7 @@ export default class AddItem extends Component {
 			<div>
 				<div className="row">
 					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
-						<h3 className="title">Add Item:</h3>
+						<h3 className="title">Add Item</h3>
 
 						<form autoComplete="off">
 							<div className="form-group">

@@ -44,15 +44,15 @@ export default class Inventory extends Component {
 		return (
 			<div className="row">
 				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 inventoryBody">
-					<h3 className="title">My Inventory:</h3>
+					<h3 className="title">My Inventory</h3>
 					<Search onSearch={this.props.onSearch} />
 					<Table striped hover responsive className="inventoryTable">
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>Qty</th>
-								<th className="d-none d-sm-table-cell">Added:</th>
-								<th className="d-none d-sm-table-cell">Comment:</th>
+								<th className="d-none d-sm-table-cell">Added</th>
+								<th className="d-none d-sm-table-cell">Comment</th>
 								<th>Add</th>
 								<th>Delete</th>
 							</tr>
