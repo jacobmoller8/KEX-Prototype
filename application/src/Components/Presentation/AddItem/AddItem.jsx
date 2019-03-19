@@ -31,7 +31,7 @@ export default class AddItem extends Component {
 					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
 						<h3 className="title">Add Item:</h3>
 
-						<form>
+						<form autoComplete="off">
 							<div className="form-group">
 								<InputLabel className="inLabel" shrink={true}>Short Name:</InputLabel>
 								<Input

@@ -19,7 +19,7 @@ export default class EditItem extends Component {
 						<h3 className="title">Edit Item:</h3>
 						<p id="EANcode"> EAN code: {this.props.EANValue} </p>
 
-						<form>
+						<form autoComplete="off">
 							<div className="form-group">
 									<InputLabel className="inLabel" shrink={true}>Short Name:</InputLabel>
 									<Input
@@ -53,8 +53,9 @@ export default class EditItem extends Component {
 										defaultValue={this.props.QuantityValue}
 										onChange={this.props.updateQuantityValue}>
 									</Input>
+								
+								</div>
 								{feedbackBox}
-
 								<div className="row btnRow">
 									<div className="container-fluid col-4 backBtnCont">
 										<Button className="btn goBackButton" type="submit" onClick={this.props.onGoBackClick}>  <img className="backIcon" src={require('../../../Images/Icons/back.svg')} alt="shoppingIcon"></img> </Button>
@@ -67,7 +68,7 @@ export default class EditItem extends Component {
 								</div>
 
 
-							</div>
+
 						</form>
 
 					</div>
