@@ -13,7 +13,7 @@ import { setInventory, setTrash, setShopping } from '../../Actions/mainScreenAct
 import { appendCurrentItem } from '../../Actions/currentItemActions';
 import { setFilter, emptyFilter } from '../../Actions/searchActions';
 import { store } from '../../Store/store';
-import { tryLoginUser } from '../../Actions/firebaseActions';
+import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { emptyToken } from '../../Actions/apiActions';
 import { userLogout } from '../../Actions/userActions';
 
@@ -21,11 +21,11 @@ class MainScreen extends Component {
 
 	onDelete = (item, from) => {
 		if (from === 'inventory') {
-			removeInventoryItem(this.props.user.username, item);
+			store.dispatch(removeInventoryItem(this.props.user.username, item));
 		} else if (from === 'trash') {
-			removeTrashItem(this.props.user.username, item)
+			store.dispatch(removeTrashItem(this.props.user.username, item))
 		} else if (from === 'shopping') {
-			removeShoppingItem(this.props.user.username, item)
+			store.dispatch(removeShoppingItem(this.props.user.username, item))
 		}
 	}
 
@@ -64,7 +64,7 @@ class MainScreen extends Component {
 	componentWillMount() {
 
 		let username = store.getState().user.username
-		store.dispatch(tryLoginUser(username))
+		store.dispatch(updateFirebaseData(username))
 
 
 		let screenOnMount = store.getState().mainScreen.mainScreenMode;
@@ -99,7 +99,7 @@ class MainScreen extends Component {
 		this.props.history.push('/')
 	}
 
-	handleCheckItem = (item) =>{
+	handleCheckItem = (item) => {
 		store.dispatch(checkItem(this.props.user.username, item));
 	}
 
@@ -138,6 +138,7 @@ const mapDispatchToProps = dispatch => {
 		setInventory: () => dispatch(setInventory('inventory')),
 		setShopping: () => dispatch(setShopping('shopping')),
 		setTrash: () => dispatch(setTrash('trash')),
+
 	}
 };
 

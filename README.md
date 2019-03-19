@@ -9,16 +9,11 @@ Jacob Möller & Hugo Bergqvist
 - Mall för intervju
 - Manual för systemet
 - Instruktionsvideo
-- Bygga ihop alla system
-- Testa systemen
 - Skriva metod
 
 ### Application
 
-- (Rename tryLoginUser)
-- (try catch laddar items)
 - Kod rensning
-
 
 - Components:
 	- Inventory
@@ -39,4 +34,3 @@ Jacob Möller & Hugo Bergqvist
 
 ### Scanner - Prototype
 - Print barcodes for check in / check out
-- Label raspberries

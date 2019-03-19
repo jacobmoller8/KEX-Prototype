@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
 import { store } from '../../Store/store';
-import { tryLoginUser } from '../../Actions/firebaseActions';
+import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { fetchItem, emptyToken } from '../../Actions/apiActions';
 import { emptyFilter } from '../../Actions/searchActions';
 import { userLogout } from '../../Actions/userActions';
@@ -30,7 +30,7 @@ class AddItemScreen extends Component {
 	}
 	componentWillMount() {
 		let username = store.getState().user.username
-		store.dispatch(tryLoginUser(username))
+		store.dispatch(updateFirebaseData(username))
 	}
 
 	componentWillReceiveProps(nextProps) {

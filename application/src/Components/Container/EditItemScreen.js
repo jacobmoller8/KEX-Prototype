@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { store } from '../../Store/store';
 import { removeCurrentItem, confirmCurrentItem } from '../../Actions/currentItemActions';
-import { tryLoginUser } from '../../Actions/firebaseActions';
+import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { emptyToken } from '../../Actions/apiActions';
 import { emptyFilter } from '../../Actions/searchActions';
 import { userLogout } from '../../Actions/userActions';
@@ -17,8 +17,8 @@ class EditItemScreen extends Component {
         super(props)
 
         this.state = {
-						name: this.props.name,
-						fullName: this.props.fullName,
+            name: this.props.name,
+            fullName: this.props.fullName,
             comment: this.props.comment,
             quantity: this.props.quantity,
             status: "none",
@@ -27,19 +27,19 @@ class EditItemScreen extends Component {
     }
     componentWillMount() {
         let username = store.getState().user.username
-        store.dispatch(tryLoginUser(username))
+        store.dispatch(updateFirebaseData(username))
     }
 
     updateNameValue = (input) => {
         this.setState({
             name: input
         })
-		}
-		updateFullNameValue = (input) => {
-			this.setState({
-					fullName: input
-			})
-	}
+    }
+    updateFullNameValue = (input) => {
+        this.setState({
+            fullName: input
+        })
+    }
     updateCommentValue = (input) => {
         this.setState({
             comment: input
@@ -84,13 +84,13 @@ class EditItemScreen extends Component {
             <div>
                 <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser='editItem' />
                 <EditItem
-										NameValue={store.getState().currentItem.item.name}
-										FullNameValue={store.getState().currentItem.item.fullname}
+                    NameValue={store.getState().currentItem.item.name}
+                    FullNameValue={store.getState().currentItem.item.fullname}
                     CommentValue={store.getState().currentItem.item.comment}
                     QuantityValue={store.getState().currentItem.item.quantity}
                     EANValue={store.getState().currentItem.item.EANcode}
-										updateNameValue={(e) => this.updateNameValue(e.target.value)}
-										updateFullNameValue={(e) => this.updateFullNameValue(e.target.value)}
+                    updateNameValue={(e) => this.updateNameValue(e.target.value)}
+                    updateFullNameValue={(e) => this.updateFullNameValue(e.target.value)}
                     updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
                     updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
                     onConfirmItemClick={this.onConfirmItemClick}
@@ -108,8 +108,8 @@ const mapStateToProps = state => {
         username: state.firebase.username,
         screenMode: state.mainScreen.mainScreenMode,
         item: state.currentItem.item.EANcode,
-				name: state.currentItem.item.name,
-				fullName: state.currentItem.item.fullname,
+        name: state.currentItem.item.name,
+        fullName: state.currentItem.item.fullname,
         comment: state.currentItem.item.comment,
         quantity: state.currentItem.item.quantity,
     }

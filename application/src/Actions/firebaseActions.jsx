@@ -6,7 +6,7 @@ export const REMOVE_USER = "REMOVE_USER";
 export const UPDATE_FIREBASE_DATA = "UPDATE_FIREBASE_DATA";
 
 /* ------------- ACTION CREATORS ------------- */
-export function tryLoginUser(username) {
+export function updateFirebaseData(username) {
 
     return dispatch => {
         var firebaseCall = databaseRef.ref("users/" + username)

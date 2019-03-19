@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addUser, tryLoginUser, removeUser } from "../../Actions/firebaseActions";
+import { addUser, updateFirebaseData, removeUser } from "../../Actions/firebaseActions";
 import { userLoginUserInput, userLoginPassInput } from "../../Actions/userActions";
 import { setToken } from '../../Actions/apiActions';
 import LogIn from '../Presentation/LogIn/LogIn'
@@ -23,7 +23,7 @@ class LogInScreen extends Component {
 	onLoginClick = (e) => {
 		//console.log(getAccessToken())
 
-		this.props.tryLoginUser(this.props.user["username"])
+		this.props.updateFirebaseData(this.props.user["username"])
 		setTimeout(() => {
 			this.loginControlCheck();
 		}, 1000);
@@ -81,7 +81,7 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
 
 	addUser: addUser,
-	tryLoginUser: tryLoginUser,
+	updateFirebaseData: updateFirebaseData,
 	userLoginUserInput: userLoginUserInput,
 	userLoginPassInput: userLoginPassInput,
 	removeUser: removeUser
