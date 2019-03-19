@@ -26,7 +26,7 @@ export function appendCurrentItem(username, screenMode, id) {
     }
 }
 
-export function confirmCurrentItem(username, screenMode, id, name, comment, quantity) {
+export function confirmCurrentItem(username, screenMode, id, name, comment, quantity, fullname) {
 
     var date = new Date().toISOString().slice(0, 10);
 
@@ -40,7 +40,8 @@ export function confirmCurrentItem(username, screenMode, id, name, comment, quan
 
     var item = {
         "EANcode": id,
-        "name": name,
+				"name": name,
+				"fullname": fullname,
         "comment": comment,
         "quantity": parseInt(quantity),
         "dates": dates

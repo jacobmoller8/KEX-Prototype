@@ -17,7 +17,8 @@ class EditItemScreen extends Component {
         super(props)
 
         this.state = {
-            name: this.props.name,
+						name: this.props.name,
+						fullName: this.props.fullName,
             comment: this.props.comment,
             quantity: this.props.quantity,
             status: "none",
@@ -33,7 +34,12 @@ class EditItemScreen extends Component {
         this.setState({
             name: input
         })
-    }
+		}
+		updateFullNameValue = (input) => {
+			this.setState({
+					fullName: input
+			})
+	}
     updateCommentValue = (input) => {
         this.setState({
             comment: input
@@ -54,7 +60,7 @@ class EditItemScreen extends Component {
             this.setState({ status: "error", message: "Quantity must be atleast 1" })
         }
         else {
-            confirmCurrentItem(this.props.username, this.props.screenMode, this.props.item, this.state.name, this.state.comment, this.state.quantity)
+            confirmCurrentItem(this.props.username, this.props.screenMode, this.props.item, this.state.name, this.state.comment, this.state.quantity, this.state.fullName)
             this.setState({ status: "accept", message: "Item updated successfully" })
         }
     }
@@ -78,11 +84,13 @@ class EditItemScreen extends Component {
             <div>
                 <Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser='editItem' />
                 <EditItem
-                    NameValue={store.getState().currentItem.item.name}
+										NameValue={store.getState().currentItem.item.name}
+										FullNameValue={store.getState().currentItem.item.fullname}
                     CommentValue={store.getState().currentItem.item.comment}
                     QuantityValue={store.getState().currentItem.item.quantity}
                     EANValue={store.getState().currentItem.item.EANcode}
-                    updateNameValue={(e) => this.updateNameValue(e.target.value)}
+										updateNameValue={(e) => this.updateNameValue(e.target.value)}
+										updateFullNameValue={(e) => this.updateFullNameValue(e.target.value)}
                     updateCommentValue={(e) => this.updateCommentValue(e.target.value)}
                     updateQuantityValue={(e) => this.updateQuantityValue(e.target.value)}
                     onConfirmItemClick={this.onConfirmItemClick}
@@ -100,7 +108,8 @@ const mapStateToProps = state => {
         username: state.firebase.username,
         screenMode: state.mainScreen.mainScreenMode,
         item: state.currentItem.item.EANcode,
-        name: state.currentItem.item.name,
+				name: state.currentItem.item.name,
+				fullName: state.currentItem.item.fullname,
         comment: state.currentItem.item.comment,
         quantity: state.currentItem.item.quantity,
     }
