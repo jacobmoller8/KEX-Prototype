@@ -23,3 +23,7 @@ Component structure:
 - Presentation
 - MaterialComponents
 
+## Project Status
+
+We are pretty much done, only thng left to do is minor tweaks.
+
