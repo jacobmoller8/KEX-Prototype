@@ -13,6 +13,10 @@ application/src/Utilities/getAccessToken.js
 src/Utilities/getAccessToken.js
 application/src/Firebase/firebase.jsx
 src/Firebase/firebase.jsx
+/.key-firebase.json
+/.secretKeys.json
+/key-firebase.json
+/secretKeys.json
 .key-firebase.json
 .secretKeys.json
 
