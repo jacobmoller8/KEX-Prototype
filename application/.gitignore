@@ -11,6 +11,8 @@
 # key files
 application/src/Utilities/getAccessToken.js
 src/Utilities/getAccessToken.js
+key-firebase.json
+secretKeys.json
 
 # production
 /build

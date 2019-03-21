@@ -8,25 +8,18 @@ import json
 import requests
 from datetime import date
 
-# FIREBASE CONFIG
-config = {
-    "apiKey": "AIzaSyD2_kZtwpnT5SMqLKReKuAAkmRpEXJl71k",
-    "authDomain": "kex-scanner-project.firebaseapp.com",
-    "databaseURL": "https://kex-scanner-project.firebaseio.com",
-    "storageBucket": "kex-scanner-project.appspot.com",
-    "serviceAccount": "key-firebase.json"
-}
+# IMPORT KEYS
+with open('secretKeys.json') as data_file:
+    data = json.load(data_file)
 
-firebase = pyrebase.initialize_app(config)
+# FIREBASE CONFIG
+firebase = pyrebase.initialize_app(data["config"])
 db = firebase.database()
 
 # API CONFIG
-payload = {"grant_type": "client_credentials",
-           "client_secret": "q1tnWxDWObB0KhWO4MZnUc8Abe6MkmUk53UAqMjK",
-           "client_id": "2"}
-
 access_token = requests.post(
-    "https://consupedia.se/oauth/token", json=payload).json()["access_token"]
+    "https://consupedia.se/oauth/token",
+    json=data["payload"]).json()["access_token"]
 
 # USER CONFIG
 username = "Red"
