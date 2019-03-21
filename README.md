@@ -2,35 +2,28 @@
 
 Jacob Möller & Hugo Bergqvist
 
+## Run Instructions
 
-## Todo
+To run the code use the following website:
+- https://kex-scanner-project.firebaseapp.com/
 
-- Hitta testpersoner
-- Mall för intervju
-- Manual för systemet
-- Instruktionsvideo
-- Skriva metod
+To login to the page:
+- Username: midreview
+- Password: password
 
-### Application
+## File Structure
 
-- Kod rensning
+Redux Folders (saving states over multiple pages):
+- Actions
+- Reducers
+- Store
 
-- Components:
-	- Inventory
+Component structure:
+- Container
+- Presentation
+- MaterialComponents
 
-	- Trash
+## Project Status
 
-	- Shopping
-		- If time: Empty List?
+We are pretty much done, only thng left to do is minor tweaks.
 
-	- Add Item
-
-	- Edit Item
-
-	- Log In
-
-### Script
-- Error-handling
-
-### Scanner - Prototype
-- Print barcodes for check in / check out
