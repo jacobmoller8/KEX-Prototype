@@ -59,3 +59,12 @@
 	border-color: rgb(255, 170, 79);
 }
 
+.logoContainer{
+	position: absolute;
+	margin-top: 7vh;
+	padding: 25px;
+	padding-top: 10vh;
+	height: 35vh;
+	background-color: #E9FFDE;
+	border-radius: 50%;
+}
