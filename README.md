@@ -4,12 +4,12 @@ Jacob Möller & Hugo Bergqvist
 
 ## Run Instructions
 
-- To run the code use the following website:
-https://kex-scanner-project.firebaseapp.com/
+To run the code use the following website:
+- https://kex-scanner-project.firebaseapp.com/
 
-- To login to the page:
-Username: midreview
-Password: password
+To login to the page:
+- Username: midreview
+- Password: password
 
 ## File Structure
 
