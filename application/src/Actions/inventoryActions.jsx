@@ -6,15 +6,40 @@ export const ADD_INV_TO_SHOP = 'ADD_INV_TO_SHOP'
 export const EDIT_INV_ITEM = 'EDIT_INV_ITEM';
 export const ADD_INV_ITEM = 'ADD_INV_ITEM';
 
+
+
+
+
+
+let decQuant = 0
+
+let quantityDecreaser = (snapshot) => {
+	let curVal = snapshot.val()
+		if (snapshot.val() === 1){
+			decQuant = 0
+		}else{
+			decQuant = curVal - 1
+		}
+}
+
+
 /* ------------- ACTION CREATORS ------------- */
 export function removeInventoryItem(user, item) {
 	const EANcode = item.EANcode
 
+	databaseRef.ref('users/' + user + '/inventory/' + EANcode).child('quantity').once('value', quantityDecreaser)
+
 	//remove item
+	
+	if (decQuant === 0){
 	databaseRef.ref('users/' + user + '/inventory').child(EANcode).remove();
+	}else{
+		let newItem = {...item, quantity: decQuant}
+		databaseRef.ref('users/' + user + '/inventory').child(EANcode).set(newItem)
+	}
 
 	// add to trash
-	databaseRef.ref('users/' + user + '/trash').child(EANcode).set(item)
+	databaseRef.ref('users/' + user + '/trash').child(EANcode).set({...item, quantity: 1})
 
 
 	return dispatch => {
