@@ -8,7 +8,6 @@ import Header from '../Presentation/Header/Header'
 import { withRouter } from "react-router-dom";
 import { store } from '../../Store/store'
 
-
 class LogInScreen extends Component {
 
 	constructor(props) {
@@ -60,12 +59,12 @@ class LogInScreen extends Component {
 	render() {
 		return (
 			<div className="LogInScreen">
-				{<Header isLoggedIn={false} />}
-				{<LogIn
+				<Header isLoggedIn={false} />
+				<LogIn
 					onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
 					onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
 					onLoginClick={this.onLoginClick}
-					logInError={this.state.logInError} />}
+					logInError={this.state.logInError} />
 			</div>
 		);
 	}
