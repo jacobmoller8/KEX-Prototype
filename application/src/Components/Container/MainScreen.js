@@ -16,6 +16,7 @@ import { store } from '../../Store/store';
 import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { emptyToken } from '../../Actions/apiActions';
 import { userLogout } from '../../Actions/userActions';
+import FeedbackInput from '../../Components/Presentation/FeedbackInput/FeedbackInput'
 
 class MainScreen extends Component {
 
@@ -99,13 +100,30 @@ class MainScreen extends Component {
 		this.props.history.push('/')
 	}
 
+	onFeedBackClick = () => {
+		this.setState({
+			feedBackActive: true
+		})
+	}
+
+	onCloseFeedbackClick = () => {
+		this.setState({
+			feedBackActive: false
+		})
+	}
+
 	handleCheckItem = (item) => {
 		store.dispatch(checkItem(this.props.user.username, item));
 	}
 
 	render() {
 		var currentScreen = this.state.screenMode
-		if (currentScreen === 'inventory') {
+		let navStyle = {display: 'block'}
+
+		if (this.state.feedBackActive) {
+			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} />
+			navStyle = {display: 'none'}
+		} else if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
 		} else if (currentScreen === 'trash') {
 			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
@@ -114,8 +132,8 @@ class MainScreen extends Component {
 		}
 		return (
 			<div>
-				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} currentUser={this.props.user.username} />
-				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} />
+				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} onFeedBackClick={this.onFeedBackClick} currentUser={this.props.user.username} />
+				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} visibility={navStyle}/>
 				{currentScreen}
 			</div>
 		)

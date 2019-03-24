@@ -23,7 +23,7 @@ export default class Navigation extends Component {
 		}
 
 		return (
-			<div className="row navRow">
+			<div className="container-fluid" style={this.props.visibility}>
 				<div className="container-fluid offset-1 col-10 offset-md-3 col-md-6 navBar">
 					<div className="row">
 						<div className="container-fluid col-4 btnContainer">
