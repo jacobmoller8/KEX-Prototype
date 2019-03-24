@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import { Table } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import './FeedbackInput.css'
 
@@ -15,50 +14,56 @@ let muiBtnStyle = {
 }
 
 export default class FeedbackInput extends Component {
+
 	render() {
+		
+		var feedbackList = [];
+		for (let key in this.props.allFeedback) {
+			try {
+				feedbackList.push(
+					<div className="row">
+						<div className="container col-12 singleFeedbackWrapper">
+							<div className="row">
+								<div className="textWrapper col-9">
+									<p>{this.props.allFeedback[key]}</p>
+								</div>
+								<div className="btnWrapper col-3">
+									<Button style={muiBtnStyle}>
+										<img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="deleteIcon">
+										</img>
+									</Button>
+								</div>
+							</div>
+						</div>
+					</div>
+				)
+			}
+			catch (error) {
+				console.log(error)
+			}
+		}
+
+
+
 		return (
 			<div className="container-fluid col-11 feedBackWrapper">
 				<Paper className="paperWrapper">
 					<div className="btnContainer">
-						<Button className="backBtn" style={muiBtnStyle} onClick={this.props.onCloseFeedbackClick}>Back</Button>
+						<Button className="backBtn" style={muiBtnStyle} onClick={this.props.onCloseFeedbackClick} >Back</Button>
 					</div>
 					<div className="row">
 						<div className="container-fluid col-11 inputBox">
 							<h6>Leave feedback to the developers</h6>
-							<TextField className="container-fluid col-11" multiline ></TextField>
+							<TextField className="container-fluid col-11" multiline onChange={(e) => this.props.handleValueChange(e.target.value)} value={this.props.setValue}></TextField>
 							<div className="container-fluid btnContainer">
-								<Button style={muiBtnStyle}>Save</Button>
+								<Button style={muiBtnStyle} onClick={this.props.onSaveFeedbackClick}>Save</Button>
 							</div>
 						</div>
 					</div>
-
-
-					<Table striped hover responsive className="container-fluid col-11 feedBackTable" >
-						<thead>
-							<tr>
-								<th>
-									Feedback
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, quam.
-							</td>
-							</tr>
-							<tr>
-								<td>
-									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem cupiditate consectetur fugiat illum, optio necessitatibus culpa itaque pariatur quos eos.
-							</td>
-							</tr>
-							<tr>
-								<td>
-									Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-							</td>
-							</tr>
-						</tbody>
-					</Table>
+					<div className="container-fluid col-12 feedbackContainer">
+						<h5 style={{textDecoration: 'underline', marginBottom: '15px', marginTop: '15px'}}>My Feedback</h5>
+						{feedbackList}
+					</div>
 				</Paper>
 			</div>
 		)

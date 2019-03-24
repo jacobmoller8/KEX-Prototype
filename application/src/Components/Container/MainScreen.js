@@ -17,6 +17,7 @@ import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { emptyToken } from '../../Actions/apiActions';
 import { userLogout } from '../../Actions/userActions';
 import FeedbackInput from '../../Components/Presentation/FeedbackInput/FeedbackInput'
+import { saveFeedback, editFeedback, emptyFeedback, getFeedback } from '../../Actions/feedbackActions';
 
 class MainScreen extends Component {
 
@@ -67,7 +68,6 @@ class MainScreen extends Component {
 		let username = store.getState().user.username
 		store.dispatch(updateFirebaseData(username))
 
-
 		let screenOnMount = store.getState().mainScreen.mainScreenMode;
 		let inventoryOnMount = store.getState().firebase.inventory;
 		let shoppingOnMount = store.getState().firebase.shopping;
@@ -86,6 +86,7 @@ class MainScreen extends Component {
 		e.preventDefault();
 		this.props.history.push('/AddItemScreen')
 	}
+
 	onEditItemClick = (id) => {
 		store.dispatch(emptyFilter())
 		store.dispatch(appendCurrentItem(this.props.user.username, this.state.screenMode, id))
@@ -101,16 +102,32 @@ class MainScreen extends Component {
 	}
 
 	onFeedBackClick = () => {
+		store.dispatch(getFeedback(this.props.user.username))
 		this.setState({
 			feedBackActive: true
 		})
 	}
 
+	onSaveFeedbackClick = () => {
+		store.dispatch(getFeedback(this.props.user.username))
+
+		if(store.getState().feedback.currentFeedback !== ''){
+		store.dispatch(saveFeedback(this.props.user.username, store.getState().feedback.currentFeedback));
+		}
+		store.dispatch(emptyFeedback)
+	}
+
 	onCloseFeedbackClick = () => {
+		store.dispatch(emptyFeedback)
 		this.setState({
 			feedBackActive: false
 		})
 	}
+
+	handleFeedbackChange = (input) => {
+		store.dispatch(editFeedback(input));
+	}
+
 
 	handleCheckItem = (item) => {
 		store.dispatch(checkItem(this.props.user.username, item));
@@ -121,7 +138,7 @@ class MainScreen extends Component {
 		let navStyle = {display: 'block'}
 
 		if (this.state.feedBackActive) {
-			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} />
+			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} onSaveFeedbackClick={this.onSaveFeedbackClick} handleValueChange={this.handleFeedbackChange} allFeedback={this.props.allFeedback} setValue={this.props.feedbackValue}/>
 			navStyle = {display: 'none'}
 		} else if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
@@ -147,7 +164,9 @@ const mapStateToProps = state => {
 		inventory: state.firebase.inventory,
 		trash: state.firebase.trash,
 		shopping: state.firebase.shopping,
-		screenMode: state.mainScreen.mainScreenMode
+		screenMode: state.mainScreen.mainScreenMode,
+		allFeedback: state.feedback.allFeedback,
+		feedbackValue: state.feedback.currentFeedback
 	}
 };
 

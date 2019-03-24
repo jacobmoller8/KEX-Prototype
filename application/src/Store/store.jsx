@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import firebaseReducer from "../Reducers/firebaseReducer";
+import feedbackReducer from "../Reducers/feedbackReducer";
 import userReducer from "../Reducers/userReducer";
 import mainScreenModeReducer from "../Reducers/mainScreenModeReducer";
 import currentItemReducer from "../Reducers/currentItemReducer";
@@ -23,7 +24,8 @@ const allReducers = combineReducers({
     user: userReducer,
     mainScreen: mainScreenModeReducer,
     currentItem: currentItemReducer,
-    apiInfo: apiReducer
+		apiInfo: apiReducer,
+		feedback: feedbackReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

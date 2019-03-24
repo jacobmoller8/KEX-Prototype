@@ -11,6 +11,7 @@ export default class Header extends Component {
 		let btnDisplay = { display: 'none' }
 		let logoDisplay = { display: 'block' }
 		let profileDisplay = { display: 'none' }
+		let feedbackBtn = <Button className="funcBtn" onClick={this.props.onFeedBackClick}><img className="btnImage" src={require('../../../Images/Icons/FeedBackIcon.svg')} alt="shoppingIcon"></img></Button>
 
 		if (this.props.isLoggedIn) {
 			btnDisplay = { display: 'block' };
@@ -20,6 +21,7 @@ export default class Header extends Component {
 			btnDisplay = { display: 'none' };
 			logoDisplay = { display: 'block' };
 			profileDisplay = { display: 'none' }
+			feedbackBtn = null;
 		}
 
 
@@ -43,7 +45,7 @@ export default class Header extends Component {
 			<div className="row">
 				<div className="container-fluid header">
 					<VideoDialog/>
-					<Button className="funcBtn" onClick={this.props.onFeedBackClick}><img className="btnImage" src={require('../../../Images/Icons/FeedBackIcon.svg')} alt="shoppingIcon"></img></Button>
+					{feedbackBtn}
 					<Button variant="warning" className="signOutBtn" onClick={this.props.onLogoutClick} style={btnDisplay}>Log out</Button>
 				</div>
 				<div className="arch" />
