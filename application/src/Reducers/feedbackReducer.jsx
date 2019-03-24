@@ -1,4 +1,4 @@
-import { SAVE_FEEDBACK, EDIT_FEEDBACK, GET_FEEDBACK, EMPTY_FEEDBACK } from '../Actions/feedbackActions';
+import { SAVE_FEEDBACK, EDIT_FEEDBACK, GET_FEEDBACK, EMPTY_FEEDBACK, REMOVE_FEEDBACK } from '../Actions/feedbackActions';
 
 
 export default function feedbackReducer(state = {}, action) {
@@ -26,6 +26,12 @@ export default function feedbackReducer(state = {}, action) {
 				...state,
 				allFeedback: action.payload
 			}
+		}
+			case REMOVE_FEEDBACK: {
+				return {
+					...state,
+					allFeedback: action.payload
+				}
 		}
 		default:
 			return state;

@@ -3,6 +3,7 @@ export const SAVE_FEEDBACK = 'SAVE_FEEDBACK';
 export const EMPTY_FEEDBACK = 'EMPTY_FEEDBACK'
 export const EDIT_FEEDBACK = 'EDIT_FEEDBACK';
 export const GET_FEEDBACK = 'GET_FEEDBACK';
+export const REMOVE_FEEDBACK = 'REMOVE_FEEDBACK';
 
 var uuid4 = require('uuid4');
 
@@ -31,7 +32,9 @@ export function getFeedback(user) {
 		let feedBackList = []
 		firebaseCall.once('value', snapshot => {
 			snapshot.forEach(childSnap => {
-				feedBackList.push(childSnap.val())
+				let feedbackKey = childSnap.key
+				let newFeedback = {[feedbackKey]: childSnap.val()}
+				feedBackList.push(newFeedback)
 			})
 		});
 		dispatch({
@@ -47,5 +50,24 @@ export const emptyFeedback = () => ({
 })
 
 export function deleteFeedback(user, item) {
-	//TODO: LETS USER DELETE UNWANTED FEEDBACK
+	console.log(item)
+	databaseRef.ref("users/" + user + '/feedback').child(item).remove()
+
+	return dispatch => {
+
+		//get new copy of all feedbacks
+		var firebaseCall = databaseRef.ref("users/" + user + '/feedback')
+		let feedBackList = []
+		firebaseCall.once('value', snapshot => {
+			snapshot.forEach(childSnap => {
+				let feedbackKey = childSnap.key
+				let newFeedback = {[feedbackKey]: childSnap.val()}
+				feedBackList.push(newFeedback)
+			})
+		});
+		dispatch({
+			type: REMOVE_FEEDBACK,
+			payload: feedBackList
+		})
+	}
 }

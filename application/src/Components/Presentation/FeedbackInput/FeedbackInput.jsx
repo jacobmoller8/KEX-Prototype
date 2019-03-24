@@ -18,17 +18,19 @@ export default class FeedbackInput extends Component {
 	render() {
 		
 		var feedbackList = [];
-		for (let key in this.props.allFeedback) {
+		for (let item in this.props.allFeedback) {
+			let feedbackKey = Object.keys(this.props.allFeedback[item])[0]
+			let feedbackValue = Object.values(this.props.allFeedback[item])[0]
 			try {
 				feedbackList.push(
-					<div className="row">
+					<div className="row" id={feedbackKey}>
 						<div className="container col-12 singleFeedbackWrapper">
 							<div className="row">
 								<div className="textWrapper col-9">
-									<p>{this.props.allFeedback[key]}</p>
+									<p>{feedbackValue}</p>
 								</div>
 								<div className="btnWrapper col-3">
-									<Button style={muiBtnStyle}>
+									<Button style={muiBtnStyle} onClick={() => this.props.onDeleteClick(feedbackKey)}>
 										<img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="deleteIcon">
 										</img>
 									</Button>
@@ -42,6 +44,7 @@ export default class FeedbackInput extends Component {
 				console.log(error)
 			}
 		}
+		
 
 
 

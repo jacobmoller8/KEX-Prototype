@@ -17,7 +17,7 @@ import { updateFirebaseData } from '../../Actions/firebaseActions';
 import { emptyToken } from '../../Actions/apiActions';
 import { userLogout } from '../../Actions/userActions';
 import FeedbackInput from '../../Components/Presentation/FeedbackInput/FeedbackInput'
-import { saveFeedback, editFeedback, emptyFeedback, getFeedback } from '../../Actions/feedbackActions';
+import { saveFeedback, editFeedback, emptyFeedback, getFeedback, deleteFeedback } from '../../Actions/feedbackActions';
 
 class MainScreen extends Component {
 
@@ -128,6 +128,10 @@ class MainScreen extends Component {
 		store.dispatch(editFeedback(input));
 	}
 
+	onRemoveFeedbackClick = (item) => {
+		store.dispatch(deleteFeedback(this.props.user.username, item))
+	}
+
 
 	handleCheckItem = (item) => {
 		store.dispatch(checkItem(this.props.user.username, item));
@@ -138,7 +142,7 @@ class MainScreen extends Component {
 		let navStyle = {display: 'block'}
 
 		if (this.state.feedBackActive) {
-			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} onSaveFeedbackClick={this.onSaveFeedbackClick} handleValueChange={this.handleFeedbackChange} allFeedback={this.props.allFeedback} setValue={this.props.feedbackValue}/>
+			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} onSaveFeedbackClick={this.onSaveFeedbackClick} handleValueChange={this.handleFeedbackChange} allFeedback={this.props.allFeedback} setValue={this.props.feedbackValue} onDeleteClick={this.onRemoveFeedbackClick}/>
 			navStyle = {display: 'none'}
 		} else if (currentScreen === 'inventory') {
 			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
