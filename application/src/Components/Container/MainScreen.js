@@ -109,12 +109,12 @@ class MainScreen extends Component {
 	}
 
 	onSaveFeedbackClick = () => {
-		store.dispatch(getFeedback(this.props.user.username))
 
 		if(store.getState().feedback.currentFeedback !== ''){
 		store.dispatch(saveFeedback(this.props.user.username, store.getState().feedback.currentFeedback));
 		}
 		store.dispatch(emptyFeedback)
+		store.dispatch(getFeedback(this.props.user.username))
 	}
 
 	onCloseFeedbackClick = () => {

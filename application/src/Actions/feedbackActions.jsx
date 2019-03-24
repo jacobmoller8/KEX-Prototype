@@ -50,7 +50,6 @@ export const emptyFeedback = () => ({
 })
 
 export function deleteFeedback(user, item) {
-	console.log(item)
 	databaseRef.ref("users/" + user + '/feedback').child(item).remove()
 
 	return dispatch => {

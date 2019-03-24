@@ -55,7 +55,7 @@ export default class FeedbackInput extends Component {
 						<Button className="backBtn" style={muiBtnStyle} onClick={this.props.onCloseFeedbackClick} >Back</Button>
 					</div>
 					<div className="row">
-						<div className="container-fluid col-11 inputBox">
+						<div className="container-fluid col-12 inputBox">
 							<h6>Leave feedback to the developers</h6>
 							<TextField className="container-fluid col-11" multiline onChange={(e) => this.props.handleValueChange(e.target.value)} value={this.props.setValue}></TextField>
 							<div className="container-fluid btnContainer">
