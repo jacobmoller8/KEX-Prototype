@@ -1,0 +1,22 @@
+.row{
+    margin: 0px;
+}
+
+#registerContainer {
+    margin-top: 6vh;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#registerText { 
+    margin-top: 50px;
+}
+
+#registerBtnContainer{
+	display: inline-block;
+}
+
+#registerBtn{
+    background-color: rgb(249, 145, 34);
+}

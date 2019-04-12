@@ -1,4 +1,4 @@
-import { ADD_USER, UPDATE_FIREBASE_DATA, REMOVE_USER } from '../Actions/firebaseActions';
+import { ADD_USER, UPDATE_FIREBASE_DATA, REMOVE_USER, TRY_REGISTER_NEW_USER } from '../Actions/firebaseActions';
 import { REMOVE_INV_ITEM, ADD_INV_TO_SHOP } from '../Actions/inventoryActions';
 import { REMOVE_TRASH_ITEM, ADD_TRASH_TO_SHOP } from '../Actions/trashActions';
 import { REMOVE_SHOP_ITEM, CHECK_ITEM } from '../Actions/shoppingActions';
@@ -63,7 +63,8 @@ export default function firebaseReducer(state = {}, { type, payload }) {
 				...state,
 				shopping: payload.shopping
 			})
-
+		case TRY_REGISTER_NEW_USER:
+			return payload.user
 		default:
 			return state;
 	}

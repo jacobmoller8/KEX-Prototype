@@ -4,6 +4,7 @@ import { databaseRef } from "../Firebase/firebase";
 export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
 export const UPDATE_FIREBASE_DATA = "UPDATE_FIREBASE_DATA";
+export const TRY_REGISTER_NEW_USER = "TRY_REGISTER_NEW_USER";
 
 /* ------------- ACTION CREATORS ------------- */
 export function updateFirebaseData(username) {
@@ -23,24 +24,43 @@ export function updateFirebaseData(username) {
     }
 }
 
+export function tryRegisterNewUser(username) {
+    return dispatch => {
+        var firebaseCall = databaseRef.ref("users/" + username)
 
+        firebaseCall.once("value", snapshot => {
+            var userObject = snapshot.val()
 
-/* ------------- NOT USED FUNCTIONS ------------ */
-export function addUser(user) {
+            dispatch({
+                type: TRY_REGISTER_NEW_USER,
+                payload: {
+                    user: userObject
+                }
+            })
+        })
 
-    databaseRef.ref('users/' + user).set({
-        username: "username",
-        email: "email",
-    });
-
-    return {
-        type: ADD_USER,
-        payload: {
-            user: user
-        }
     }
 }
 
+export function addUser(user, pass) {
+
+    databaseRef.ref('users/' + user).set({
+        username: user,
+        password: pass,
+    });
+
+    return dispatch => {
+        dispatch({
+            type: ADD_USER,
+            payload: {
+                user: user
+            }
+        })
+    }
+}
+
+
+// Not used
 export function removeUser() {
 
     return {
