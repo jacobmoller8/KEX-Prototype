@@ -34,12 +34,12 @@ export default class Shopping extends Component {
 								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
 								<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-								<td> <DragDropContainer 
-									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }} 
+								<td> <DragDropContainer
+									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }}
 									targetKey="trashBin"
 									onDragStart={(dragData) => this.props.onDragStart(dragData)}
 									onDragEnd={(dragData, currentTarget) => this.props.onDragEnd(dragData, currentTarget)}
-									onDrop = {(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd} >  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
+									onDrop={(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd} >  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
 							</tr>)
 					}
 					catch (error) {
@@ -62,12 +62,12 @@ export default class Shopping extends Component {
 									<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 									<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
 									<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-									<td> <DragDropContainer 
-									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }} 
-									targetKey="trashBin"
-									onDragStart={(dragData) => this.props.onDragEnter(dragData)}
-									onDragEnd={(dragData, currentTarget) => this.props.onDragLeave(dragData, currentTarget)}
-									onDrop = {(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd}>  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
+									<td> <DragDropContainer
+										dragData={{ label: currentShopping[key].name, id: currentShopping[key] }}
+										targetKey="trashBin"
+										onDragStart={(dragData) => this.props.onDragEnter(dragData)}
+										onDragEnd={(dragData, currentTarget) => this.props.onDragLeave(dragData, currentTarget)}
+										onDrop={(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd}>  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
 								</tr>)
 						}
 						catch (error) {
@@ -82,15 +82,16 @@ export default class Shopping extends Component {
 
 		return (
 			<div className="row">
-				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
-				<DndTrash
+				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody" elevation={6} square>
+					<h3 className="title">My Shopping List</h3>
+					<DndTrash
 						onEnter={this.props.onDropZoneEntered}
 						onLeave={this.props.onDropZoneExited}
 						onDrop={this.props.onDragDropped}
 						overDropZone={this.props.overDropZone}
 						dragging={this.props.dragging} />
 					<Search onSearch={this.props.onSearch} />
-					<h3 className="title">My Shopping List</h3>
+
 					<Table striped hover responsive className="shoppingTable">
 						<thead>
 							<tr>
