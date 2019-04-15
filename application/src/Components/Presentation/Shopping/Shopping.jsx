@@ -4,7 +4,8 @@ import { Button, Table } from 'react-bootstrap';
 import FancyCheckbox from '../../MaterialComponents/Material-Checkbox/Checkbox'
 import Search from '../Search/Search'
 import { store } from '../../../Store/store'
-
+import { DragDropContainer } from 'react-drag-drop-container';
+import DndTrash from '../DragNDropTrashBin/DndTrash'
 
 export default class Shopping extends Component {
 
@@ -24,13 +25,19 @@ export default class Shopping extends Component {
 					else (checkStyle = ({ color: 'black' }))
 					try {
 						shoppingList.push(
+
 							<tr key={currentShopping[key].EANcode} style={checkStyle}>
 								<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
 								<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
 								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
 								<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-								<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
+								<td> <DragDropContainer 
+									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }} 
+									targetKey="trashBin"
+									onDragStart={(dragData) => this.props.onDragStart(dragData)}
+									onDragEnd={(dragData, currentTarget) => this.props.onDragEnd(dragData, currentTarget)}
+									onDrop = {(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd} >  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
 							</tr>)
 					}
 					catch (error) {
@@ -53,7 +60,12 @@ export default class Shopping extends Component {
 									<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
 									<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
 									<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-									<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentShopping[key], 'shopping')}>  <img className="tableIcon" src={require('../../../Images/Icons/removeFromCart.svg')} alt="shoppingIcon"></img> </Button></td>
+									<td> <DragDropContainer 
+									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }} 
+									targetKey="trashBin"
+									onDragStart={(dragData) => this.props.onDragEnter(dragData)}
+									onDragEnd={(dragData, currentTarget) => this.props.onDragLeave(dragData, currentTarget)}
+									onDrop = {(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd}>  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
 								</tr>)
 						}
 						catch (error) {
@@ -69,8 +81,14 @@ export default class Shopping extends Component {
 		return (
 			<div className="row">
 				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
-					<h3 className="title">My Shopping List</h3>
+				<DndTrash
+						onEnter={this.props.onDropZoneEntered}
+						onLeave={this.props.onDropZoneExited}
+						onDrop={this.props.onDragDropped}
+						overDropZone={this.props.overDropZone}
+						dragging={this.props.dragging} />
 					<Search onSearch={this.props.onSearch} />
+					<h3 className="title">My Shopping List</h3>
 					<Table striped hover responsive className="shoppingTable">
 						<thead>
 							<tr>
@@ -79,7 +97,7 @@ export default class Shopping extends Component {
 								<th className="d-none d-sm-table-cell">Added</th>
 								<th className="d-none d-sm-table-cell">Comment</th>
 								<th>Check</th>
-								<th>Remove</th>
+								<th>Drag</th>
 							</tr>
 						</thead>
 						<tbody>

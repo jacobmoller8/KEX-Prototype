@@ -31,7 +31,7 @@ class VideoDialog extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Instruktionsfilm till skanner systemet"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"Instruktionsfilm till skannersystemet"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               Vill du veta mer om hur du använder det tillhörande skannersystemet?

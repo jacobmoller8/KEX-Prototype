@@ -110,8 +110,8 @@ class MainScreen extends Component {
 
 	onSaveFeedbackClick = () => {
 
-		if(store.getState().feedback.currentFeedback !== ''){
-		store.dispatch(saveFeedback(this.props.user.username, store.getState().feedback.currentFeedback));
+		if (store.getState().feedback.currentFeedback !== '') {
+			store.dispatch(saveFeedback(this.props.user.username, store.getState().feedback.currentFeedback));
 		}
 		store.dispatch(emptyFeedback)
 		store.dispatch(getFeedback(this.props.user.username))
@@ -137,24 +137,68 @@ class MainScreen extends Component {
 		store.dispatch(checkItem(this.props.user.username, item));
 	}
 
+	onDragStart = () => {
+		this.setState({ 'dragging': true })
+	}
+
+	onDragEnd = () => {
+		this.setState({ 'dragging': false })
+	}
+
+	onDragDropped = (data) => {
+		this.onDelete(data.dragData.id, 'shopping')
+	}
+
+	onDropZoneEntered = () => {
+		this.setState({'overDropZone': true})
+	}
+
+	onDropZoneExited = () => {
+		this.setState({'overDropZone': false})
+	}
+
 	render() {
 		var currentScreen = this.state.screenMode
-		let navStyle = {display: 'block'}
+		let navStyle = { display: 'block' }
 
 		if (this.state.feedBackActive) {
-			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} onSaveFeedbackClick={this.onSaveFeedbackClick} handleValueChange={this.handleFeedbackChange} allFeedback={this.props.allFeedback} setValue={this.props.feedbackValue} onDeleteClick={this.onRemoveFeedbackClick}/>
-			navStyle = {display: 'none'}
+			currentScreen = <FeedbackInput onCloseFeedbackClick={this.onCloseFeedbackClick} onSaveFeedbackClick={this.onSaveFeedbackClick} handleValueChange={this.handleFeedbackChange} allFeedback={this.props.allFeedback} setValue={this.props.feedbackValue} onDeleteClick={this.onRemoveFeedbackClick} />
+			navStyle = { display: 'none' }
 		} else if (currentScreen === 'inventory') {
-			currentScreen = <Inventory currentInventory={this.state.inventory} onDelete={this.onDelete} onAddTo={this.onAddTo} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
+			currentScreen = <Inventory
+				currentInventory={this.state.inventory}
+				onDelete={this.onDelete}
+				onAddTo={this.onAddTo}
+				onAddNewItemClick={this.onAddNewItemClick}
+				onEditItemClick={this.onEditItemClick}
+				onSearch={this.onSearchChange} />
 		} else if (currentScreen === 'trash') {
-			currentScreen = <Trash currentTrash={this.state.trash} onDelete={this.onDelete} onAddTo={this.onAddTo} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} />
+			currentScreen = <Trash
+				currentTrash={this.state.trash}
+				onDelete={this.onDelete}
+				onAddTo={this.onAddTo}
+				onEditItemClick={this.onEditItemClick}
+				onSearch={this.onSearchChange} />
 		} else {
-			currentScreen = <Shopping currentShopping={this.state.shopping} onDelete={this.onDelete} onAddNewItemClick={this.onAddNewItemClick} onEditItemClick={this.onEditItemClick} onSearch={this.onSearchChange} handleCheck={this.handleCheckItem} />
+			currentScreen = <Shopping
+				currentShopping={this.state.shopping}
+				onDelete={this.onDelete}
+				onAddNewItemClick={this.onAddNewItemClick}
+				onEditItemClick={this.onEditItemClick}
+				onSearch={this.onSearchChange}
+				handleCheck={this.handleCheckItem}
+				onDragStart={this.onDragStart}
+				onDragEnd={this.onDragEnd}
+				onDragDropped={this.onDragDropped}
+				dragging={this.state.dragging}
+				onDropZoneEntered={this.onDropZoneEntered}
+				onDropZoneExited={this.onDropZoneExited}
+				overDropZone={this.state.overDropZone} />
 		}
 		return (
 			<div>
 				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} onFeedBackClick={this.onFeedBackClick} currentUser={this.props.user.username} />
-				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} visibility={navStyle}/>
+				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} visibility={navStyle} />
 				{currentScreen}
 			</div>
 		)
