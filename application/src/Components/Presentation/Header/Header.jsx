@@ -26,7 +26,7 @@ export default class Header extends Component {
 
 
 		let profileIcon = <Button className="profileBtn" style={profileDisplay}>  <img className="profileImage" src={require('../../../Images/ProfileImages/carrot5.png')} alt="shoppingIcon"></img> </Button>
-		let logo = <div className="container-fluid col-8 offset-2 offset-md-4 col-md-4 logoContainer" style={logoDisplay}> <img className="logo" src={require('../../../Images/logo.svg')} alt="logo"></img></div>;
+		let logo = <div className="container-fluid col-8 offset-2 offset-md-4 col-md-4 logoContainer" style={logoDisplay}> <img className="logo" src={require('../../../Images/GreenCobraLogo.svg')} alt="logo"></img></div>;
 		if (this.props.currentUser === "Red") {
 			profileIcon = <Button className="profileBtn">  <img className="profileImage" src={require('../../../Images/ProfileImages/RedProfile.svg')} alt="shoppingIcon"></img> </Button>
 		} else if (this.props.currentUser === "Blue") {

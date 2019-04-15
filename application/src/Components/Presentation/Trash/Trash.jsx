@@ -4,6 +4,7 @@ import { Button, Table } from 'react-bootstrap';
 import Search from '../Search/Search'
 import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 import { store } from '../../../Store/store'
+import Paper from '@material-ui/core/Paper';
 
 export default class Trash extends Component {
 	render() {
@@ -56,7 +57,7 @@ export default class Trash extends Component {
 
 		return (
 			<div className="row">
-				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 trashBody">
+				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 trashBody" elevation={6} square>
 					<h3 className="title">My Trash</h3>
 					<Search onSearch={this.props.onSearch} />
 					<Table striped hover responsive className="trashTable">
@@ -74,7 +75,7 @@ export default class Trash extends Component {
 							{trashList}
 						</tbody>
 					</Table>
-				</div>
+				</Paper>
 			</div>
 		)
 	}

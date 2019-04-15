@@ -4,6 +4,7 @@ import { Button, Table } from 'react-bootstrap';
 import FancyCheckbox from '../../MaterialComponents/Material-Checkbox/Checkbox'
 import Search from '../Search/Search'
 import { store } from '../../../Store/store'
+import Paper from '@material-ui/core/Paper';
 
 
 export default class Shopping extends Component {
@@ -68,7 +69,7 @@ export default class Shopping extends Component {
 
 		return (
 			<div className="row">
-				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
+				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody" elevation={6} square>
 					<h3 className="title">My Shopping List</h3>
 					<Search onSearch={this.props.onSearch} />
 					<Table striped hover responsive className="shoppingTable">
@@ -90,7 +91,7 @@ export default class Shopping extends Component {
 						<Button className="addItemBtn" onClick={this.props.onAddNewItemClick}>  <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
 						<h6>Add Item</h6>
 					</div>
-				</div>
+				</Paper>
 			</div>
 		)
 	}
