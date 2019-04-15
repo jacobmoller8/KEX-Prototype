@@ -4,6 +4,8 @@ import { Button, Table } from 'react-bootstrap';
 import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 import Search from '../Search/Search'
 import { store } from '../../../Store/store'
+import Paper from '@material-ui/core/Paper';
+
 export default class Inventory extends Component {
 
 	render() {
@@ -55,29 +57,29 @@ export default class Inventory extends Component {
 
 		return (
 			<div className="row">
-				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 inventoryBody">
-					<h3 className="title">My Inventory</h3>
-					<Search onSearch={this.props.onSearch} />
-					<Table striped hover responsive className="inventoryTable">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Qty</th>
-								<th className="d-none d-sm-table-cell">Added</th>
-								<th className="d-none d-sm-table-cell">Comment</th>
-								<th>Add</th>
-								<th>Delete</th>
-							</tr>
-						</thead>
-						<tbody>
-							{inventoryList}
-						</tbody>
-					</Table>
-					<div className="container-fluid offset-2 col-8 offset-sm-4 col-sm-4 addItemContainer">
-						<Button className="addItemBtn" onClick={this.props.onAddNewItemClick}> <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
-						<h6>Add Item</h6>
-					</div>
-				</div>
+					<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 inventoryBody" elevation={6} square>
+						<h3 className="title">My Inventory</h3>
+						<Search onSearch={this.props.onSearch} />
+						<Table striped hover responsive className="inventoryTable">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Qty</th>
+									<th className="d-none d-sm-table-cell">Added</th>
+									<th className="d-none d-sm-table-cell">Comment</th>
+									<th>Add</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								{inventoryList}
+							</tbody>
+						</Table>
+						<div className="container-fluid offset-2 col-8 offset-sm-4 col-sm-4 addItemContainer">
+							<Button className="addItemBtn" onClick={this.props.onAddNewItemClick}> <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
+							<h6>Add Item</h6>
+						</div>
+					</Paper>
 			</div>
 		)
 	}

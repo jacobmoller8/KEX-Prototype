@@ -6,6 +6,8 @@ import Search from '../Search/Search'
 import { store } from '../../../Store/store'
 import { DragDropContainer } from 'react-drag-drop-container';
 import DndTrash from '../DragNDropTrashBin/DndTrash'
+import Paper from '@material-ui/core/Paper';
+
 
 export default class Shopping extends Component {
 
@@ -80,7 +82,7 @@ export default class Shopping extends Component {
 
 		return (
 			<div className="row">
-				<div className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
+				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody">
 				<DndTrash
 						onEnter={this.props.onDropZoneEntered}
 						onLeave={this.props.onDropZoneExited}
@@ -108,7 +110,7 @@ export default class Shopping extends Component {
 						<Button className="addItemBtn" onClick={this.props.onAddNewItemClick}>  <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
 						<h6>Add Item</h6>
 					</div>
-				</div>
+				</Paper>
 			</div>
 		)
 	}

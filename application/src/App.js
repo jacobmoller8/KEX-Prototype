@@ -5,6 +5,7 @@ import LogInScreen from './Components/Container/LogInScreen';
 import MainScreen from './Components/Container/MainScreen';
 import AddItemScreen from './Components/Container/AddItemScreen';
 import EditItemScreen from './Components/Container/EditItemScreen';
+import RegisterScreen from './Components/Container/RegisterScreen';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Route exact path="/" render={() => <LogInScreen />} />
+          <Route path="/RegisterScreen" render={() => <RegisterScreen />} />
           <Route path="/MainScreen" render={() => <MainScreen />} />
           <Route path="/AddItemScreen" render={() => <AddItemScreen />} />
           <Route path="/EditItemScreen/:id" render={(props) => <EditItemScreen {...props} />} />

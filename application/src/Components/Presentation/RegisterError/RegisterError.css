@@ -1,0 +1,21 @@
+#registerErrorBox{
+	display: inline-block;
+}
+
+.errIcon{
+	width: 30px;
+}
+
+.errorMessage{
+	padding: 0px 10px;
+	border-radius: 15px;
+	background-color: #75AD49;
+	color: white;
+	box-shadow: 1px 1px 4px 2px #ccc;
+
+}
+
+#errText{
+	margin-top: 15px;
+	padding-left: 10px;
+}

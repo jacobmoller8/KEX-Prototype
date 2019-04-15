@@ -7,8 +7,14 @@
 }
 
 .searchContainer{
-	padding: 15px;
+	padding: 10px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	background-color: rgba(116, 173, 73, 0.1);
+	border-top: solid;
+	border-left: solid;
+	border-right: solid;
+	border-color: #75AC4A;
+	font-weight: 600;
+	font-size: 12pt;
+	border-width: 3px;
 }

@@ -27,6 +27,9 @@ class LogInScreen extends Component {
 			this.loginControlCheck();
 		}, 1000);
 	}
+	onRegisterClick = () => {
+		this.props.history.push('/RegisterScreen')
+	}
 
 	loginControlCheck() {
 		try {
@@ -64,6 +67,7 @@ class LogInScreen extends Component {
 					onUserInput={(e) => this.props.userLoginUserInput(e.target.value)}
 					onPassInput={(e) => this.props.userLoginPassInput(e.target.value)}
 					onLoginClick={this.onLoginClick}
+					onRegisterClick={this.onRegisterClick}
 					logInError={this.state.logInError} />
 			</div>
 		);

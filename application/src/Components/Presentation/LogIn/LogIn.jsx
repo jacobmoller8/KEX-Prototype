@@ -37,8 +37,8 @@ export default class LogIn extends Component {
 						</div>
 
 						<p id="registerText">Haven't got an account?</p>
-						<Button type="submit" className="btn btn-warning" id="registerBtn" disabled>Register</Button>
-						
+						<Button type="submit" className="btn btn-warning" id="registerBtn" onClick={this.props.onRegisterClick}>Register</Button>
+
 
 					</div>
 
