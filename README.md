@@ -4,7 +4,7 @@ Jacob Möller & Hugo Bergqvist
 
 ## About the project
 
-The project is a webapplication for a digital food inventory system. The application consist of three main parts: shopping/inventory/trash and we are doing the project as part of our bachelor degree project. The webapp is connected to a physical scanner that can read barcodes, which is the main use for the app (there is a link to a demonstration video of the scanner-system in the header of the app). 
+The project is a webapplication for a digital food inventory system. The application consist of three main parts: shopping/inventory/trash and we are doing the project as part of our bachelor degree project. The webapp is connected to a physical scanner that can read barcodes, which is the main use for the app (there is a link to a demonstration video of the scanner-system in the header of the app). The webapplication is written with the framework React.
 
 ## Run Instructions
 
@@ -23,7 +23,7 @@ The API we are using is from consupedia.com (not open to the public) and is acce
 
 ## Database
 
-We are using Firebase realtime database to store all inventory and user data. We are also using Firebase to host our website and we have some cloudfunctions that logs all the inventory changes.
+We are using Firebase realtime database to store all inventory and user data. We are also using Firebase to host our website and we have some cloudfunctions that logs all the inventory changes to the database.
 
 ## File Structure
 
