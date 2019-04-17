@@ -24,35 +24,38 @@ export default class AddItem extends Component {
 			APIErrorVisibility = ({ display: 'block' })
 		}
 
+		let staticInfo = null
+
+		if (this.props.FullNameValue !== '') {
+			staticInfo = <div className="container-fluid col-8 staticInfoContainer">
+				<p className="staticText"> {this.props.FullNameValue} </p>
+				<p className="staticText"> Barcode: {this.props.fetchedEAN} </p>
+			</div>
+		}
+
 
 		return (
 			<div>
 				<div className="row">
 					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
 						<h3 className="title">Add Item</h3>
-
+						{staticInfo}
 						<form autoComplete="off">
 							<div className="form-group">
-								<InputLabel className="inLabel" shrink={true}>Short Name:</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Name:</InputLabel>
 								<Input
 									className="col-11"
 									type="text"
 									id="nameInput"
+									placeholder="Ex: Bananas"
 									value={this.props.NameValue}
 									onChange={this.props.updateNameValue}>
-								</Input>
-								<InputLabel className="inLabel" shrink={true}>Full Name:</InputLabel>
-								<Input
-									className="col-11"
-									type="text"
-									id="fullNameInput"
-									value={this.props.FullNameValue}
-									onChange={this.props.updateFullNameValue}>
 								</Input>
 								<InputLabel className="inLabel" shrink={true}>Comment:</InputLabel>
 								<Input
 									className="col-11"
 									type="text"
+									placeholder="Ex: Getting ripe, use soon"
 									id="commentInput"
 									value={this.props.CommentValue}
 									onChange={this.props.updateCommentValue}>
@@ -60,7 +63,8 @@ export default class AddItem extends Component {
 								<InputLabel className="inLabel" shrink={true}>Quantity (Number):</InputLabel>
 								<Input
 									className="col-11"
-									type="text"
+									type="number"
+									inputProps={{ min: "1", max: "10", step: "1" }}
 									id="quantityInput"
 									value={this.props.QuantityValue}
 									onChange={this.props.updateQuantityValue}>

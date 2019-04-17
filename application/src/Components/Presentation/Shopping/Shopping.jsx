@@ -84,12 +84,6 @@ export default class Shopping extends Component {
 			<div className="row">
 				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody" elevation={6} square>
 					<h3 className="title">My Shopping List</h3>
-					<DndTrash
-						onEnter={this.props.onDropZoneEntered}
-						onLeave={this.props.onDropZoneExited}
-						onDrop={this.props.onDragDropped}
-						overDropZone={this.props.overDropZone}
-						dragging={this.props.dragging} />
 					<Search onSearch={this.props.onSearch} />
 
 					<Table striped hover responsive className="shoppingTable">
@@ -112,6 +106,12 @@ export default class Shopping extends Component {
 						<h6>Add Item</h6>
 					</div>
 				</Paper>
+				<DndTrash
+						onEnter={this.props.onDropZoneEntered}
+						onLeave={this.props.onDropZoneExited}
+						onDrop={this.props.onDragDropped}
+						overDropZone={this.props.overDropZone}
+						dragging={this.props.dragging} />
 			</div>
 		)
 	}

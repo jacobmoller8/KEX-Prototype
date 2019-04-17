@@ -20,7 +20,7 @@ class AddItemScreen extends Component {
 			fullName: "",
 			fetchedEAN: "",
 			comment: "",
-			quantity: "",
+			quantity: 1,
 			EANSearchValue: "",
 			status: "none",
 			message: "",
@@ -55,7 +55,7 @@ class AddItemScreen extends Component {
 	}
 
 	onApiSearch = () => {
-		if (this.state.EANSearchValue.length === 13) {
+		if (7 < this.state.EANSearchValue.length && this.state.EANSearchValue.length < 14) {
 			if (/^\d+$/.test(this.state.EANSearchValue)) {
 				store.dispatch(fetchItem(this.state.EANSearchValue))
 			}
@@ -64,7 +64,7 @@ class AddItemScreen extends Component {
 			}
 
 		} else {
-			this.setState({ currentError: `The barcode must contain 13 characters, your search contained: ${this.state.EANSearchValue.length}` })
+			this.setState({ currentError: `The barcode must contain between 8 and 13 characters, your search contained: ${this.state.EANSearchValue.length}` })
 		}
 
 	}
@@ -97,7 +97,7 @@ class AddItemScreen extends Component {
 			name: "",
 			fullName: "",
 			comment: "",
-			quantity: "",
+			quantity: 1,
 			EANSearchValue: "",
 		})
 	}
@@ -174,7 +174,8 @@ class AddItemScreen extends Component {
 					onApiSearch={() => this.onApiSearch()}
 					status={this.state.status}
 					message={this.state.message}
-					currentError={this.state.currentError}></AddItem>
+					currentError={this.state.currentError}
+					fetchedEAN={this.state.fetchedEAN}></AddItem>
 			</div>
 		)
 	}

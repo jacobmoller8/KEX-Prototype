@@ -1,4 +1,4 @@
-.addItemBody{
+.editItemBody{
     position: relative;
     align-items: center;
     align-content: center;
@@ -6,6 +6,11 @@
     padding: 10px;
     padding-top: 20px;
     border-radius: 15px;
+}
+
+.formInputs{
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 .title{
@@ -41,10 +46,19 @@
 	box-shadow: 1px 1px 2px 1px rgb(189, 189, 189);
 }
 
-#EANcode{
-    color: rgb(154, 154, 154);
+.staticInfoContainer{
+    border: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(249, 145, 34);
+}
+
+.staticText{
+    color: rgb(109, 109, 109);
     margin-top: 0px;
     padding-top: 0px;
+    margin-bottom: 0px;
+    font-size: 9pt;
 }
 
 .confirmButton:hover{
