@@ -7,12 +7,13 @@ export const ADD_CUSTOM_TO_INV = 'ADD_CUSTOM_TO_INV';
 /* ------------- ACTION CREATORS ------------- */
 export function addCustomItemToShopping(user, name, comment, quantity, fetchEAN, fullname) {
 	var EANcode = ""
-	console.log('FETCH EAN: ', fetchEAN)
+	
 	if (fetchEAN !== "") {
 		EANcode = fetchEAN;
 	} else {
 		EANcode = Math.floor(Math.random() * 10000000) + 1000000000;
 	}
+
 
 	var date = new Date().toISOString().slice(0, 10);
 

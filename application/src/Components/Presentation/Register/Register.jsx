@@ -33,8 +33,15 @@ export default class Register extends Component {
                                 </div>
                                 {errorBox}
                                 <br />
-                                <div id="registerBtnContainer">
-                                    <Button type="submit" className="btn btn-warning" id="registerBtn" onClick={this.props.onRegisterClick}>Register</Button>
+                                <div className="row btnRow">
+                                    <div className="container-fluid col-4 backBtnCont">
+                                        <Button className="btn goBackButton" onClick={this.props.onGoBackClick}>  <img className="backIcon" src={require('../../../Images/Icons/back.svg')} alt="shoppingIcon"></img> </Button>
+                                        <p>Back</p>
+                                    </div>
+                                    <div className="container-fluid col-4 addBtnCont">
+                                        <Button className="btn confirmButton" type="submit" onClick={this.props.onRegisterClick}> <img className="addIcon" src={require('../../../Images/Icons/yes.svg')} alt="shoppingIcon"></img> </Button>
+                                        <p>Register</p>
+                                    </div>
                                 </div>
                             </form>
                         </div>

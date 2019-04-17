@@ -58,6 +58,9 @@ class RegisterScreen extends Component {
         this.props.addUser(this.props.user["register_username"], this.props.user["register_password"])
         this.props.history.push('/')
     }
+    onGoBackClick = () => {
+        this.props.history.push("/")
+    }
 
     render() {
         return (
@@ -68,6 +71,7 @@ class RegisterScreen extends Component {
                     onUserInput={(e) => this.props.userRegisterUserInput(e.target.value)}
                     onPassInput={(e) => this.props.userRegisterPassInput(e.target.value)}
                     onPassInput2={(e) => this.props.userRegisterPass2Input(e.target.value)}
+                    onGoBackClick={this.onGoBackClick}
                     onRegisterClick={this.onRegisterClick}
                     registerError={this.state.registerError}
                     registerErrorText={this.state.registerErrorText} />
