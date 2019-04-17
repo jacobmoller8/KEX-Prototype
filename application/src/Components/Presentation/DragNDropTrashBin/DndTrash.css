@@ -16,3 +16,12 @@
 	margin-left: auto;
 	margin-top: auto;
 }
+
+.highlighted .dropTargetContainer{
+	transform: scale(1.15, 1.15);
+	transition: all .2s ease;
+}
+
+.dropTar{
+	position: absolute;
+}

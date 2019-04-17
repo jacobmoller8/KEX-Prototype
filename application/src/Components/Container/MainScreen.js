@@ -149,14 +149,6 @@ class MainScreen extends Component {
 		this.onDelete(data.dragData.id, 'shopping')
 	}
 
-	onDropZoneEntered = () => {
-		this.setState({'overDropZone': true})
-	}
-
-	onDropZoneExited = () => {
-		this.setState({'overDropZone': false})
-	}
-
 	render() {
 		var currentScreen = this.state.screenMode
 		let navStyle = { display: 'block' }
@@ -190,10 +182,7 @@ class MainScreen extends Component {
 				onDragStart={this.onDragStart}
 				onDragEnd={this.onDragEnd}
 				onDragDropped={this.onDragDropped}
-				dragging={this.state.dragging}
-				onDropZoneEntered={this.onDropZoneEntered}
-				onDropZoneExited={this.onDropZoneExited}
-				overDropZone={this.state.overDropZone} />
+				dragging={this.state.dragging}/>
 		}
 		return (
 			<div>

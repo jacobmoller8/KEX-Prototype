@@ -105,13 +105,10 @@ export default class Shopping extends Component {
 						<Button className="addItemBtn" onClick={this.props.onAddNewItemClick}>  <img className="icon" src={require('../../../Images/Icons/addItem.svg')} alt="shoppingIcon"></img> </Button>
 						<h6>Add Item</h6>
 					</div>
-				</Paper>
-				<DndTrash
-						onEnter={this.props.onDropZoneEntered}
-						onLeave={this.props.onDropZoneExited}
+					<DndTrash
 						onDrop={this.props.onDragDropped}
-						overDropZone={this.props.overDropZone}
 						dragging={this.props.dragging} />
+				</Paper>
 			</div>
 		)
 	}

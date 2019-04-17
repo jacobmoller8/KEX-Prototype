@@ -47,14 +47,12 @@
 }
 
 .staticInfoContainer{
-    border: solid;
-    border-radius: 10px;
-    border-width: 1px;
-    border-color: rgb(249, 145, 34);
+	background-color: #75AD49;
+	border-radius: 10px;
 }
 
 .staticText{
-    color: rgb(109, 109, 109);
+    color: white;
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 0px;
