@@ -6,6 +6,7 @@ import ItemFeedbackBox from "../ItemFeedbackBox/ItemFeedbackBox";
 import APIError from '../APIErrorHandler/APIError';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Paper from '@material-ui/core/Paper';
 
 
 let APIErrorVisibility = ({ display: 'none' })
@@ -27,7 +28,7 @@ export default class AddItem extends Component {
 		let staticInfo = null
 
 		if (this.props.FullNameValue !== '') {
-			staticInfo = <div className="container-fluid col-8 staticInfoContainer">
+			staticInfo = <div className="container-fluid col-7 staticInfoContainer">
 				<p className="staticText"> {this.props.FullNameValue} </p>
 				<p className="staticText"> Barcode: {this.props.fetchedEAN} </p>
 			</div>
@@ -37,12 +38,12 @@ export default class AddItem extends Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center">
+					<Paper className="container-fluid col-lg-6 col-md-6 col-11 addItemBody text-center" elevation={6} square>
 						<h3 className="title">Add Item</h3>
 						{staticInfo}
 						<form autoComplete="off">
 							<div className="form-group">
-								<InputLabel className="inLabel" shrink={true}>Name:</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Name:</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="text"
@@ -51,7 +52,7 @@ export default class AddItem extends Component {
 									value={this.props.NameValue}
 									onChange={this.props.updateNameValue}>
 								</Input>
-								<InputLabel className="inLabel" shrink={true}>Comment:</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Comment:</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="text"
@@ -60,7 +61,7 @@ export default class AddItem extends Component {
 									value={this.props.CommentValue}
 									onChange={this.props.updateCommentValue}>
 								</Input>
-								<InputLabel className="inLabel" shrink={true}>Quantity (Number):</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Quantity (Number):</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="number"
@@ -87,7 +88,7 @@ export default class AddItem extends Component {
 						<APIError currentError={this.props.currentError} style={APIErrorVisibility} />
 						<SearchBoxAPI onApiSearch={this.props.onApiSearch} valueHandler={this.props.EANSearchValue} changeHandler={this.props.updateEANSearchValue} />
 
-					</div>
+					</Paper>
 				</div>
 
 			</div>

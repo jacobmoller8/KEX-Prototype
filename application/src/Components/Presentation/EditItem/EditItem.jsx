@@ -26,7 +26,7 @@ export default class EditItem extends Component {
 
 						<form autoComplete="off">
 							<div className="form-group formInputs">
-								<InputLabel className="inLabel" shrink={true}>Name:</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Name:</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="text"
@@ -35,7 +35,7 @@ export default class EditItem extends Component {
 									defaultValue={this.props.NameValue}
 									onChange={this.props.updateNameValue}>
 								</Input>
-								<InputLabel className="inLabel" shrink={true} >Comment:</InputLabel>
+								<InputLabel className="inLabel" shrink={true} >Comment:</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="text"
@@ -44,7 +44,7 @@ export default class EditItem extends Component {
 									defaultValue={this.props.CommentValue}
 									onChange={this.props.updateCommentValue}>
 								</Input>
-								<InputLabel className="inLabel" shrink={true}>Quantity (Number):</InputLabel>
+								<InputLabel className="inLabel" shrink={true}>Quantity (Number):</InputLabel><br/>
 								<Input
 									className="col-11"
 									type="number"

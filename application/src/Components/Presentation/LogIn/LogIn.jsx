@@ -3,6 +3,7 @@ import CircularIntegration from '../../MaterialComponents//Loaders/ButtonLoader'
 import './LogIn.css';
 import LogInError from '../LogInError/LogInError'
 import { Button } from 'react-bootstrap';
+import Paper from '@material-ui/core/Paper';
 
 export default class LogIn extends Component {
 
@@ -18,7 +19,7 @@ export default class LogIn extends Component {
 				<div className="row justify-content-center" >
 					<div className="col-lg-6 col-md-10 col-sm-10 text-center">
 
-						<div id="signInContainer">
+						<Paper id="signInContainer" elevation={6} square>
 							<form>
 								<div className="form-group">
 									<label>Username:</label>
@@ -34,7 +35,7 @@ export default class LogIn extends Component {
 									<CircularIntegration onButtonClick={this.props.onLoginClick} />
 								</div>
 							</form>
-						</div>
+						</Paper>
 
 						<p id="registerText">Haven't got an account?</p>
 						<Button type="submit" className="btn btn-warning" id="registerBtn" onClick={this.props.onRegisterClick}>Register</Button>

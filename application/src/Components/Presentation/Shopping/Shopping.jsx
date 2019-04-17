@@ -109,12 +109,6 @@ export default class Shopping extends Component {
 						onDrop={this.props.onDragDropped}
 						dragging={this.props.dragging} />
 				</Paper>
-				<DndTrash
-						onEnter={this.props.onDropZoneEntered}
-						onLeave={this.props.onDropZoneExited}
-						onDrop={this.props.onDragDropped}
-						overDropZone={this.props.overDropZone}
-						dragging={this.props.dragging} />
 			</div>
 		)
 	}
