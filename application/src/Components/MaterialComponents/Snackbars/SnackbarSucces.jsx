@@ -109,7 +109,7 @@ class SuccessSnackbar extends React.Component {
 						horizontal: 'left',
 					}}
 					open={this.state.open}
-					autoHideDuration={1000}
+					autoHideDuration={1500}
 					onClose={this.handleClose}
 				>
 					<MySnackbarContentWrapper
