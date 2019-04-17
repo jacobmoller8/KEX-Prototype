@@ -3,8 +3,6 @@ export const SET_INVENTORY = 'SET_INVENTORY';
 export const SET_TRASH = 'SET_TRASH';
 export const SET_SHOPPING = 'SET_SHOPPING';
 
-
-
 /* ------------- ACTION CREATORS ------------- */
 export const setInventory = (screenMode) => ({
 	type: SET_INVENTORY,

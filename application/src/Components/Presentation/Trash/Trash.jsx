@@ -8,6 +8,19 @@ import Paper from '@material-ui/core/Paper';
 
 export default class Trash extends Component {
 	render() {
+
+		this.addItemTolist = (key) => {
+			trashList.push(
+				<tr key={currentTrash[key].EANcode}>
+					<td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].name}</td>
+					<td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
+					<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
+					<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
+					<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentTrash[key]} comesFrom='trash' actionStatus='move' /></td>
+					<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
+				</tr>)
+		}
+
 		let filterValue = store.getState().firebase.filter
 		var trashList = [];
 		const { currentTrash } = this.props
@@ -17,15 +30,7 @@ export default class Trash extends Component {
 			if (filterValue === '' || filterValue === undefined) {
 				for (let key in currentTrash) {
 					try {
-						trashList.push(
-							<tr key={currentTrash[key].EANcode}>
-								<td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].name}</td>
-								<td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
-								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
-								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
-								<td> <SuccessSnackbar onAddTo={this.props.onAddTo} itemToAdd={currentTrash[key]} comesFrom='trash' actionStatus='move' /></td>
-								<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
-							</tr>)
+						this.addItemTolist(key)
 					}
 					catch (error) {
 						console.log(error)
@@ -36,20 +41,11 @@ export default class Trash extends Component {
 					let itemName = currentTrash[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						try {
-							trashList.push(
-								<tr key={currentTrash[key].EANcode}>
-									<td className="itemName" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].name}</td>
-									<td className="quantity" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].quantity}</td>
-									<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].dates[0]}</td>
-									<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentTrash[key].EANcode)}>{currentTrash[key].comment}</td>
-									<td> <Button className="addShoppingItemBtn" onClick={() => this.props.onAddTo(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/shoppingCart.svg')} alt="shoppingIcon"></img> </Button></td>
-									<td> <Button className="delItemBtn" onClick={() => this.props.onDelete(currentTrash[key], 'trash')}>  <img className="tableIcon" src={require('../../../Images/Icons/delete.svg')} alt="shoppingIcon"></img> </Button></td>
-								</tr>)
+							this.addItemTolist(key)
 						}
 						catch (error) {
 							console.log(error)
 						}
-
 					}
 				}
 			}

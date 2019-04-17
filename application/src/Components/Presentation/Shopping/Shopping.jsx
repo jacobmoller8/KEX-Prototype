@@ -11,8 +11,25 @@ import Paper from '@material-ui/core/Paper';
 
 export default class Shopping extends Component {
 
-
 	render() {
+
+		this.addItemTolist = (key) => {
+			shoppingList.push(
+				<tr key={currentShopping[key].EANcode} style={checkStyle}>
+					<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
+					<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
+					<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
+					<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
+					<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
+					<td> <DragDropContainer
+						dragData={{ label: currentShopping[key].name, id: currentShopping[key] }}
+						targetKey="trashBin"
+						onDragStart={(dragData) => this.props.onDragStart(dragData)}
+						onDragEnd={(dragData, currentTarget) => this.props.onDragEnd(dragData, currentTarget)}
+						onDrop={(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd} >  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
+				</tr>)
+		}
+
 		let filterValue = store.getState().firebase.filter
 		var shoppingList = [];
 		const { currentShopping } = this.props
@@ -26,21 +43,7 @@ export default class Shopping extends Component {
 					}
 					else (checkStyle = ({ color: 'black' }))
 					try {
-						shoppingList.push(
-
-							<tr key={currentShopping[key].EANcode} style={checkStyle}>
-								<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
-								<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
-								<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
-								<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
-								<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-								<td> <DragDropContainer
-									dragData={{ label: currentShopping[key].name, id: currentShopping[key] }}
-									targetKey="trashBin"
-									onDragStart={(dragData) => this.props.onDragStart(dragData)}
-									onDragEnd={(dragData, currentTarget) => this.props.onDragEnd(dragData, currentTarget)}
-									onDrop={(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd} >  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
-							</tr>)
+						this.addItemTolist(key)
 					}
 					catch (error) {
 						console.log(error)
@@ -55,20 +58,7 @@ export default class Shopping extends Component {
 					let itemName = currentShopping[key].name.toLowerCase()
 					if (itemName.includes(filterValue)) {
 						try {
-							shoppingList.push(
-								<tr key={currentShopping[key].EANcode} style={checkStyle}>
-									<td className="itemName" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].name}</td>
-									<td className="quantity" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].quantity}</td>
-									<td className="timeAdded d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].dates[0]}</td>
-									<td className="comment d-none d-sm-table-cell" onClick={() => this.props.onEditItemClick(currentShopping[key].EANcode)}>{currentShopping[key].comment}</td>
-									<td> <FancyCheckbox currentItem={currentShopping[key]} handleCheck={this.props.handleCheck} /></td>
-									<td> <DragDropContainer
-										dragData={{ label: currentShopping[key].name, id: currentShopping[key] }}
-										targetKey="trashBin"
-										onDragStart={(dragData) => this.props.onDragEnter(dragData)}
-										onDragEnd={(dragData, currentTarget) => this.props.onDragLeave(dragData, currentTarget)}
-										onDrop={(dragData, dropTarget) => this.props.onDragDropped(dragData, dropTarget)}> <Button className="delItemBtn" onClick={this.props.onDragEnd}>  <img className="tableIcon" src={require('../../../Images/Icons/touchIcon.svg')} alt="shoppingIcon"></img> </Button> </DragDropContainer></td>
-								</tr>)
+							this.addItemTolist(key)
 						}
 						catch (error) {
 							console.log(error)

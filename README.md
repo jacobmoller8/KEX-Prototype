@@ -11,6 +11,8 @@ The project is a webapplication for a digital food inventory system. The applica
 To run the code use the following website:
 - https://kex-scanner-project.firebaseapp.com/
 
+The webapp works on mobile devices in fullscreen mode aswell.
+
 To login to the page:
 - Username: midreview
 - Password: password
@@ -40,5 +42,5 @@ Component structure:
 Script:
 - Script.py 
 
-Script that takes scanner input, get the barcode from the API and sends it to the database to the specifik user.
+Script that takes scanner input, get the barcode from the API and sends it to the database to the specific user.
 

@@ -37,11 +37,10 @@ export function confirmCurrentItem(username, screenMode, id, name, comment, quan
         dates.push(date)
     }
 
-
     var item = {
         "EANcode": id,
-				"name": name,
-				"fullname": fullname,
+        "name": name,
+        "fullname": fullname,
         "comment": comment,
         "quantity": parseInt(quantity),
         "dates": dates

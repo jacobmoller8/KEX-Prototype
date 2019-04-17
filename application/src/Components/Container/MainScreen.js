@@ -182,7 +182,7 @@ class MainScreen extends Component {
 				onDragStart={this.onDragStart}
 				onDragEnd={this.onDragEnd}
 				onDragDropped={this.onDragDropped}
-				dragging={this.state.dragging}/>
+				dragging={this.state.dragging} />
 		}
 		return (
 			<div>
