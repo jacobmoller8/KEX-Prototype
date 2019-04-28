@@ -8,6 +8,7 @@ import userReducer from "../Reducers/userReducer";
 import mainScreenModeReducer from "../Reducers/mainScreenModeReducer";
 import currentItemReducer from "../Reducers/currentItemReducer";
 import apiReducer from '../Reducers/apiReducer';
+import sortListReducer from '../Reducers/sortListReducer'
 
 import thunk from "redux-thunk";
 
@@ -25,7 +26,8 @@ const allReducers = combineReducers({
     mainScreen: mainScreenModeReducer,
     currentItem: currentItemReducer,
 		apiInfo: apiReducer,
-		feedback: feedbackReducer
+		feedback: feedbackReducer,
+		listOrder: sortListReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

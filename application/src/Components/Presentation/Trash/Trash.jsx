@@ -5,6 +5,7 @@ import Search from '../Search/Search'
 import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 import { store } from '../../../Store/store'
 import Paper from '@material-ui/core/Paper';
+import ToggleListOrder from '../ToggleListOrder/ToggleListOrder'
 
 export default class Trash extends Component {
 	render() {
@@ -55,7 +56,10 @@ export default class Trash extends Component {
 			<div className="row">
 				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 trashBody" elevation={6} square>
 					<h3 className="title">My Trash</h3>
-					<Search onSearch={this.props.onSearch} />
+					<div className="row">
+						<ToggleListOrder />
+						<Search onSearch={this.props.onSearch} />
+					</div>
 					<Table striped hover responsive className="trashTable">
 						<thead>
 							<tr>

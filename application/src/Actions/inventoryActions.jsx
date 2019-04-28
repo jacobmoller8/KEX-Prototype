@@ -12,7 +12,6 @@ export const ADD_INV_ITEM = 'ADD_INV_ITEM';
 
 
 let decQuant = 0
-
 let quantityDecreaser = (snapshot) => {
 	let curVal = snapshot.val()
 		if (snapshot.val() === 1){
@@ -25,6 +24,7 @@ let quantityDecreaser = (snapshot) => {
 
 /* ------------- ACTION CREATORS ------------- */
 export function removeInventoryItem(user, item) {
+
 	const EANcode = item.EANcode
 
 	databaseRef.ref('users/' + user + '/inventory/' + EANcode).child('quantity').once('value', quantityDecreaser)
@@ -45,7 +45,8 @@ export function removeInventoryItem(user, item) {
 	return dispatch => {
 
 		//get new copy of inventory
-		var firebaseCall = databaseRef.ref("users/" + user)
+		var firebaseCall = databaseRef.ref("users/" + user);
+
 
 		firebaseCall.once('value', snapshot => {
 			snapshot.forEach(childSnap => {

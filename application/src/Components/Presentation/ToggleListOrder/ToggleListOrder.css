@@ -1,0 +1,9 @@
+.orderListContainer{
+	padding-bottom: 0px;
+}
+
+.orderBtnContainer{
+	padding: 0px;
+	position: absolute; 
+	bottom: 5px;
+}

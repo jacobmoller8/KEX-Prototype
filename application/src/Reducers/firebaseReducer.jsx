@@ -1,4 +1,4 @@
-import { ADD_USER, UPDATE_FIREBASE_DATA, REMOVE_USER, TRY_REGISTER_NEW_USER } from '../Actions/firebaseActions';
+import { ADD_USER, UPDATE_FIREBASE_DATA, REMOVE_USER, TRY_REGISTER_NEW_USER, UPDATE_SORTED_INVENTORY, UPDATE_SORTED_SHOPPING, UPDATE_SORTED_TRASH } from '../Actions/firebaseActions';
 import { REMOVE_INV_ITEM, ADD_INV_TO_SHOP } from '../Actions/inventoryActions';
 import { REMOVE_TRASH_ITEM, ADD_TRASH_TO_SHOP } from '../Actions/trashActions';
 import { REMOVE_SHOP_ITEM, CHECK_ITEM } from '../Actions/shoppingActions';
@@ -62,6 +62,21 @@ export default function firebaseReducer(state = {}, { type, payload }) {
 			return ({
 				...state,
 				shopping: payload.shopping
+			})
+			case UPDATE_SORTED_INVENTORY:
+			return ({
+				...state,
+				inventory: payload
+			})
+			case UPDATE_SORTED_TRASH:
+			return ({
+				...state,
+				trash: payload
+			})
+			case UPDATE_SORTED_SHOPPING:
+			return ({
+				...state,
+				shopping: payload
 			})
 		case TRY_REGISTER_NEW_USER:
 			return payload.user

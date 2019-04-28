@@ -7,6 +7,7 @@ import { store } from '../../../Store/store'
 import { DragDropContainer } from 'react-drag-drop-container';
 import DndTrash from '../DragNDropTrashBin/DndTrash'
 import Paper from '@material-ui/core/Paper';
+import ToggleListOrder from '../ToggleListOrder/ToggleListOrder'
 
 
 export default class Shopping extends Component {
@@ -74,8 +75,10 @@ export default class Shopping extends Component {
 			<div className="row">
 				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 shoppingBody" elevation={6} square>
 					<h3 className="title">My Shopping List</h3>
-					<Search onSearch={this.props.onSearch} />
-
+					<div className="row">
+						<ToggleListOrder />
+						<Search onSearch={this.props.onSearch} />
+					</div>
 					<Table striped hover responsive className="shoppingTable">
 						<thead>
 							<tr>
