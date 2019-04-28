@@ -5,12 +5,15 @@ export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
 export const UPDATE_FIREBASE_DATA = "UPDATE_FIREBASE_DATA";
 export const TRY_REGISTER_NEW_USER = "TRY_REGISTER_NEW_USER";
+export const UPDATE_SORTED_INVENTORY = "UPDATE_SORTED_INVENTORY";
+export const UPDATE_SORTED_TRASH = "UPDATE_SORTED_TRASH";
+export const UPDATE_SORTED_SHOPPING = "UPDATE_SORTED_SHOPPING";
 
 /* ------------- ACTION CREATORS ------------- */
 export function updateFirebaseData(username) {
 
+	var firebaseCall = databaseRef.ref("users/" + username)
     return dispatch => {
-        var firebaseCall = databaseRef.ref("users/" + username)
 
         firebaseCall.on('value', snapshot => {
             var userObject = snapshot.val()
@@ -59,6 +62,20 @@ export function addUser(user, pass) {
     }
 }
 
+export const updateSortedTrash = (list) => ({
+	type: UPDATE_SORTED_TRASH,
+	payload: list
+})
+
+export const updateSortedInventory = (list) => ({
+	type: UPDATE_SORTED_INVENTORY,
+	payload: list
+})
+
+export const updateSortedShopping = (list) => ({
+	type: UPDATE_SORTED_SHOPPING,
+	payload: list
+})
 
 // Not used
 export function removeUser() {

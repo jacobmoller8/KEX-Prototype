@@ -5,6 +5,7 @@ import SuccessSnackbar from '../../MaterialComponents/Snackbars/SnackbarSucces'
 import Search from '../Search/Search'
 import { store } from '../../../Store/store'
 import Paper from '@material-ui/core/Paper';
+import ToggleListOrder from '../ToggleListOrder/ToggleListOrder'
 
 export default class Inventory extends Component {
 
@@ -50,11 +51,16 @@ export default class Inventory extends Component {
 			}
 		} else { inventoryList = <tr><td>Empty</td><td>-</td><td>-</td><td>-</td><td className="d-none d-sm-table-cell">-</td><td className="d-none d-sm-table-cell">-</td></tr> }
 
+
+
 		return (
 			<div className="row">
 				<Paper className="container-fluid col-lg-10 col-md-10 col-sm-11 inventoryBody" elevation={6} square>
 					<h3 className="title">My Inventory</h3>
-					<Search onSearch={this.props.onSearch} />
+					<div className="row">
+						<ToggleListOrder />
+						<Search onSearch={this.props.onSearch} />
+					</div>
 					<Table striped hover responsive className="inventoryTable">
 						<thead>
 							<tr>
