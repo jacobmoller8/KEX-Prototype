@@ -14,10 +14,11 @@ import orderList from '../../../Utilities/orderList'
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+		display: 'block'
   },
   paper: {
-    marginRight: theme.spacing.unit * 2,
+		marginRight: theme.spacing.unit * 2,
+		zIndex: '100'
   },
 });
 
@@ -76,7 +77,7 @@ class MenuListComposition extends React.Component {
           >
             Order By
           </Button>
-          <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
+          <Popper open={open} anchorEl={this.anchorEl} transition disablePortal >
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
@@ -85,7 +86,7 @@ class MenuListComposition extends React.Component {
               >
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
-                    <MenuList>
+                    <MenuList >
                       <MenuItem onClick={(e) => this.handleClose(e, 'name')}>Name</MenuItem>
                       <MenuItem onClick={(e) => this.handleClose(e, 'date')}>Date</MenuItem>
                       <MenuItem onClick={(e) => this.handleClose(e, 'EAN')}>EAN code</MenuItem>

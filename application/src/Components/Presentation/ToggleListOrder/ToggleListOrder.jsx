@@ -2,7 +2,7 @@ import React from 'react'
 import MenuListComposition from '../../MaterialComponents/DropDownMenu/MenuListComposition'
 import './ToggleListOrder.css'
 
-export default function ToggleListOrder(props) {
+export default function ToggleListOrder() {
 	return (
 		<div className="container-fluid col-4 orderListContainer">
 			<div className="container-fluid orderBtnContainer">

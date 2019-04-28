@@ -4,7 +4,6 @@ import {updateSortedInventory, updateSortedShopping, updateSortedTrash} from '..
 export default function orderList(list, order, screen) {
 
 	let objArray = []
-	let newObj = {}
 
 	Object.keys(list).forEach(function (key) {
 		objArray.push(list[key])
@@ -26,7 +25,9 @@ export default function orderList(list, order, screen) {
 			var dateB = new Date(b.dates[0])
 			return (dateA < dateB) ? -1 : (dateA > dateB) ? 1 : 0;
 		}
-
+		else{
+			return null
+		}
 	})
 	if (screen === 'inventory'){
 		store.dispatch(updateSortedInventory(objArray))
@@ -35,7 +36,6 @@ export default function orderList(list, order, screen) {
 	}else if (screen === 'trash'){
 		store.dispatch(updateSortedTrash(objArray))
 	}
-
 
 
 }
