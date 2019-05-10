@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Presentation/Header/Header';
 import EditItem from '../Presentation/EditItem/EditItem';
+import ConsupediaFooter from '../Presentation/ConsupediaFooter/ConsupediaFooter'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { store } from '../../Store/store';
@@ -98,6 +99,7 @@ class EditItemScreen extends Component {
                     status={this.state.status}
                     message={this.state.message}>
                 </EditItem>
+                <ConsupediaFooter/>
             </div>
         )
     }

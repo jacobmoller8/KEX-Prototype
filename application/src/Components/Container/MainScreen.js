@@ -5,6 +5,7 @@ import Navigation from '../Presentation/Navigation/Navigation';
 import Inventory from '../Presentation/Inventory/Inventory';
 import Trash from '../Presentation/Trash/Trash';
 import Shopping from '../Presentation/Shopping/Shopping';
+import ConsupediaFooter from '../Presentation/ConsupediaFooter/ConsupediaFooter'
 import { withRouter } from "react-router-dom";
 import { removeInventoryItem, addInvToShopping } from '../../Actions/inventoryActions';
 import { removeTrashItem, addTrashToShopping } from '../../Actions/trashActions';
@@ -189,6 +190,7 @@ class MainScreen extends Component {
 				<Header isLoggedIn={true} onLogoutClick={this.onLogoutClick} onFeedBackClick={this.onFeedBackClick} currentUser={this.props.user.username} />
 				<Navigation switchScreenTo={this.screenChangeHandler} currentScreen={this.state.screenMode} visibility={navStyle} />
 				{currentScreen}
+				<ConsupediaFooter/>
 			</div>
 		)
 	}

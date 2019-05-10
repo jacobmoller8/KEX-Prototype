@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Presentation/Header/Header';
 import AddItem from '../Presentation/AddItem/AddItem';
+import ConsupediaFooter from '../Presentation/ConsupediaFooter/ConsupediaFooter'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addCustomItemToShopping, addCustomItemToInventory } from '../../Actions/addCustomItemActions';
@@ -176,6 +177,7 @@ class AddItemScreen extends Component {
 					message={this.state.message}
 					currentError={this.state.currentError}
 					fetchedEAN={this.state.fetchedEAN}></AddItem>
+					<ConsupediaFooter/>
 			</div>
 		)
 	}

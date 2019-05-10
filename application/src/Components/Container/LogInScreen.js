@@ -5,6 +5,7 @@ import { userLoginUserInput, userLoginPassInput } from "../../Actions/userAction
 import { setToken } from '../../Actions/apiActions';
 import LogIn from '../Presentation/LogIn/LogIn'
 import Header from '../Presentation/Header/Header'
+import ConsupediaFooter from '../Presentation/ConsupediaFooter/ConsupediaFooter';
 import { withRouter } from "react-router-dom";
 import { store } from '../../Store/store'
 
@@ -69,6 +70,7 @@ class LogInScreen extends Component {
 					onLoginClick={this.onLoginClick}
 					onRegisterClick={this.onRegisterClick}
 					logInError={this.state.logInError} />
+				<ConsupediaFooter/>
 			</div>
 		);
 	}
